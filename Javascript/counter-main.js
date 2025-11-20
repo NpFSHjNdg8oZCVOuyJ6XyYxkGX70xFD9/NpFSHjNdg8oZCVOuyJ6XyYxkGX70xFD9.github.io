@@ -94,3 +94,28 @@ start.onclick = function () {
     updateCountdown()
     countdownInterval = setInterval(updateCountdown, 1000)
 }
+
+
+const radioGroups = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9"];
+const secretBtn = document.getElementById("hidden-btn");
+
+radioGroups.forEach(groupName => {
+    const radios = document.querySelectorAll(`input[name="${groupName}"]`);
+    radios.forEach(radio => {
+        radio.addEventListener("change", checkAllGroups);
+    });
+});
+
+function checkAllGroups() {
+    const allGroupsSelected = radioGroups.every(groupName => {
+        const radios = document.querySelectorAll(`input[name='${groupName}']`);
+        return Array.from(radios).some(radio => radio.checked);
+    });
+
+    secretBtn.style.display = allGroupsSelected ? "block" : "none";
+}
+
+secretBtn.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+    alert("Congratulations! You've found the secret button!");
+});
