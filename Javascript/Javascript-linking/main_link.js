@@ -9,3 +9,7 @@ document.getElementById("hobbies").onclick = function () {
 document.getElementById("main").onclick = function () {
     window.location.href = "./counter.html";
 }
+
+document.getElementById("clicker-game").onclick = function () {
+    window.location.href = "./clicker-game.html";
+}
