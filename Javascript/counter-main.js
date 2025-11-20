@@ -116,6 +116,11 @@ function checkAllGroups() {
 }
 
 secretBtn.addEventListener("click", () => {
-    document.body.classList.toggle("light-mode");
-    alert("Congratulations! You've found the secret button!");
+    document.body.classList.toggle("futuristic-mode");
+
+    if (document.body.classList.contains("futuristic-mode")) {
+        secretBtn.textContent = "Disable Futuristic Mode";
+    } else {
+        secretBtn.textContent = "Enable Futuristic Mode";
+    }
 });
