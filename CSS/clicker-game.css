@@ -1,73 +1,136 @@
 body {
-    background-color: black;
+    background: linear-gradient(135deg, #000000 0%, #1a0000 100%);
     color: white;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     padding: 20px;
+    min-height: 100vh;
+    margin: 0;
 }
 
 h1 {
-    color: red;
-    font-size: 48px;
+    color: #ff0000;
+    font-size: 56px;
     margin-bottom: 30px;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    font-weight: 700;
 }
 
 h2 {
-    color: red;
-    font-size: 32px;
-    margin-top: 40px;
-    margin-bottom: 20px;
+    color: #ff0000;
+    font-size: 36px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-weight: 600;
 }
 
 p {
-    font-size: 20px;
-    margin: 10px;
+    font-size: 22px;
+    margin: 15px;
 }
 
 #score {
-    color: red;
-    font-size: 24px;
+    color: #ff0000;
+    font-size: 32px;
     font-weight: bold;
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
 }
 
 #clickButton {
-    background-color: red;
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
     color: white;
-    font-size: 24px;
-    padding: 20px 40px;
-    border: 3px solid white;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 30px 60px;
+    border: none;
+    border-radius: 15px;
     cursor: pointer;
-    margin: 20px;
+    margin: 30px;
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+    transition: all 0.3s ease;
 }
 
 #clickButton:hover {
-    background-color: darkred;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 0, 0, 0.6);
+    background: linear-gradient(135deg, #ff1a1a 0%, #e60000 100%);
 }
 
 #clickButton:active {
-    background-color: #8B0000;
+    transform: translateY(1px);
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
 }
 
-#upgrade1, #upgrade2 {
-    background-color: #1a1a1a;
+.upgrade-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#upgrade1,
+#upgrade2 {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
     color: white;
-    font-size: 18px;
-    padding: 15px 30px;
-    border: 2px solid red;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 25px;
+    border: 2px solid #ff0000;
+    border-radius: 8px;
     cursor: pointer;
-    margin: 10px;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
 }
 
-#upgrade1:hover, #upgrade2:hover {
-    background-color: #2a2a2a;
-    border-color: darkred;
+#upgrade1:hover,
+#upgrade2:hover {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border-color: #ff3333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.3);
 }
 
-#upgrade1:active, #upgrade2:active {
-    background-color: red;
+#upgrade1:active,
+#upgrade2:active {
+    transform: translateY(0);
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+    box-shadow: 0 2px 10px rgba(255, 0, 0, 0.4);
 }
 
-#autoClickers, #doubleClicks {
-    color: red;
+#autoClickers,
+#doubleClicks {
+    color: #ff0000;
     font-weight: bold;
+}
+
+#upgradeBox {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+    border: 3px solid #ff0000;
+    border-radius: 15px;
+    padding: 25px;
+    width: 280px;
+    box-shadow: 0 8px 30px rgba(255, 0, 0, 0.3);
+}
+
+#upgradeBox h3 {
+    color: #ff0000;
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+#upgradeBox p {
+    font-size: 16px;
+    margin: 12px 0;
+    text-align: left;
+    padding-left: 10px;
 }
