@@ -48,6 +48,7 @@ start.onclick = function () {
     let periodText = periodinput.value;
 
     if (!bellSchedule[dayText] || !bellSchedule[dayText][periodText]) {
+        countdown.value = "Invalid Day/Period"
         return;
     }
 
