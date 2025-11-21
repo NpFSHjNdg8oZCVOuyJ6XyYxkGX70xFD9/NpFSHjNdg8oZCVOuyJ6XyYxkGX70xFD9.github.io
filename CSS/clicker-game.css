@@ -37,28 +37,103 @@ p {
 }
 
 #clickButton {
+    position: relative;
     background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
     color: white;
     font-size: 28px;
     font-weight: bold;
     padding: 30px 60px;
     border: none;
-    border-radius: 15px;
+    border-radius: 200px;
     cursor: pointer;
     margin: 30px;
-    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4),
+        0 0 40px rgba(255, 0, 0, 0.2);
     transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+#clickButton::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent);
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+#clickButton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 200px;
+    padding: 2px;
+    background: linear-gradient(45deg, #ff0000, #ff6666, #ff0000);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
 }
 
 #clickButton:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(255, 0, 0, 0.6);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(255, 0, 0, 0.6),
+        0 0 60px rgba(255, 0, 0, 0.4);
     background: linear-gradient(135deg, #ff1a1a 0%, #e60000 100%);
 }
 
+#clickButton:hover::after {
+    opacity: 1;
+    animation: borderGlow 2s infinite;
+}
+
+@keyframes borderGlow {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
 #clickButton:active {
-    transform: translateY(1px);
+    transform: translateY(1px) scale(0.98);
     box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+    animation: clickPulse 0.3s ease;
+}
+
+@keyframes clickPulse {
+    0% {
+        transform: translateY(1px) scale(0.98);
+    }
+
+    50% {
+        transform: translateY(1px) scale(0.95);
+    }
+
+    100% {
+        transform: translateY(1px) scale(0.98);
+    }
 }
 
 .upgrade-container {
