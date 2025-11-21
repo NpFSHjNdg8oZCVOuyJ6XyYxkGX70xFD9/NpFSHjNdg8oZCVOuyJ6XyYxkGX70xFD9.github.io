@@ -205,3 +205,113 @@ p {
     text-align: left;
     padding-left: 10px;
 }
+
+#secretMenu {
+    position: fixed;
+    top: 320px;
+    right: 20px;
+    transform: translateX(150%);
+    background: linear-gradient(135deg, #1a0000 0%, #000000 100%);
+    border: 3px solid #ff0000;
+    border-radius: 20px;
+    padding: 40px;
+    width: 280px;
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.5),
+        0 0 100px rgba(255, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+#secretMenu.show {
+    transform: translateX(0);
+    opacity: 1;
+    animation: menuGlow 2s infinite;
+}
+
+@keyframes menuGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 50px rgba(255, 0, 0, 0.5), 0 0 100px rgba(255, 0, 0, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 70px rgba(255, 0, 0, 0.7), 0 0 120px rgba(255, 0, 0, 0.5);
+    }
+}
+
+#secretMenu h3 {
+    color: #ff0000;
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+}
+
+#secretMenu p {
+    position: relative;
+    font-size: 18px;
+    margin: 15px 0;
+    text-align: center;
+    transform: none;
+    top: auto;
+    left: auto;
+}
+
+#closeMenu {
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+#closeMenu:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.6);
+    background: linear-gradient(135deg, #ff1a1a 0%, #e60000 100%);
+}
+
+#closeMenu:active {
+    transform: translateY(0);
+}
+
+#openMenuButton {
+    position: fixed;
+    top: 320px;
+    right: 20px;
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    display: none;
+}
+
+#openMenuButton.show {
+    display: block;
+}
+
+#openMenuButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.6);
+    background: linear-gradient(135deg, #ff1a1a 0%, #e60000 100%);
+}
+
+#openMenuButton:active {
+    transform: translateY(0);
+}

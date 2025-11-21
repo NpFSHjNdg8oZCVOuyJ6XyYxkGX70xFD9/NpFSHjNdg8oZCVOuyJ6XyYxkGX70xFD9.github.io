@@ -8,6 +8,7 @@ let autoClickerCost = 50;
 let doubleClickerCost = 200;
 let employeeDanielCost = 1000;
 
+let menuUnlocked = false;
 let scoreDisplay = document.getElementById('score');
 let clickButton = document.getElementById('clickButton');
 let upgrade1Button = document.getElementById('upgrade1');
@@ -20,6 +21,7 @@ let employeeDanielDisplay = document.getElementById('employeeDaniel');
 clickButton.onclick = function () {
     score = score + clickPower;
     scoreDisplay.textContent = score;
+    checkSecretMenu();
 };
 
 upgrade1Button.onclick = function () {
@@ -36,6 +38,7 @@ upgrade1Button.onclick = function () {
 setInterval(function () {
     score = score + autoclickers;
     scoreDisplay.textContent = score;
+    checkSecretMenu();
 }, 1000);
 
 
@@ -67,4 +70,24 @@ upgrade3Button.onclick = function () {
 setInterval(function () {
     score = score + (employeeDaniel * 20);
     scoreDisplay.textContent = score;
+    checkSecretMenu(); 
 }, 1000);
+
+
+function checkSecretMenu() {
+    if (score >= 1 && !menuUnlocked) {
+        menuUnlocked = true;
+        document.getElementById('secretMenu').classList.add("show")
+        document.getElementById('openMenuButton').classList.add('show');
+    }
+}
+
+document.getElementById('closeMenu').onclick = function() {
+    document.getElementById('secretMenu').classList.remove("show")
+    document.getElementById('openMenuButton').classList.add('show');
+};
+
+document.getElementById('openMenuButton').onclick = function() {
+    document.getElementById('secretMenu').classList.add("show")
+    document.getElementById('openMenuButton').classList.remove('show');
+}
