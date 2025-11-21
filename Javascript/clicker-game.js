@@ -17,6 +17,12 @@ let autoClickerDisplay = document.getElementById('autoClickers');
 let doubleClickerDisplay = document.getElementById('doubleClicks');
 let employeeDanielDisplay = document.getElementById('employeeDaniel');
 
+window.setScore = function addClicks(amount) {
+    score = score + amount;
+    scoreDisplay.textContent = score;
+    console.log("Added " + amount + " clicks. New score: " + score);
+}
+
 clickButton.onclick = function () {
     score = score + clickPower;
     scoreDisplay.textContent = score;
