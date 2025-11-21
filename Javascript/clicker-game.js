@@ -15,7 +15,7 @@ let upgrade2Button = document.getElementById('upgrade2');
 let upgrade3Button = document.getElementById('upgrade3');
 let autoClickerDisplay = document.getElementById('autoClickers');
 let doubleClickerDisplay = document.getElementById('doubleClicks');
-let employeeDanielDisplay = document.getElementById('employeeDaniels');
+let employeeDanielDisplay = document.getElementById('employeeDaniel');
 
 clickButton.onclick = function () {
     score = score + clickPower;
@@ -49,8 +49,7 @@ upgrade3Button.onclick = function () {
     if (score >= employeeDanielCost) {
         score = score - employeeDanielCost;
         employeeDaniel = employeeDaniel + 1;
-        autoclickers = autoclickers + 5;
-        employeeDanielCost = Math.floor(employeeDanielCost * 1.5);
+        employeeDanielCost = Math.floor(employeeDanielCost * 2.5);
         scoreDisplay.textContent = score;
         employeeDanielDisplay.textContent = employeeDaniel;
         autoClickerDisplay.textContent = autoclickers;
@@ -61,5 +60,10 @@ upgrade3Button.onclick = function () {
 
 setInterval(function () {
     score = score + autoclickers;
+    scoreDisplay.textContent = score;
+}, 1000);
+
+setInterval(function () {
+    score = score + (employeeDaniel * 5);
     scoreDisplay.textContent = score;
 }, 1000);
