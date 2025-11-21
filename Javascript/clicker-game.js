@@ -65,6 +65,6 @@ upgrade3Button.onclick = function () {
 };
 
 setInterval(function () {
-    score = score + (employeeDaniel * 5);
+    score = score + (employeeDaniel * 20);
     scoreDisplay.textContent = score;
 }, 1000);
