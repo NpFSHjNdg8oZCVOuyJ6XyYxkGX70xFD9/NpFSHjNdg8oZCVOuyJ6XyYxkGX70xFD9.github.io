@@ -102,3 +102,27 @@ document.getElementById('gambleButton').onclick = function() {
     }
     scoreDisplay.textContent = score;
 };
+
+let criticalButtonCost = 25000;
+document.getElementById('criticalbutton').onclick = function() {
+    if (score >= criticalButtonCost) {
+        score = score - criticalButtonCost;
+
+        let manualClickValue = clickPower;
+        let autoClickValue = autoclickers;
+        let danielValue = employeeDaniel * 5;
+        let criticalPower = manualClickValue + autoClickValue + danielValue;
+
+        let randomNumber = Math.random();
+        if (randomNumber < 0.05) {
+            criticalGain = criticalPower * 100;
+            score = score + criticalGain;
+        }
+
+        criticalButtonCost = criticalButtonCost * 10;
+
+        scoreDisplay.textContent = score;
+        document.getElementById('criticalbutton').textContent = "Critical Clicks (cost: " + criticalButtonCost + ")";
+    }
+};
+

@@ -316,7 +316,7 @@ p {
     transform: translateY(0);
 }
 
-#gambleButton {
+#gambleButton, #criticalButton {
     background: linear-gradient(135deg, #ff6600 0%, #cc5200 100%);
     color: white;
     font-size: 16px;
@@ -332,12 +332,12 @@ p {
     transition: all 0.3s ease;
 }
 
-#gambleButton:hover {
+#gambleButton:hover, #criticalButton:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(255, 102, 0, 0.6);
     background: linear-gradient(135deg, #ff7a1a 0%, #e65c00 100%);
 }
 
-#gambleButton:active {
+#gambleButton:active, #criticalButton:active {
     transform: translateY(0);
 }
