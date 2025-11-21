@@ -33,6 +33,12 @@ upgrade1Button.onclick = function () {
     }
 };
 
+setInterval(function () {
+    score = score + autoclickers;
+    scoreDisplay.textContent = score;
+}, 1000);
+
+
 upgrade2Button.onclick = function () {
     if (score >= doubleClickerCost) {
         score = score - doubleClickerCost;
@@ -45,6 +51,7 @@ upgrade2Button.onclick = function () {
     }
 };
 
+
 upgrade3Button.onclick = function () {
     if (score >= employeeDanielCost) {
         score = score - employeeDanielCost;
@@ -56,12 +63,6 @@ upgrade3Button.onclick = function () {
         upgrade3Button.textContent = "Hire Employee Daniel (Cost: " + employeeDanielCost + ")";
     }
 };
-
-
-setInterval(function () {
-    score = score + autoclickers;
-    scoreDisplay.textContent = score;
-}, 1000);
 
 setInterval(function () {
     score = score + (employeeDaniel * 5);
