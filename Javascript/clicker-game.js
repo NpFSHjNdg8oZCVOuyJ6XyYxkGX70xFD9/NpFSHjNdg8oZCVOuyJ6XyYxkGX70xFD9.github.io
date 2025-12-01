@@ -1,3 +1,56 @@
+function loadGame() {
+    const savedData = localStorage.getItem('clickerGameData');
+    if (savedData) {
+        const data = JSON.parse(savedData);
+        score = data.score || 0;
+        autoclickers = data.autoclickers || 0;
+        clickPower = data.clickPower || 1;
+        doubleClickers = data.doubleClickers || 0;
+        employeeDaniel = data.employeeDaniel || 0;
+        autoClickerCost = data.autoClickerCost || 50;
+        doubleClickerCost = data.doubleClickerCost || 200;
+        employeeDanielCost = data.employeeDanielCost || 1000;
+        criticalButtonCost = data.criticalButtonCost || 25000;
+        menuUnlocked = data.menuUnlocked || false;
+
+        updateAllDisplays();
+    }
+}
+ 
+function saveGame() { 
+    const gameData = {
+        score: score,
+        autoclickers: autoclickers,
+        clickPower: clickPower,
+        doubleClickers: doubleClickers,
+        employeeDaniel: employeeDaniel,
+        autoClickerCost: autoClickerCost,
+        doubleClickerCost: doubleClickerCost,
+        employeeDanielCost: employeeDanielCost,
+        criticalButtonCost: criticalButtonCost,
+        menuUnlocked: menuUnlocked
+    };
+    localStorage.setItem('clickerGameData', JSON.stringify(gameData));
+}
+
+function updateAllDisplays() {
+    scoreDisplay.textContent = score;
+    autoClickerDisplay.textContent = autoclickers;
+    doubleClickerDisplay.textContent = doubleClickers;
+    employeeDanielDisplay.textContent = employeeDaniel;
+    upgrade1Button.textContent = 'Auto-Clicker (Cost: ' + autoClickerCost + ')';
+    upgrade2Button.textContent = 'Double Click Power (Cost: ' + doubleClickerCost + ')';
+    upgrade3Button.textContent = "Hire Employee Daniel (Cost: " + employeeDanielCost + ")";
+    document.getElementById('criticalbutton').textContent = "Critical Clicks (cost: " + criticalButtonCost + ")";
+
+    if (menuUnlocked) {
+        document.getElementById('secretMenu').classList.add("show");
+        document.getElementById('openMenuButton').classList.add('show');
+    }
+}
+loadGame();
+
+
 let score = 0;
 let autoclickers = 0;
 let clickPower = 1;
@@ -22,6 +75,7 @@ clickButton.onclick = function () {
     score = score + clickPower;
     scoreDisplay.textContent = score;
     checkSecretMenu();
+    saveGame();
 };
 
 upgrade1Button.onclick = function () {
@@ -32,6 +86,7 @@ upgrade1Button.onclick = function () {
         scoreDisplay.textContent = score;
         autoClickerDisplay.textContent = autoclickers;
         upgrade1Button.textContent = 'Auto-Clicker (Cost: ' + autoClickerCost + ')';
+        saveGame();
     }
 };
 
@@ -39,6 +94,7 @@ setInterval(function () {
     score = score + autoclickers;
     scoreDisplay.textContent = score;
     checkSecretMenu();
+    saveGame();
 }, 1000);
 
 
@@ -51,6 +107,7 @@ upgrade2Button.onclick = function () {
         scoreDisplay.textContent = score;
         doubleClickerDisplay.textContent = doubleClickers;
         upgrade2Button.textContent = 'Double Click Power (Cost: ' + doubleClickerCost + ')';
+        saveGame();
     }
 };
 
@@ -64,6 +121,7 @@ upgrade3Button.onclick = function () {
         employeeDanielDisplay.textContent = employeeDaniel;
         autoClickerDisplay.textContent = autoclickers;
         upgrade3Button.textContent = "Hire Employee Daniel (Cost: " + employeeDanielCost + ")";
+        saveGame();
     }
 };
 
@@ -79,6 +137,7 @@ function checkSecretMenu() {
         menuUnlocked = true;
         document.getElementById('secretMenu').classList.add("show")
         document.getElementById('openMenuButton').classList.add('show');
+        saveGame();
     }
 }
 
@@ -101,6 +160,7 @@ document.getElementById('gambleButton').onclick = function() {
         alert("Jackpot! You won " + winnings + " points!");
     }
     scoreDisplay.textContent = score;
+    saveGame();
 };
 
 let criticalButtonCost = 25000;
@@ -123,6 +183,7 @@ document.getElementById('criticalbutton').onclick = function() {
 
         scoreDisplay.textContent = score;
         document.getElementById('criticalbutton').textContent = "Critical Clicks (cost: " + criticalButtonCost + ")";
+        saveGame();
     }
 };
 
