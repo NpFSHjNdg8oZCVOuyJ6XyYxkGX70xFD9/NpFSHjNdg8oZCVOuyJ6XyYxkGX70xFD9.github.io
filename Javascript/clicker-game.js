@@ -34,7 +34,7 @@ function saveGame() {
 }
 
 function updateAllDisplays() {
-    scoreDisplay.textContent = score;
+    scoreDisplay.textContent = Math.round(score);
     autoClickerDisplay.textContent = autoclickers;
     doubleClickerDisplay.textContent = doubleClickers;
     employeeDanielDisplay.textContent = employeeDaniel;
@@ -42,6 +42,10 @@ function updateAllDisplays() {
     upgrade2Button.textContent = 'Double Click Power (Cost: ' + doubleClickerCost + ')';
     upgrade3Button.textContent = "Hire Employee Daniel (Cost: " + employeeDanielCost + ")";
     document.getElementById('criticalbutton').textContent = "Critical Clicks (cost: " + criticalButtonCost + ")";
+
+    if (cpsDisplay) {
+        cpsDisplay.textContent = calculateCPS();
+    }
 
     if (menuUnlocked) {
         document.getElementById('secretMenu').classList.add("show");
@@ -63,6 +67,7 @@ let criticalButtonCost = 25000;
 
 let menuUnlocked = false;
 let scoreDisplay = document.getElementById('score');
+let cpsDisplay = document.getElementById('totalCPS');
 let clickButton = document.getElementById('clickButton');
 let upgrade1Button = document.getElementById('upgrade1');
 let upgrade2Button = document.getElementById('upgrade2');
@@ -75,7 +80,7 @@ loadGame();
 
 clickButton.onclick = function () {
     score = score + clickPower;
-    scoreDisplay.textContent = score;
+    scoreDisplay.textContent = Math.round(score);
     checkSecretMenu();
     saveGame();
 };
@@ -85,16 +90,18 @@ upgrade1Button.onclick = function () {
         score = score - autoClickerCost;
         autoclickers = autoclickers + 1;
         autoClickerCost = Math.floor(autoClickerCost * 1.5);
-        scoreDisplay.textContent = score;
+        scoreDisplay.textContent = Math.round(score);
         autoClickerDisplay.textContent = autoclickers;
         upgrade1Button.textContent = 'Auto-Clicker (Cost: ' + autoClickerCost + ')';
+        if (cpsDisplay) cpsDisplay.textContent = calculateCPS();
         saveGame();
     }
 };
 
 setInterval(function () {
-    score = score + autoclickers;
-    scoreDisplay.textContent = score;
+    const autoClickerMultiplier = Math.pow(1.3, doubleClickers);
+    score = score + (autoclickers * autoClickerMultiplier);
+    scoreDisplay.textContent = Math.round(score);
     checkSecretMenu();
     saveGame();
 }, 1000);
@@ -105,10 +112,11 @@ upgrade2Button.onclick = function () {
         score = score - doubleClickerCost;
         doubleClickers = doubleClickers + 1;
         clickPower = clickPower * 2;
-        doubleClickerCost = Math.floor(doubleClickerCost * 1.5);
-        scoreDisplay.textContent = score;
+        doubleClickerCost = Math.floor(doubleClickerCost * 2.3);
+        scoreDisplay.textContent = Math.round(score);
         doubleClickerDisplay.textContent = doubleClickers;
         upgrade2Button.textContent = 'Double Click Power (Cost: ' + doubleClickerCost + ')';
+        if (cpsDisplay) cpsDisplay.textContent = calculateCPS();
         saveGame();
     }
 };
@@ -119,20 +127,27 @@ upgrade3Button.onclick = function () {
         score = score - employeeDanielCost;
         employeeDaniel = employeeDaniel + 1;
         employeeDanielCost = Math.floor(employeeDanielCost * 1.5);
-        scoreDisplay.textContent = score;
+        scoreDisplay.textContent = Math.round(score);
         employeeDanielDisplay.textContent = employeeDaniel;
         autoClickerDisplay.textContent = autoclickers;
         upgrade3Button.textContent = "Hire Employee Daniel (Cost: " + employeeDanielCost + ")";
+        if (cpsDisplay) cpsDisplay.textContent = calculateCPS();
         saveGame();
     }
 };
 
 setInterval(function () {
     score = score + (employeeDaniel * 20);
-    scoreDisplay.textContent = score;
+    scoreDisplay.textContent = Math.round(score);
     checkSecretMenu();
 }, 1000);
 
+function calculateCPS() {
+    const autoClickerMultiplier = Math.pow(1.3, doubleClickers);
+    const autoCPS = autoclickers * autoClickerMultiplier;
+    const danielCPS = employeeDaniel * 20;
+    return Math.floor(autoCPS + danielCPS);
+}
 
 function checkSecretMenu() {
     if (score >= 10000 && !menuUnlocked) {
@@ -161,7 +176,7 @@ document.getElementById('gambleButton').onclick = function () {
         score = score + winnings;
         alert("Jackpot! You won " + winnings + " points!");
     }
-    scoreDisplay.textContent = score;
+    scoreDisplay.textContent = Math.round(score);
     saveGame();
 };
 
@@ -182,7 +197,7 @@ document.getElementById('criticalbutton').onclick = function () {
 
         criticalButtonCost = criticalButtonCost * 10;
 
-        scoreDisplay.textContent = score;
+        scoreDisplay.textContent = Math.round(score);
         document.getElementById('criticalbutton').textContent = "Critical Clicks (cost: " + criticalButtonCost + ")";
         saveGame();
     }
