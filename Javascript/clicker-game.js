@@ -135,7 +135,7 @@ setInterval(function () {
 
 
 function checkSecretMenu() {
-    if (score >= 1 && !menuUnlocked) {
+    if (score >= 10000 && !menuUnlocked) {
         menuUnlocked = true;
         document.getElementById('secretMenu').classList.add("show")
         document.getElementById('openMenuButton').classList.add('show');
