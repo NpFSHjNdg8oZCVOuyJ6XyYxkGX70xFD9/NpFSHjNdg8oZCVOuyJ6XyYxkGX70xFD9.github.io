@@ -13,3 +13,7 @@ document.getElementById("main").onclick = function () {
 document.getElementById("clicker-game").onclick = function () {
     window.location.href = "./clicker-game.html";
 }
+
+document.getElementById("timer-game").onclick = function () {
+    window.location.href = "./timer-game.html";
+}
