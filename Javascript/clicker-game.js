@@ -16,8 +16,8 @@ function loadGame() {
         updateAllDisplays();
     }
 }
- 
-function saveGame() { 
+
+function saveGame() {
     const gameData = {
         score: score,
         autoclickers: autoclickers,
@@ -48,7 +48,6 @@ function updateAllDisplays() {
         document.getElementById('openMenuButton').classList.add('show');
     }
 }
-loadGame();
 
 
 let score = 0;
@@ -60,6 +59,7 @@ let employeeDaniel = 0;
 let autoClickerCost = 50;
 let doubleClickerCost = 200;
 let employeeDanielCost = 1000;
+let criticalButtonCost = 25000;
 
 let menuUnlocked = false;
 let scoreDisplay = document.getElementById('score');
@@ -70,6 +70,8 @@ let upgrade3Button = document.getElementById('upgrade3');
 let autoClickerDisplay = document.getElementById('autoClickers');
 let doubleClickerDisplay = document.getElementById('doubleClicks');
 let employeeDanielDisplay = document.getElementById('employeeDaniel');
+
+loadGame();
 
 clickButton.onclick = function () {
     score = score + clickPower;
@@ -128,7 +130,7 @@ upgrade3Button.onclick = function () {
 setInterval(function () {
     score = score + (employeeDaniel * 20);
     scoreDisplay.textContent = score;
-    checkSecretMenu(); 
+    checkSecretMenu();
 }, 1000);
 
 
@@ -141,17 +143,17 @@ function checkSecretMenu() {
     }
 }
 
-document.getElementById('closeMenu').onclick = function() {
+document.getElementById('closeMenu').onclick = function () {
     document.getElementById('secretMenu').classList.remove("show")
     document.getElementById('openMenuButton').classList.add('show');
 };
 
-document.getElementById('openMenuButton').onclick = function() {
+document.getElementById('openMenuButton').onclick = function () {
     document.getElementById('secretMenu').classList.add("show")
     document.getElementById('openMenuButton').classList.remove('show');
 }
 
-document.getElementById('gambleButton').onclick = function() {
+document.getElementById('gambleButton').onclick = function () {
     let gambleAmount = Math.floor(score / 2);
     let randomNum = Math.random();
     if (randomNum < 0.01) {
@@ -163,8 +165,7 @@ document.getElementById('gambleButton').onclick = function() {
     saveGame();
 };
 
-let criticalButtonCost = 25000;
-document.getElementById('criticalbutton').onclick = function() {
+document.getElementById('criticalbutton').onclick = function () {
     if (score >= criticalButtonCost) {
         score = score - criticalButtonCost;
 
