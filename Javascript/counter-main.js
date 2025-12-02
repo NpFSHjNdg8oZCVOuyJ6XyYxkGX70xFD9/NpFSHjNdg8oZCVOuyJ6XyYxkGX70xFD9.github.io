@@ -66,7 +66,7 @@ start.onclick = function () {
         target.setSeconds(0);
         target.setMilliseconds(0);
 
-        const daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday"];
+        const daysOfWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
         const currentDay = now.getDay();
         const targetDayIndex = daysOfWeek.indexOf(dayText);
 
