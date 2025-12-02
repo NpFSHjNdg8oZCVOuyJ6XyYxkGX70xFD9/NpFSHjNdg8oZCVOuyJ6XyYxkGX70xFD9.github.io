@@ -190,7 +190,7 @@ document.getElementById('criticalbutton').onclick = function () {
         let criticalPower = manualClickValue + autoClickValue + danielValue;
 
         let randomNumber = Math.random();
-        if (randomNumber < 0.05) {
+        if (randomNumber <= 0.05) {
             criticalGain = criticalPower * 100;
             score = score + criticalGain;
         }
