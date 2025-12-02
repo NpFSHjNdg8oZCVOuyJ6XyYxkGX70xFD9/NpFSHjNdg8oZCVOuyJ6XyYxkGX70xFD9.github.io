@@ -171,7 +171,7 @@ document.getElementById('openMenuButton').onclick = function () {
 document.getElementById('gambleButton').onclick = function () {
     let gambleAmount = Math.floor(score / 2);
     let randomNum = Math.random();
-    if (randomNum < 0.01) {
+    if (randomNum <= 0.01) {
         let winnings = gambleAmount * 1000;
         score = score + winnings;
         alert("Jackpot! You won " + winnings + " points!");
