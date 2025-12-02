@@ -1,0 +1,160 @@
+:root {
+    --text: #ffffff;
+    --background: #000000;
+    --primary: #d5d4e1;
+    --secondary: #fffefe;
+    --accent: #ff0000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Zalando Sans Expanded', Arial, sans-serif;
+    background: var(--background);
+    height: 100vh;
+    color: var(--text);
+    line-height: 1.6;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 2rem;
+    padding: 3rem 6rem;
+}
+
+.header {
+    text-align: center;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: var(--primary);
+    font-style: italic;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.score-board {
+    background: var(--background);
+    border: 3px solid var(--primary);
+    border-radius: 12px;
+    padding: 1rem 2.5rem;
+    text-align: center;
+}
+
+.score-label {
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.score {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.difficulty-selector {
+    display: flex;
+    gap: 1rem;
+}
+
+.difficulty-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    background: var(--background);
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.difficulty-btn:hover {
+    background: var(--primary);
+    color: var(--background);
+    transform: translateY(-2px);
+}
+
+.difficulty-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--text);
+}
+
+.game-area {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--background);
+    border: 4px solid var(--primary);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.click-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem 4rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--background);
+    background: linear-gradient(135deg, var(--accent), #cc0000);
+    border: 4px solid var(--secondary);
+    border-radius: 60px;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.click-button:hover {
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, var(--accent), #cc0000);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
+}
+
+.click-button:active {
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
+.instructions {
+    text-align: center;
+    color: var(--primary);
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
