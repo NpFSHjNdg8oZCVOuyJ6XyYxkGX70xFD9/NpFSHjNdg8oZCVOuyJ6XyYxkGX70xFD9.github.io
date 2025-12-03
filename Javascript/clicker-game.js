@@ -39,8 +39,8 @@ function updateAllDisplays() {
     doubleClickerDisplay.textContent = doubleClickers;
     employeeDanielDisplay.textContent = employeeDaniel;
     upgrade1Button.textContent = 'Auto-Clicker (Cost: ' + autoClickerCost + ')';
-    upgrade2Button.textContent = 'Double Click Power (Cost: ' + doubleClickerCost + ')';
-    upgrade3Button.textContent = "Hire Employee Daniel (Cost: " + employeeDanielCost + ")";
+    upgrade2Button.textContent = 'Double-Clicker (Cost: ' + doubleClickerCost + ')';
+    upgrade3Button.textContent = "Employee Daniel (Cost: " + employeeDanielCost + ")";
     document.getElementById('criticalbutton').textContent = "Critical Clicks (cost: " + criticalButtonCost + ")";
 
     if (cpsDisplay) {
@@ -75,6 +75,12 @@ let upgrade3Button = document.getElementById('upgrade3');
 let autoClickerDisplay = document.getElementById('autoClickers');
 let doubleClickerDisplay = document.getElementById('doubleClicks');
 let employeeDanielDisplay = document.getElementById('employeeDaniel');
+let bulkBuyAuto = document.getElementById('bulkBuyAuto');
+let bulkBuyAutoBtn = document.getElementById('bulkBuyAutoBtn');
+let bulkBuyDouble = document.getElementById('bulkBuyDouble');
+let bulkBuyDoubleBtn = document.getElementById('bulkBuyDoubleBtn');
+let bulkBuyDaniel = document.getElementById('bulkBuyDaniel');
+let bulkBuyDanielBtn = document.getElementById('bulkBuyDanielBtn');
 
 loadGame();
 
@@ -95,6 +101,28 @@ upgrade1Button.onclick = function () {
         upgrade1Button.textContent = 'Auto-Clicker (Cost: ' + autoClickerCost + ')';
         if (cpsDisplay) cpsDisplay.textContent = calculateCPS();
         saveGame();
+    }
+};
+
+bulkBuyAutoBtn.onclick = function () {
+    let count = parseInt(bulkBuyAuto.value, 10) || 1;
+    count = Math.max(1, count);
+
+    let totalCost = 0;
+    let currentCost = autoClickerCost;
+    for (let i = 0; i < count; i++) {
+        totalCost += currentCost;
+        currentCost = Math.floor(currentCost * 1.5);
+    }
+
+    if (score >= totalCost) {
+        score -= totalCost;
+        autoclickers += count;
+        autoClickerCost = currentCost;
+        updateAllDisplays();
+        saveGame();
+    } else {
+        alert('Not enough points! Need ' + totalCost + ' for ' + count + ' Auto-Clicker(s).');
     }
 };
 
@@ -121,6 +149,31 @@ upgrade2Button.onclick = function () {
     }
 };
 
+bulkBuyDoubleBtn.onclick = function () {
+    let count = parseInt(bulkBuyDouble.value, 10) || 1;
+    count = Math.max(1, count);
+
+    let totalCost = 0;
+    let currentCost = doubleClickerCost;
+    let newClickPower = clickPower;
+    for (let i = 0; i < count; i++) {
+        totalCost += currentCost;
+        currentCost = Math.floor(currentCost * 2.3);
+        newClickPower *= 2;
+    }
+
+    if (score >= totalCost) {
+        score -= totalCost;
+        doubleClickers += count;
+        clickPower = newClickPower;
+        doubleClickerCost = currentCost;
+        updateAllDisplays();
+        saveGame();
+    } else {
+        alert('Not enough points! Need ' + totalCost + ' for ' + count + ' Double Click(s).');
+    }
+};
+
 
 upgrade3Button.onclick = function () {
     if (score >= employeeDanielCost) {
@@ -133,6 +186,28 @@ upgrade3Button.onclick = function () {
         upgrade3Button.textContent = "Hire Employee Daniel (Cost: " + employeeDanielCost + ")";
         if (cpsDisplay) cpsDisplay.textContent = calculateCPS();
         saveGame();
+    }
+};
+
+bulkBuyDanielBtn.onclick = function () {
+    let count = parseInt(bulkBuyDaniel.value, 10) || 1;
+    count = Math.max(1, count);
+
+    let totalCost = 0;
+    let currentCost = employeeDanielCost;
+    for (let i = 0; i < count; i++) {
+        totalCost += currentCost;
+        currentCost = Math.floor(currentCost * 1.5);
+    }
+
+    if (score >= totalCost) {
+        score -= totalCost;
+        employeeDaniel += count;
+        employeeDanielCost = currentCost;
+        updateAllDisplays();
+        saveGame();
+    } else {
+        alert('Not enough points! Need ' + totalCost + ' for ' + count + ' Employee Daniel(s).');
     }
 };
 

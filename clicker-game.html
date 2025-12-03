@@ -17,48 +17,65 @@
 
 <body>
 
-<h1>Clicker Game</h1>
-<h4> Total CPS: <span id="totalCPS">0</span></h4>
-<p>Score: <span id="score">0</span></p>
-    
-<button id="clickButton">Click Me!</button>
-    
-<br><br>
-    
-<h2>Upgrades</h2>
-<div class ="upgrade-container">
-<button id="upgrade1">Auto Clicker (Cost: 50)</button>
-<button id="upgrade2">Double Click (Cost: 200)</button>
-<button id="upgrade3">Employee Daniel (Cost: 1000)</button>
+    <h1>Clicker Game</h1>
+    <h4> Total CPS: <span id="totalCPS">0</span></h4>
+    <p>Score: <span id="score">0</span></p>
 
-</div>
+    <button id="clickButton">Click Me!</button>
 
+    <br><br>
 
+    <h2>Upgrades</h2>
+    <div class="upgrade-container">
+        <div class="upgrade-item">
+            <button id="upgrade1">Auto Clicker (Cost: 50)</button>
+            <label for="bulkBuyAuto">Qty:</label>
+            <input id="bulkBuyAuto" type="number" min="1" value="1" inputmode="numeric">
+            <button id="bulkBuyAutoBtn">Buy</button>
+        </div>
 
-<div id="upgradeBox">
-    <h3>Upgrades Owned</h3>
-    <p>Auto-Clickers: <span id="autoClickers">0</span></p>
-    <p>Double Clicks: <span id="doubleClicks">0</span></p>
-    <p>Employee Daniels: <span id="employeeDaniel">0</span></p>
-</div>
+        <div class="upgrade-item">
+            <button id="upgrade2">Double Click (Cost: 200)</button>
+            <label for="bulkBuyDouble">Qty:</label>
+            <input id="bulkBuyDouble" type="number" min="1" value="1" inputmode="numeric">
+            <button id="bulkBuyDoubleBtn">Buy</button>
+        </div>
 
-<div id="secretMenu">
-    <h3>Overclocking Terminal</h3>
-    <button id="gambleButton">Gamble</button>
-    <button id="criticalbutton">Critical Clicks (cost: 25k)</button>
+        <div class="upgrade-item">
+            <button id="upgrade3">Employee Daniel (Cost: 1000)</button>
+            <label for="bulkBuyDaniel">Qty:</label>
+            <input id="bulkBuyDaniel" type="number" min="1" value="1" inputmode="numeric">
+            <button id="bulkBuyDanielBtn">Buy</button>
+        </div>
 
-    <button id="closeMenu">Close</button>
-</div>
-
-<button id="openMenuButton">Open Menu</button>
-
-<br><br>
-<button id="main">Return To Homepage</button>
+    </div>
 
 
 
+    <div id="upgradeBox">
+        <h3>Upgrades Owned</h3>
+        <p>Auto-Clickers: <span id="autoClickers">0</span></p>
+        <p>Double Clicks: <span id="doubleClicks">0</span></p>
+        <p>Employee Daniels: <span id="employeeDaniel">0</span></p>
+    </div>
 
-<script src="Javascript/Javascript-linking/clicker-game_link.js"></script>
-<script src="Javascript/clicker-game.js"></script>
+    <div id="secretMenu">
+        <h3>Overclocking Terminal</h3>
+        <button id="gambleButton">Gamble</button>
+        <button id="criticalbutton">Critical Clicks (cost: 25k)</button>
+
+        <button id="closeMenu">Close</button>
+    </div>
+
+    <button id="openMenuButton">Open Menu</button>
+
+    <br><br>
+    <button id="main">Return To Homepage</button>
+
+
+
+
+    <script src="Javascript/Javascript-linking/clicker-game_link.js"></script>
+    <script src="Javascript/clicker-game.js"></script>
 
 </body>
