@@ -7,9 +7,11 @@ function loadGame() {
         clickPower = data.clickPower || 1;
         doubleClickers = data.doubleClickers || 0;
         employeeDaniel = data.employeeDaniel || 0;
+        employeeThor = data.employeeThor || 0;
         autoClickerCost = data.autoClickerCost || 50;
         doubleClickerCost = data.doubleClickerCost || 200;
         employeeDanielCost = data.employeeDanielCost || 1000;
+        employeeThorCost = data.employeeThorCost || 5000;
         criticalButtonCost = data.criticalButtonCost || 25000;
         menuUnlocked = data.menuUnlocked || false;
 
@@ -24,9 +26,11 @@ function saveGame() {
         clickPower: clickPower,
         doubleClickers: doubleClickers,
         employeeDaniel: employeeDaniel,
+        employeeThor: employeeThor,
         autoClickerCost: autoClickerCost,
         doubleClickerCost: doubleClickerCost,
         employeeDanielCost: employeeDanielCost,
+        employeeThorCost: employeeThorCost,
         criticalButtonCost: criticalButtonCost,
         menuUnlocked: menuUnlocked
     };
@@ -38,9 +42,11 @@ function updateAllDisplays() {
     autoClickerDisplay.textContent = autoclickers;
     doubleClickerDisplay.textContent = doubleClickers;
     employeeDanielDisplay.textContent = employeeDaniel;
+    employeeThorDisplay.textContent = employeeThor;
     upgrade1Button.textContent = 'Auto-Clicker (Cost: ' + autoClickerCost + ')';
     upgrade2Button.textContent = 'Double-Clicker (Cost: ' + doubleClickerCost + ')';
     upgrade3Button.textContent = "Employee Daniel (Cost: " + employeeDanielCost + ")";
+    upgrade4Button.textContent = "Employee Thor (Cost: " + employeeThorCost + ")";
     document.getElementById('criticalbutton').textContent = "Critical Clicks (cost: " + criticalButtonCost + ")";
 
     if (cpsDisplay) {
@@ -59,10 +65,12 @@ let autoclickers = 0;
 let clickPower = 1;
 let doubleClickers = 0;
 let employeeDaniel = 0;
+let employeeThor = 0;
 
 let autoClickerCost = 50;
 let doubleClickerCost = 200;
 let employeeDanielCost = 1000;
+let employeeThorCost = 5000;
 let criticalButtonCost = 25000;
 
 let menuUnlocked = false;
@@ -72,17 +80,44 @@ let clickButton = document.getElementById('clickButton');
 let upgrade1Button = document.getElementById('upgrade1');
 let upgrade2Button = document.getElementById('upgrade2');
 let upgrade3Button = document.getElementById('upgrade3');
+let upgrade4Button = document.getElementById('upgrade4');
 let autoClickerDisplay = document.getElementById('autoClickers');
 let doubleClickerDisplay = document.getElementById('doubleClicks');
 let employeeDanielDisplay = document.getElementById('employeeDaniel');
+let employeeThorDisplay = document.getElementById('employeeThor');
 let bulkBuyAuto = document.getElementById('bulkBuyAuto');
 let bulkBuyAutoBtn = document.getElementById('bulkBuyAutoBtn');
 let bulkBuyDouble = document.getElementById('bulkBuyDouble');
 let bulkBuyDoubleBtn = document.getElementById('bulkBuyDoubleBtn');
 let bulkBuyDaniel = document.getElementById('bulkBuyDaniel');
 let bulkBuyDanielBtn = document.getElementById('bulkBuyDanielBtn');
+let bulkBuyThor = document.getElementById('bulkBuyThor');
+let bulkBuyThorBtn = document.getElementById('bulkBuyThorBtn');
+let resetButton = document.getElementById('resetButton');
 
 loadGame();
+
+resetButton.onclick = function () {
+    score = 0;
+    autoclickers = 0;
+    clickPower = 1;
+    doubleClickers = 0;
+    employeeDaniel = 0;
+    employeeThor = 0;
+
+    autoClickerCost = 50;
+    doubleClickerCost = 200;
+    employeeDanielCost = 1000;
+    employeeThorCost = 5000;
+    criticalButtonCost = 25000;
+
+    menuUnlocked = false;
+    document.getElementById('secretMenu').classList.remove('show');
+    document.getElementById('openMenuButton').classList.remove('show');
+
+    updateAllDisplays();
+    saveGame();
+}
 
 clickButton.onclick = function () {
     score = score + clickPower;
@@ -217,11 +252,56 @@ setInterval(function () {
     checkSecretMenu();
 }, 1000);
 
+upgrade4Button.onclick = function () {
+    if (score >= employeeThorCost) {
+        score = score - employeeThorCost;
+        employeeThor = employeeThor + 1;
+        employeeThorCost = Math.floor(employeeThorCost * 1.7);
+        scoreDisplay.textContent = Math.round(score);
+        employeeThorDisplay.textContent = employeeThor;
+        upgrade4Button.textContent = "Employee Thor (Cost: " + employeeThorCost + ")";
+        if (cpsDisplay) cpsDisplay.textContent = calculateCPS();
+        saveGame();
+    }
+};
+
+bulkBuyThorBtn.onclick = function () {
+    let count = parseInt(bulkBuyThor.value, 10) || 1;
+    count = Math.max(1, count);
+
+    let totalCost = 0;
+    let currentCost = employeeThorCost;
+    for (let i = 0; i < count; i++) {
+        totalCost += currentCost;
+        currentCost = Math.floor(currentCost * 1.7);
+    }
+
+    if (score >= totalCost) {
+        score -= totalCost;
+        employeeThor += count;
+        employeeThorCost = currentCost;
+        updateAllDisplays();
+        saveGame();
+    } else {
+        alert('Not enough points! Need ' + totalCost + ' for ' + count + ' Employee Thor(s).');
+    }
+};
+
+setInterval(function () {
+    score = score + (employeeThor * 50);
+    scoreDisplay.textContent = Math.round(score);
+    checkSecretMenu();
+    saveGame();
+}, 1000);
+
+
+
 function calculateCPS() {
     const autoClickerMultiplier = Math.pow(1.3, doubleClickers);
     const autoCPS = autoclickers * autoClickerMultiplier;
     const danielCPS = employeeDaniel * 20;
-    return Math.floor(autoCPS + danielCPS);
+    const thorCPS = employeeThor * 50;
+    return Math.floor(autoCPS + danielCPS + thorCPS);
 }
 
 function checkSecretMenu() {

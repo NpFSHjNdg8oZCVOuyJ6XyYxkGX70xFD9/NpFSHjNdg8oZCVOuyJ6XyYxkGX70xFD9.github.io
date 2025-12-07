@@ -48,6 +48,12 @@
             <button id="bulkBuyDanielBtn">Buy</button>
         </div>
 
+        <div class="upgrade-item">
+            <button id="upgrade4">Employee Thor (Cost: 5000)</button>
+            <label for="bulkBuyThor">Qty:</label>
+            <input id="bulkBuyThor" type="number" min="1" value="1" inputmode="numeric">
+            <button id="bulkBuyThorBtn">Buy</button>
+        </div>
     </div>
 
 
@@ -57,6 +63,7 @@
         <p>Auto-Clickers: <span id="autoClickers">0</span></p>
         <p>Double Clicks: <span id="doubleClicks">0</span></p>
         <p>Employee Daniels: <span id="employeeDaniel">0</span></p>
+        <p>Employee Thors: <span id="employeeThor">0</span></p>
     </div>
 
     <div id="secretMenu">
@@ -69,13 +76,9 @@
 
     <button id="openMenuButton">Open Menu</button>
 
-    <label class="switch">
-        <input type="checkbox" id="ResetSwitch">
-         Enable Soft Reset 
-         <br> - resets all progress on reload
-        <span class="slider round"></span>
+    <button id="resetButton">Reset Game</button>
 
-    </label>
+
 
     <br><br>
     <button id="main">Return To Homepage</button>

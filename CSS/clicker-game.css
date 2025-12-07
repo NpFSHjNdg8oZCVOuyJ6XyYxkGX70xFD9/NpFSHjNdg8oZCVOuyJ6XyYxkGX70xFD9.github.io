@@ -175,9 +175,71 @@ p {
     text-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
 }
 
+.upgrade-item input[type="number"] {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+    color: #ff6666;
+    border: 2px solid #ff0000;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    width: 60px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.upgrade-item input[type="number"]:focus {
+    outline: none;
+    border-color: #ff3333;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+}
+
+.upgrade-item input[type="number"]::-webkit-inner-spin-button,
+.upgrade-item input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+    height: 30px;
+}
+
+#bulkBuyAutoBtn,
+#bulkBuyDoubleBtn,
+#bulkBuyDanielBtn,
+#bulkBuyThorBtn {
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border: 2px solid #ff0000;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+#bulkBuyAutoBtn:hover,
+#bulkBuyDoubleBtn:hover,
+#bulkBuyDanielBtn:hover,
+#bulkBuyThorBtn:hover {
+    background: linear-gradient(135deg, #ff1a1a 0%, #e60000 100%);
+    border-color: #ff3333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5);
+}
+
+#bulkBuyAutoBtn:active,
+#bulkBuyDoubleBtn:active,
+#bulkBuyDanielBtn:active,
+#bulkBuyThorBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(255, 0, 0, 0.4);
+}
+
 #upgrade1,
 #upgrade2,
-#upgrade3 {
+#upgrade3,
+#upgrade4 {
     background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
     color: white;
     font-size: 15px;
@@ -194,7 +256,8 @@ p {
 
 #upgrade1:hover,
 #upgrade2:hover,
-#upgrade3:hover {
+#upgrade3:hover,
+#upgrade4:hover {
     background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
     border-color: #ff3333;
     transform: translateY(-2px);
@@ -203,7 +266,8 @@ p {
 
 #upgrade1:active,
 #upgrade2:active,
-#upgrade3:active {
+#upgrade3:active,
+#upgrade4:active {
     transform: translateY(0);
     background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
     box-shadow: 0 2px 10px rgba(255, 0, 0, 0.4);
@@ -211,7 +275,8 @@ p {
 
 #autoClickers,
 #doubleClicks,
-#employeeDaniel {
+#employeeDaniel,
+#employeeThor {
     color: #ff0000;
     font-weight: bold;
 }
@@ -412,4 +477,44 @@ p {
     cursor: pointer;
     margin: 0;
     text-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
+}
+
+#resetButton {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: linear-gradient(135deg, rgba(26, 0, 0, 0.95) 0%, rgba(13, 0, 0, 0.95) 100%);
+    color: #ff6666;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border: 2px solid rgba(255, 0, 0, 0.6);
+    border-radius: 12px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 102, 102, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+#resetButton:hover {
+    background: linear-gradient(135deg, rgba(26, 0, 0, 1) 0%, rgba(13, 0, 0, 1) 100%);
+    border-color: #ff0000;
+    color: #ff3333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 102, 102, 0.2);
+}
+
+#resetButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(255, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 102, 102, 0.1);
+}
+
+#resetButton+label {
+    display: none;
 }
