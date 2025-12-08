@@ -17,3 +17,7 @@ document.getElementById("clicker-game").onclick = function () {
 document.getElementById("timer-game").onclick = function () {
     window.location.href = "./timer-game.html";
 }
+
+document.getElementById("israel-gpt").onclick = function () {
+    window.location.href = "./gpt.html";
+}
