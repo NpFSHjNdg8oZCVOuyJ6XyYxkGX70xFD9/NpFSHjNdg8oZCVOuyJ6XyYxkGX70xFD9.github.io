@@ -60,8 +60,52 @@ function addMessage(text, isUser) {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
 
+function answerQuestion(userMessage) {
+    const lowerMessage = userMessage.toLowerCase();
+
+    if (lowerMessage.includes('what is') || lowerMessage.includes('what\'s')) {
+        if (lowerMessage.includes('capital')) {
+            return "The capital of Israel is Jerusalem, though Tel Aviv is the economic and cultural center.";
+        }
+        if (lowerMessage.includes('population')) {
+            return "Israel has a population of over 9 million people.";
+        }
+        if (lowerMessage.includes('size') || lowerMessage.includes('big') || lowerMessage.includes('area')) {
+            return "Israel is approximately 22,000 square kilometers (8,500 square miles), roughly the size of New Jersey.";
+        }
+    }
+
+    if (lowerMessage.includes('when')) {
+        if (lowerMessage.includes('founded') || lowerMessage.includes('established') || lowerMessage.includes('independence')) {
+            return "Israel declared independence on May 14, 1948.";
+        }
+    }
+
+    if (lowerMessage.includes('where')) {
+        if (lowerMessage.includes('located')) {
+            return "Israel is located in the Middle East, on the eastern shore of the Mediterranean Sea, bordered by Lebanon, Syria, Jordan, and Egypt.";
+        }
+    }
+
+    if (lowerMessage.includes('how many')) {
+        if (lowerMessage.includes('people') || lowerMessage.includes('population')) {
+            return "Israel has over 9 million people.";
+        }
+        if (lowerMessage.includes('cities')) {
+            return "Israel has dozens of cities, with major ones including Jerusalem, Tel Aviv, Haifa, and Beersheba.";
+        }
+    }
+
+    return null;
+}
+
 function getRelevantResponse(userMessage) {
     const lowerMessage = userMessage.toLowerCase();
+
+    const specificAnswer = answerQuestion(userMessage);
+    if (specificAnswer) {
+        return specificAnswer;
+    }
 
     if (lowerMessage.includes('israel')) {
         return botResponses.israel[Math.floor(Math.random() * botResponses.israel.length)];
