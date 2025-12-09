@@ -16,6 +16,15 @@ body {
     padding: 2rem
 }
 
+p {
+    max-width: 700px;
+    margin: 1rem auto;
+    padding: 0 1rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
 nav {
     display: flex;
     gap: 1rem;

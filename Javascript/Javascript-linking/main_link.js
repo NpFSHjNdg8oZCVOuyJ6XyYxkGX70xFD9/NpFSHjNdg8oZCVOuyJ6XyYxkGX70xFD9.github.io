@@ -21,3 +21,7 @@ document.getElementById("timer-game").onclick = function () {
 document.getElementById("israel-gpt").onclick = function () {
     window.location.href = "./gpt.html";
 }
+
+document.getElementById("about-me").onclick = function () {
+    window.location.href = "./about_me.html";
+}

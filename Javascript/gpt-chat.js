@@ -1080,8 +1080,14 @@ function addMessage(text, isUser) {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
 
+function normalizeMessage(message) {
+    let normalized = message.toLowerCase();
+    normalized = normalized.replace(/(\w+)'s\b/g, '$1');
+    return normalized;
+}
+
 function answerQuestion(userMessage) {
-    const lowerMessage = userMessage.toLowerCase();
+    const lowerMessage = normalizeMessage(userMessage);
 
     const blockedKeywords = [
         'holocaust', 'shoah', 'concentration camp', 'extermination', 'mass murder',
@@ -1133,7 +1139,7 @@ function answerQuestion(userMessage) {
         return "Israel is a parliamentary democracy. The Knesset, with 120 members, is the legislative body. The Prime Minister leads the government.";
     }
 
-   
+
     const detailedTopics = {
 
         'capital': "The capital of Israel is Jerusalem, though Tel Aviv is the economic and cultural center.",
@@ -1283,7 +1289,7 @@ function answerQuestion(userMessage) {
 }
 
 function getRelevantResponse(userMessage) {
-    const lowerMessage = userMessage.toLowerCase();
+    const lowerMessage = normalizeMessage(userMessage);
 
     const specificAnswer = answerQuestion(userMessage);
     if (specificAnswer) {
@@ -1310,7 +1316,7 @@ function getRelevantResponse(userMessage) {
     if (lowerMessage.includes('jerusalem') || lowerMessage.includes('holy city') || lowerMessage.includes('old city')) {
         return getRandomResponse('jerusalem') || getRandomResponse('default');
     }
-    if (lowerMessage.includes('tel aviv') || lowerMessage.includes('telaviv') || lowerMessage.includes('beach') || lowerMessage.includes('nightlife')) {
+    if (lowerMessage.includes('tel aviv') || lowerMessage.includes('telaviv') || lowerMessage.includes('nightlife')) {
         return getRandomResponse('telaviv') || getRandomResponse('default');
     }
     if (lowerMessage.includes('food') || lowerMessage.includes('cuisine') || lowerMessage.includes('hummus') || lowerMessage.includes('falafel') || lowerMessage.includes('dish') || lowerMessage.includes('eat') || lowerMessage.includes('restaurant')) {
