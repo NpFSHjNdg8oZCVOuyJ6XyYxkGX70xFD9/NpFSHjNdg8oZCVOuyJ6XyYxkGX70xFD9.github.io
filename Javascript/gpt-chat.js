@@ -646,8 +646,7 @@ const botResponses = {
         "The Technion in Haifa is called 'Israel's MIT' and is a leader in tech education.",
         "Tel Aviv University and Ben-Gurion University are also top research institutions.",
         "Israel invests heavily in STEM education and innovation.",
-        "Military service often includes specialized technical training.",
-        "Israeli students consistently rank high in international math and science competitions.",
+        "Military service often includes specialized technical training.",                                                                                                                                                                                                                                                                   
         "The Weizmann Institute is one of the world's leading research centers.",
         "Education is compulsory and free for children ages 3-18.",
         "Israel has specialized schools for arts, music, technology, and sciences."
