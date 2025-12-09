@@ -1160,347 +1160,153 @@ function getRelevantResponse(userMessage) {
         return specificAnswer;
     }
 
+    const getRandomResponse = (category) => {
+        if (botResponses[category] && botResponses[category].length > 0) {
+            return botResponses[category][Math.floor(Math.random() * botResponses[category].length)];
+        }
+        return null;
+    };
+
     if (lowerMessage.includes('israel') || lowerMessage.includes('country') || lowerMessage.includes('nation')) {
-        return botResponses.israel[Math.floor(Math.random() * botResponses.israel.length)];
+        return getRandomResponse('israel') || getRandomResponse('default');
     }
     if (lowerMessage.includes('tech') || lowerMessage.includes('startup') || lowerMessage.includes('technology') || lowerMessage.includes('innovation') || lowerMessage.includes('company') || lowerMessage.includes('companies') || lowerMessage.includes('business')) {
-        return botResponses.tech[Math.floor(Math.random() * botResponses.tech.length)];
+        return getRandomResponse('tech') || getRandomResponse('default');
     }
     if (lowerMessage.includes('jerusalem') || lowerMessage.includes('holy city') || lowerMessage.includes('old city')) {
-        return botResponses.jerusalem[Math.floor(Math.random() * botResponses.jerusalem.length)];
+        return getRandomResponse('jerusalem') || getRandomResponse('default');
     }
     if (lowerMessage.includes('tel aviv') || lowerMessage.includes('telaviv') || lowerMessage.includes('beach') || lowerMessage.includes('nightlife')) {
-        return botResponses.telaviv[Math.floor(Math.random() * botResponses.telaviv.length)];
+        return getRandomResponse('telaviv') || getRandomResponse('default');
     }
     if (lowerMessage.includes('food') || lowerMessage.includes('cuisine') || lowerMessage.includes('hummus') || lowerMessage.includes('falafel') || lowerMessage.includes('dish') || lowerMessage.includes('eat') || lowerMessage.includes('restaurant')) {
-        return botResponses.food[Math.floor(Math.random() * botResponses.food.length)];
+        return getRandomResponse('food') || getRandomResponse('default');
     }
-    if (lowerMessage.includes('history') || lowerMessage.includes('historical') || lowerMessage.includes('ancient') || lowerMessage.includes('past') || lowerMessage.includes('old') || lowerMessage.includes('heritage')) {
-        return botResponses.history[Math.floor(Math.random() * botResponses.history.length)];
-    }
-    if (lowerMessage.includes('politic') || lowerMessage.includes('government') || lowerMessage.includes('knesset') || lowerMessage.includes('democracy') || lowerMessage.includes('prime minister') || lowerMessage.includes('president') || lowerMessage.includes('parliament') || lowerMessage.includes('election') || lowerMessage.includes('vote') || lowerMessage.includes('law') || lowerMessage.includes('legislative')) {
-        return botResponses.politics[Math.floor(Math.random() * botResponses.politics.length)];
-    }
-    if (lowerMessage.includes('music') || lowerMessage.includes('song') || lowerMessage.includes('artist') || lowerMessage.includes('singer') || lowerMessage.includes('band') || lowerMessage.includes('concert') || lowerMessage.includes('eurovision') || lowerMessage.includes('festival')) {
-        return botResponses.music[Math.floor(Math.random() * botResponses.music.length)];
-    }
-    if (lowerMessage.includes('culture') || lowerMessage.includes('tradition') || lowerMessage.includes('holiday') || lowerMessage.includes('celebration') || lowerMessage.includes('art') || lowerMessage.includes('cinema') || lowerMessage.includes('film') || lowerMessage.includes('movie') || lowerMessage.includes('literature') || lowerMessage.includes('fashion')) {
-        return botResponses.culture[Math.floor(Math.random() * botResponses.culture.length)];
-    }
-    if (lowerMessage.includes('sport') || lowerMessage.includes('basketball') || lowerMessage.includes('football') || lowerMessage.includes('soccer') || lowerMessage.includes('athlete') || lowerMessage.includes('olympic') || lowerMessage.includes('game')) {
-        return botResponses.sports[Math.floor(Math.random() * botResponses.sports.length)];
-    }
-    if (lowerMessage.includes('language') || lowerMessage.includes('hebrew') || lowerMessage.includes('arabic') || lowerMessage.includes('speak') || lowerMessage.includes('words')) {
-        return botResponses.language[Math.floor(Math.random() * botResponses.language.length)];
-    }
-    if (lowerMessage.includes('education') || lowerMessage.includes('university') || lowerMessage.includes('school') || lowerMessage.includes('student') || lowerMessage.includes('learning') || lowerMessage.includes('research')) {
-        return botResponses.education[Math.floor(Math.random() * botResponses.education.length)];
-    }
-    if (lowerMessage.includes('nature') || lowerMessage.includes('desert') || lowerMessage.includes('wildlife') || lowerMessage.includes('animal') || lowerMessage.includes('park') || lowerMessage.includes('reserve') || lowerMessage.includes('dead sea') || lowerMessage.includes('environment')) {
-        return botResponses.nature[Math.floor(Math.random() * botResponses.nature.length)];
-    }
-    if (lowerMessage.includes('religion') || lowerMessage.includes('religious') || lowerMessage.includes('faith') || lowerMessage.includes('church') || lowerMessage.includes('mosque') || lowerMessage.includes('synagogue') || lowerMessage.includes('temple') || lowerMessage.includes('holy') || lowerMessage.includes('sacred') || lowerMessage.includes('prayer') || lowerMessage.includes('worship')) {
-        return botResponses.religion[Math.floor(Math.random() * botResponses.religion.length)];
-    }
-    if (lowerMessage.includes('military') || lowerMessage.includes('army') || lowerMessage.includes('idf') || lowerMessage.includes('defense') || lowerMessage.includes('soldier') || lowerMessage.includes('service') || lowerMessage.includes('iron dome')) {
-        return botResponses.military[Math.floor(Math.random() * botResponses.military.length)];
-    }
-    if (lowerMessage.includes('science') || lowerMessage.includes('scientific') || lowerMessage.includes('research') || lowerMessage.includes('nobel') || lowerMessage.includes('scientist') || lowerMessage.includes('discovery') || lowerMessage.includes('laboratory')) {
-        return botResponses.science[Math.floor(Math.random() * botResponses.science.length)];
-    }
-    if (lowerMessage.includes('tourism') || lowerMessage.includes('tourist') || lowerMessage.includes('visit') || lowerMessage.includes('travel') || lowerMessage.includes('trip') || lowerMessage.includes('vacation') || lowerMessage.includes('site') || lowerMessage.includes('attraction')) {
-        return botResponses.tourism[Math.floor(Math.random() * botResponses.tourism.length)];
-    }
-    if (lowerMessage.includes('economy') || lowerMessage.includes('economic') || lowerMessage.includes('gdp') || lowerMessage.includes('export') || lowerMessage.includes('trade') || lowerMessage.includes('market') || lowerMessage.includes('finance') || lowerMessage.includes('currency') || lowerMessage.includes('shekel')) {
-        return botResponses.economy[Math.floor(Math.random() * botResponses.economy.length)];
-    }
-    if (lowerMessage.includes('agriculture') || lowerMessage.includes('farming') || lowerMessage.includes('farm') || lowerMessage.includes('crop') || lowerMessage.includes('irrigation') || lowerMessage.includes('kibbutz')) {
-        return botResponses.agriculture[Math.floor(Math.random() * botResponses.agriculture.length)];
-    }
-    if (lowerMessage.includes('festival') || lowerMessage.includes('holiday') || lowerMessage.includes('purim') || lowerMessage.includes('hanukkah') || lowerMessage.includes('passover') || lowerMessage.includes('yom kippur') || lowerMessage.includes('sukkot') || lowerMessage.includes('independence day')) {
-        return botResponses.festivals[Math.floor(Math.random() * botResponses.festivals.length)];
-    }
-    if (lowerMessage.includes('beach') || lowerMessage.includes('coast') || lowerMessage.includes('surf') || lowerMessage.includes('swim') || lowerMessage.includes('mediterranean') || lowerMessage.includes('sea') || lowerMessage.includes('diving') || lowerMessage.includes('snorkel')) {
-        return botResponses.beaches[Math.floor(Math.random() * botResponses.beaches.length)];
-    }
-    if (lowerMessage.includes('tilted towers') || lowerMessage.includes('tilted tower') || lowerMessage.includes('fortnite')) {
-        return botResponses.tiltedtowers[Math.floor(Math.random() * botResponses.tiltedtowers.length)];
-    }
-    if (lowerMessage.includes('airplane') || lowerMessage.includes('plane') || lowerMessage.includes('flight') || lowerMessage.includes('airline') || lowerMessage.includes('airport') || lowerMessage.includes('aviation') || lowerMessage.includes('flying') || lowerMessage.includes('el al')) {
-        return botResponses.airplane[Math.floor(Math.random() * botResponses.airplane.length)];
-    }
-    if (lowerMessage.includes('mr.sf') || lowerMessage.includes('mr sf') || lowerMessage.includes('mrsf') || lowerMessage.includes('mr. sf')) {
-        return botResponses.mrsf[Math.floor(Math.random() * botResponses.mrsf.length)];
-    }
+
+    const categoryChecks = [
+        { keywords: ['history', 'historical', 'ancient', 'past', 'old', 'heritage'], category: 'history' },
+        { keywords: ['politic', 'government', 'knesset', 'democracy', 'prime minister', 'president', 'parliament', 'election', 'vote', 'law', 'legislative'], category: 'politics' },
+        { keywords: ['music', 'song', 'artist', 'singer', 'band', 'concert', 'eurovision', 'festival'], category: 'music' },
+        { keywords: ['culture', 'tradition', 'holiday', 'celebration', 'art', 'cinema', 'film', 'movie', 'literature', 'fashion'], category: 'culture' },
+        { keywords: ['sport', 'basketball', 'football', 'soccer', 'athlete', 'olympic', 'game'], category: 'sports' },
+        { keywords: ['language', 'hebrew', 'arabic', 'speak', 'words'], category: 'language' },
+        { keywords: ['education', 'university', 'school', 'student', 'learning', 'research'], category: 'education' },
+        { keywords: ['nature', 'desert', 'wildlife', 'animal', 'park', 'reserve', 'dead sea', 'environment'], category: 'nature' },
+        { keywords: ['religion', 'religious', 'faith', 'church', 'mosque', 'synagogue', 'temple', 'holy', 'sacred', 'prayer', 'worship'], category: 'religion' },
+        { keywords: ['military', 'army', 'idf', 'defense', 'soldier', 'service', 'iron dome'], category: 'military' },
+        { keywords: ['science', 'scientific', 'research', 'nobel', 'scientist', 'discovery', 'laboratory'], category: 'science' },
+        { keywords: ['tourism', 'tourist', 'visit', 'travel', 'trip', 'vacation', 'site', 'attraction'], category: 'tourism' },
+        { keywords: ['economy', 'economic', 'gdp', 'export', 'trade', 'market', 'finance', 'currency', 'shekel'], category: 'economy' },
+        { keywords: ['agriculture', 'farming', 'farm', 'crop', 'irrigation', 'kibbutz'], category: 'agriculture' },
+        { keywords: ['festival', 'holiday', 'purim', 'hanukkah', 'passover', 'yom kippur', 'sukkot', 'independence day'], category: 'festivals' },
+        { keywords: ['beach', 'coast', 'surf', 'swim', 'mediterranean', 'sea', 'diving', 'snorkel'], category: 'beaches' },
+        { keywords: ['tilted towers', 'tilted tower', 'fortnite'], category: 'tiltedtowers' },
+        { keywords: ['airplane', 'plane', 'flight', 'airline', 'airport', 'aviation', 'flying', 'el al'], category: 'airplane' },
+        { keywords: ['mr.sf', 'mr sf', 'mrsf', 'mr. sf'], category: 'mrsf' },
+        { keywords: ['water', 'desalination', 'recycl'], category: 'water' },
+        { keywords: ['innovation', 'invent', 'patent', 'chutzpah'], category: 'innovation' },
+        { keywords: ['space', 'satellite', 'astronaut', 'beresheet'], category: 'space' },
+        { keywords: ['cyber', 'hacking', 'security', '8200'], category: 'cybersecurity' },
+        { keywords: ['medicine', 'medical', 'hospital', 'doctor', 'health'], category: 'medicine' },
+        { keywords: ['diamond', 'jewelry', 'gem'], category: 'diamond' },
+        { keywords: ['wildlife', 'bird', 'oryx', 'ibex', 'gazelle'], category: 'wildlife' },
+        { keywords: ['coffee', 'cafe', 'espresso'], category: 'coffee' },
+        { keywords: ['desert', 'negev', 'crater', 'arid'], category: 'desert' },
+        { keywords: ['startup', 'entrepreneur', 'venture'], category: 'startup' },
+        { keywords: ['falafel'], category: 'falafel' },
+        { keywords: ['archaeolog', 'ancient', 'scroll', 'ruins'], category: 'archaeology' },
+        { keywords: ['hummus'], category: 'hummus' },
+        { keywords: ['solar', 'renewable', 'energy'], category: 'solar' },
+        { keywords: ['wine', 'vineyard', 'winery'], category: 'wine' },
+        { keywords: ['basketball', 'maccabi', 'nba'], category: 'basketball' },
+        { keywords: ['chess'], category: 'chess' },
+        { keywords: ['olympic', 'paralympic', 'maccabiah'], category: 'olympics' },
+        { keywords: ['transport', 'bus', 'light rail', 'scooter'], category: 'transportation' },
+        { keywords: ['fashion', 'runway', 'swimwear', 'bridal'], category: 'fashion' },
+        { keywords: ['hiking', 'trail', 'trek'], category: 'hiking' },
+        { keywords: ['art', 'gallery', 'museum', 'artist'], category: 'art' },
+        { keywords: ['science fiction', 'sci-fi', 'utopia', 'fantasy'], category: 'sciencefiction' },
+        { keywords: ['zoo', 'safari'], category: 'zoo' },
+        { keywords: ['shopping', 'market', 'mall', 'boutique'], category: 'shopping' },
+        { keywords: ['pet', 'dog', 'cat'], category: 'pets' },
+        { keywords: ['train', 'railway'], category: 'trains' },
+        { keywords: ['language', 'hebrew', 'arabic', 'yiddish', 'ladino'], category: 'languages' },
+        { keywords: ['music festival', 'concert', 'indnegev'], category: 'festivalsmusic' },
+        { keywords: ['soccer', 'football', 'premier league'], category: 'soccer' },
+        { keywords: ['animal', 'hyrax', 'boar', 'jackal', 'fox'], category: 'animals' },
+        { keywords: ['startups', 'incubator', 'accelerator'], category: 'startups' },
+        { keywords: ['aquaculture', 'fish farm', 'tilapia', 'aquaponics'], category: 'aquaculture' },
+        { keywords: ['architecture', 'bauhaus', 'azrieli', 'supreme court building'], category: 'architecture' },
+        { keywords: ['astronomy', 'observatory', 'stargazing', 'asteroid'], category: 'astronomy' },
+        { keywords: ['banking', 'bank', 'atm', 'shekel'], category: 'banking' },
+        { keywords: ['biodiversity', 'species', 'hotspot', 'carmel'], category: 'biodiversity' },
+        { keywords: ['biotechnology', 'biotech', 'cancer therapy'], category: 'biotechnology' },
+        { keywords: ['chocolate', 'elite', 'babka'], category: 'chocolate' },
+        { keywords: ['comics', 'graphic novel', 'dudu geva'], category: 'comics' },
+        { keywords: ['crafts', 'ceramic', 'weaving', 'embroidery'], category: 'crafts' },
+        { keywords: ['democracy', 'election', 'free press'], category: 'democracy' },
+        { keywords: ['desertlife', 'bedouin', 'ramon crater', 'desert festival'], category: 'desertlife' },
+        { keywords: ['diplomacy', 'foreign affairs', 'peace treaty'], category: 'diplomacy' },
+        { keywords: ['diving', 'scuba', 'snorkeling', 'night dive'], category: 'diving' },
+        { keywords: ['energy', 'renewable energy', 'wind farm'], category: 'energy' },
+        { keywords: ['environment', 'reforestation', 'wetland'], category: 'environment' },
+        { keywords: ['film', 'movie', 'cinematheque'], category: 'film' },
+        { keywords: ['finance', 'fintech', 'venture capital'], category: 'finance' },
+        { keywords: ['flowers', 'wildflower', 'tulip', 'orchid'], category: 'flowers' },
+        { keywords: ['geography', 'sea of galilee', 'arava valley'], category: 'geography' },
+        { keywords: ['government', 'cabinet', 'legal system'], category: 'government' },
+        { keywords: ['healthcare', 'kupot holim', 'medical tourism'], category: 'healthcare' },
+        { keywords: ['holidays', 'rosh hashanah', 'lag baomer'], category: 'holidays' },
+        { keywords: ['hospitality', 'shabbat dinner', 'bedouin hospitality'], category: 'hospitality' },
+        { keywords: ['immigration', 'aliyah', 'absorption center'], category: 'immigration' },
+        { keywords: ['industry', 'pharmaceutical', 'textile'], category: 'industry' },
+        { keywords: ['inventions', 'waze', 'pillcam', 'epilator'], category: 'inventions' },
+        { keywords: ['investment', 'angel investor', 'crowdfunding'], category: 'investment' },
+        { keywords: ['kibbutz', 'communal', 'privatized'], category: 'kibbutz' },
+        { keywords: ['law', 'supreme court', 'legal aid'], category: 'law' },
+        { keywords: ['literature', 'amos oz', 'hebrew book week'], category: 'literature' },
+        { keywords: ['marathon', 'half marathon', 'charity run'], category: 'marathon' },
+        { keywords: ['media', 'newspaper', 'broadcaster'], category: 'media' },
+        { keywords: ['migration', 'migrant worker'], category: 'migration' },
+        { keywords: ['mountain', 'hermon', 'carmel'], category: 'mountains' },
+        { keywords: ['museum', 'diaspora museum', 'yad vashem'], category: 'museums' },
+        { keywords: ['nightlife', 'club', 'dj'], category: 'nightlife' },
+        { keywords: ['olive', 'olive oil', 'olive branch'], category: 'olives' },
+        { keywords: ['parliament', 'knesset'], category: 'parliament' },
+        { keywords: ['park', 'timna', 'ein gedi'], category: 'parks' },
+        { keywords: ['poetry', 'poet', 'amichai'], category: 'poetry' },
+        { keywords: ['population', 'demographic', 'birth rate'], category: 'population' },
+        { keywords: ['port', 'ashdod', 'eilat port'], category: 'ports' },
+        { keywords: ['recycling', 'composting', 'recycled material'], category: 'recycling' },
+        { keywords: ['renewable', 'green energy'], category: 'renewable' },
+        { keywords: ['research', 'r&d', 'grant'], category: 'research' },
+        { keywords: ['river', 'jordan river', 'yarkon'], category: 'rivers' },
+        { keywords: ['sculpture', 'sculptor', 'stone carving'], category: 'sculpture' },
+        { keywords: ['shipping', 'container ship', 'logistics'], category: 'shipping' },
+        { keywords: ['sustainability', 'sustainable', 'community garden'], category: 'sustainability' },
+        { keywords: ['technology', 'tech sector', 'technology park'], category: 'technology' },
+        { keywords: ['telecommunications', 'fiber optic', 'wi-fi'], category: 'telecommunications' },
+        { keywords: ['theater', 'playwright', 'cameri'], category: 'theater' },
+        { keywords: ['trade', 'export', 'import'], category: 'trade' },
+        { keywords: ['universities', 'technion', 'ben-gurion university'], category: 'universities' },
+        { keywords: ['quadravigesimal'], category: 'quadravigesimal' }
+    ];
+
     if (lowerMessage.includes('chatgpt') || lowerMessage.includes('chat gpt') || lowerMessage.includes('claude') || lowerMessage.includes('gemini') || lowerMessage.includes('copilot') || lowerMessage.includes('alexa') || lowerMessage.includes('siri') || lowerMessage.includes('bard') || lowerMessage.includes(' ai ') || lowerMessage.includes('artificial intelligence')) {
         return 'AI_RANT';
     }
-    if (lowerMessage.includes('water') || lowerMessage.includes('desalination') || lowerMessage.includes('recycl')) {
-        return botResponses.water[Math.floor(Math.random() * botResponses.water.length)];
-    }
-    if (lowerMessage.includes('innovation') || lowerMessage.includes('invent') || lowerMessage.includes('patent') || lowerMessage.includes('chutzpah')) {
-        return botResponses.innovation[Math.floor(Math.random() * botResponses.innovation.length)];
-    }
-    if (lowerMessage.includes('space') || lowerMessage.includes('satellite') || lowerMessage.includes('astronaut') || lowerMessage.includes('beresheet')) {
-        return botResponses.space[Math.floor(Math.random() * botResponses.space.length)];
-    }
-    if (lowerMessage.includes('cyber') || lowerMessage.includes('hacking') || lowerMessage.includes('security') || lowerMessage.includes('8200')) {
-        return botResponses.cybersecurity[Math.floor(Math.random() * botResponses.cybersecurity.length)];
-    }
-    if (lowerMessage.includes('medicine') || lowerMessage.includes('medical') || lowerMessage.includes('hospital') || lowerMessage.includes('doctor') || lowerMessage.includes('health')) {
-        return botResponses.medicine[Math.floor(Math.random() * botResponses.medicine.length)];
-    }
-    if (lowerMessage.includes('diamond') || lowerMessage.includes('jewelry') || lowerMessage.includes('gem')) {
-        return botResponses.diamond[Math.floor(Math.random() * botResponses.diamond.length)];
-    }
-    if (lowerMessage.includes('wildlife') || lowerMessage.includes('bird') || lowerMessage.includes('oryx') || lowerMessage.includes('ibex') || lowerMessage.includes('gazelle')) {
-        return botResponses.wildlife[Math.floor(Math.random() * botResponses.wildlife.length)];
-    }
-    if (lowerMessage.includes('coffee') || lowerMessage.includes('cafe') || lowerMessage.includes('espresso')) {
-        return botResponses.coffee[Math.floor(Math.random() * botResponses.coffee.length)];
-    }
-    if (lowerMessage.includes('desert') || lowerMessage.includes('negev') || lowerMessage.includes('crater') || lowerMessage.includes('arid')) {
-        return botResponses.desert[Math.floor(Math.random() * botResponses.desert.length)];
-    }
-    if (lowerMessage.includes('startup') || lowerMessage.includes('entrepreneur') || lowerMessage.includes('venture')) {
-        return botResponses.startup[Math.floor(Math.random() * botResponses.startup.length)];
-    }
-    if (lowerMessage.includes('falafel')) {
-        return botResponses.falafel[Math.floor(Math.random() * botResponses.falafel.length)];
-    }
-    if (lowerMessage.includes('archaeolog') || lowerMessage.includes('ancient') || lowerMessage.includes('scroll') || lowerMessage.includes('ruins')) {
-        return botResponses.archaeology[Math.floor(Math.random() * botResponses.archaeology.length)];
-    }
-    if (lowerMessage.includes('hummus')) {
-        return botResponses.hummus[Math.floor(Math.random() * botResponses.hummus.length)];
-    }
-    if (lowerMessage.includes('solar') || lowerMessage.includes('renewable') || lowerMessage.includes('energy')) {
-        return botResponses.solar[Math.floor(Math.random() * botResponses.solar.length)];
-    }
-    if (lowerMessage.includes('wine') || lowerMessage.includes('vineyard') || lowerMessage.includes('winery')) {
-        return botResponses.wine[Math.floor(Math.random() * botResponses.wine.length)];
-    }
-    if (lowerMessage.includes('basketball') || lowerMessage.includes('maccabi') || lowerMessage.includes('nba')) {
-        return botResponses.basketball[Math.floor(Math.random() * botResponses.basketball.length)];
-    }
-    if (lowerMessage.includes('chess')) {
-        return botResponses.chess[Math.floor(Math.random() * botResponses.chess.length)];
-    }
-    if (lowerMessage.includes('olympic') || lowerMessage.includes('paralympic') || lowerMessage.includes('maccabiah')) {
-        return botResponses.olympics[Math.floor(Math.random() * botResponses.olympics.length)];
-    }
-    if (lowerMessage.includes('transport') || lowerMessage.includes('bus') || lowerMessage.includes('light rail') || lowerMessage.includes('scooter')) {
-        return botResponses.transportation[Math.floor(Math.random() * botResponses.transportation.length)];
-    }
-    if (lowerMessage.includes('fashion') || lowerMessage.includes('runway') || lowerMessage.includes('swimwear') || lowerMessage.includes('bridal')) {
-        return botResponses.fashion[Math.floor(Math.random() * botResponses.fashion.length)];
-    }
-    if (lowerMessage.includes('hiking') || lowerMessage.includes('trail') || lowerMessage.includes('trek')) {
-        return botResponses.hiking[Math.floor(Math.random() * botResponses.hiking.length)];
-    }
-    if (lowerMessage.includes('art') || lowerMessage.includes('gallery') || lowerMessage.includes('museum') || lowerMessage.includes('artist')) {
-        return botResponses.art[Math.floor(Math.random() * botResponses.art.length)];
-    }
-    if (lowerMessage.includes('science fiction') || lowerMessage.includes('sci-fi') || lowerMessage.includes('utopia') || lowerMessage.includes('fantasy')) {
-        return botResponses.sciencefiction[Math.floor(Math.random() * botResponses.sciencefiction.length)];
-    }
-    if (lowerMessage.includes('zoo') || lowerMessage.includes('safari')) {
-        return botResponses.zoo[Math.floor(Math.random() * botResponses.zoo.length)];
-    }
-    if (lowerMessage.includes('shopping') || lowerMessage.includes('market') || lowerMessage.includes('mall') || lowerMessage.includes('boutique')) {
-        return botResponses.shopping[Math.floor(Math.random() * botResponses.shopping.length)];
-    }
-    if (lowerMessage.includes('pet') || lowerMessage.includes('dog') || lowerMessage.includes('cat')) {
-        return botResponses.pets[Math.floor(Math.random() * botResponses.pets.length)];
-    }
-    if (lowerMessage.includes('train') || lowerMessage.includes('railway')) {
-        return botResponses.trains[Math.floor(Math.random() * botResponses.trains.length)];
-    }
-    if (lowerMessage.includes('language') || lowerMessage.includes('hebrew') || lowerMessage.includes('arabic') || lowerMessage.includes('yiddish') || lowerMessage.includes('ladino')) {
-        return botResponses.languages[Math.floor(Math.random() * botResponses.languages.length)];
-    }
-    if (lowerMessage.includes('music festival') || lowerMessage.includes('concert') || lowerMessage.includes('indnegev')) {
-        return botResponses.festivalsmusic[Math.floor(Math.random() * botResponses.festivalsmusic.length)];
-    }
-    if (lowerMessage.includes('soccer') || lowerMessage.includes('football') || lowerMessage.includes('premier league')) {
-        return botResponses.soccer[Math.floor(Math.random() * botResponses.soccer.length)];
-    }
-    if (lowerMessage.includes('animal') || lowerMessage.includes('hyrax') || lowerMessage.includes('boar') || lowerMessage.includes('jackal') || lowerMessage.includes('fox')) {
-        return botResponses.animals[Math.floor(Math.random() * botResponses.animals.length)];
-    }
-    if (lowerMessage.includes('startups') || lowerMessage.includes('incubator') || lowerMessage.includes('accelerator')) {
-        return botResponses.startups[Math.floor(Math.random() * botResponses.startups.length)];
-    }
-    if (lowerMessage.includes('archaeology2') || lowerMessage.includes('city of david') || lowerMessage.includes('caesarea') || lowerMessage.includes('beit shean') || lowerMessage.includes('megiddo')) {
-        return botResponses.archaeology2[Math.floor(Math.random() * botResponses.archaeology2.length)];
-    }
-    if (lowerMessage.includes('aquaculture') || lowerMessage.includes('fish farm') || lowerMessage.includes('tilapia') || lowerMessage.includes('aquaponics')) {
-        return botResponses.aquaculture[Math.floor(Math.random() * botResponses.aquaculture.length)];
-    }
-    if (lowerMessage.includes('architecture') || lowerMessage.includes('bauhaus') || lowerMessage.includes('azrieli') || lowerMessage.includes('supreme court building')) {
-        return botResponses.architecture[Math.floor(Math.random() * botResponses.architecture.length)];
-    }
-    if (lowerMessage.includes('astronomy') || lowerMessage.includes('observatory') || lowerMessage.includes('stargazing') || lowerMessage.includes('asteroid')) {
-        return botResponses.astronomy[Math.floor(Math.random() * botResponses.astronomy.length)];
-    }
-    if (lowerMessage.includes('banking') || lowerMessage.includes('bank') || lowerMessage.includes('atm') || lowerMessage.includes('shekel')) {
-        return botResponses.banking[Math.floor(Math.random() * botResponses.banking.length)];
-    }
-    if (lowerMessage.includes('biodiversity') || lowerMessage.includes('species') || lowerMessage.includes('hotspot') || lowerMessage.includes('carmel')) {
-        return botResponses.biodiversity[Math.floor(Math.random() * botResponses.biodiversity.length)];
-    }
-    if (lowerMessage.includes('biotechnology') || lowerMessage.includes('biotech') || lowerMessage.includes('cancer therapy')) {
-        return botResponses.biotechnology[Math.floor(Math.random() * botResponses.biotechnology.length)];
-    }
-    if (lowerMessage.includes('chocolate') || lowerMessage.includes('elite') || lowerMessage.includes('babka')) {
-        return botResponses.chocolate[Math.floor(Math.random() * botResponses.chocolate.length)];
-    }
-    if (lowerMessage.includes('comics') || lowerMessage.includes('graphic novel') || lowerMessage.includes('dudu geva')) {
-        return botResponses.comics[Math.floor(Math.random() * botResponses.comics.length)];
-    }
-    if (lowerMessage.includes('crafts') || lowerMessage.includes('ceramic') || lowerMessage.includes('weaving') || lowerMessage.includes('embroidery')) {
-        return botResponses.crafts[Math.floor(Math.random() * botResponses.crafts.length)];
-    }
-    if (lowerMessage.includes('democracy') || lowerMessage.includes('election') || lowerMessage.includes('free press')) {
-        return botResponses.democracy[Math.floor(Math.random() * botResponses.democracy.length)];
-    }
-    if (lowerMessage.includes('desertlife') || lowerMessage.includes('bedouin') || lowerMessage.includes('ramon crater') || lowerMessage.includes('desert festival')) {
-        return botResponses.desertlife[Math.floor(Math.random() * botResponses.desertlife.length)];
-    }
-    if (lowerMessage.includes('diplomacy') || lowerMessage.includes('foreign affairs') || lowerMessage.includes('peace treaty')) {
-        return botResponses.diplomacy[Math.floor(Math.random() * botResponses.diplomacy.length)];
-    }
-    if (lowerMessage.includes('diving') || lowerMessage.includes('scuba') || lowerMessage.includes('snorkeling') || lowerMessage.includes('night dive')) {
-        return botResponses.diving[Math.floor(Math.random() * botResponses.diving.length)];
-    }
-    if (lowerMessage.includes('energy') || lowerMessage.includes('renewable energy') || lowerMessage.includes('wind farm')) {
-        return botResponses.energy[Math.floor(Math.random() * botResponses.energy.length)];
-    }
-    if (lowerMessage.includes('environment') || lowerMessage.includes('reforestation') || lowerMessage.includes('wetland')) {
-        return botResponses.environment[Math.floor(Math.random() * botResponses.environment.length)];
-    }
-    if (lowerMessage.includes('film') || lowerMessage.includes('movie') || lowerMessage.includes('cinematheque')) {
-        return botResponses.film[Math.floor(Math.random() * botResponses.film.length)];
-    }
-    if (lowerMessage.includes('finance') || lowerMessage.includes('fintech') || lowerMessage.includes('venture capital')) {
-        return botResponses.finance[Math.floor(Math.random() * botResponses.finance.length)];
-    }
-    if (lowerMessage.includes('flowers') || lowerMessage.includes('wildflower') || lowerMessage.includes('tulip') || lowerMessage.includes('orchid')) {
-        return botResponses.flowers[Math.floor(Math.random() * botResponses.flowers.length)];
-    }
-    if (lowerMessage.includes('geography') || lowerMessage.includes('sea of galilee') || lowerMessage.includes('arava valley')) {
-        return botResponses.geography[Math.floor(Math.random() * botResponses.geography.length)];
-    }
-    if (lowerMessage.includes('government') || lowerMessage.includes('cabinet') || lowerMessage.includes('legal system')) {
-        return botResponses.government[Math.floor(Math.random() * botResponses.government.length)];
-    }
-    if (lowerMessage.includes('healthcare') || lowerMessage.includes('kupot holim') || lowerMessage.includes('medical tourism')) {
-        return botResponses.healthcare[Math.floor(Math.random() * botResponses.healthcare.length)];
-    }
-    if (lowerMessage.includes('holidays') || lowerMessage.includes('rosh hashanah') || lowerMessage.includes('lag baomer')) {
-        return botResponses.holidays[Math.floor(Math.random() * botResponses.holidays.length)];
-    }
-    if (lowerMessage.includes('hospitality') || lowerMessage.includes('shabbat dinner') || lowerMessage.includes('bedouin hospitality')) {
-        return botResponses.hospitality[Math.floor(Math.random() * botResponses.hospitality.length)];
-    }
-    if (lowerMessage.includes('immigration') || lowerMessage.includes('aliyah') || lowerMessage.includes('absorption center')) {
-        return botResponses.immigration[Math.floor(Math.random() * botResponses.immigration.length)];
-    }
-    if (lowerMessage.includes('industry') || lowerMessage.includes('pharmaceutical') || lowerMessage.includes('textile')) {
-        return botResponses.industry[Math.floor(Math.random() * botResponses.industry.length)];
-    }
-    if (lowerMessage.includes('inventions') || lowerMessage.includes('waze') || lowerMessage.includes('pillcam') || lowerMessage.includes('epilator')) {
-        return botResponses.inventions[Math.floor(Math.random() * botResponses.inventions.length)];
-    }
-    if (lowerMessage.includes('investment') || lowerMessage.includes('angel investor') || lowerMessage.includes('crowdfunding')) {
-        return botResponses.investment[Math.floor(Math.random() * botResponses.investment.length)];
-    }
-    if (lowerMessage.includes('kibbutz') || lowerMessage.includes('communal') || lowerMessage.includes('privatized')) {
-        return botResponses.kibbutz[Math.floor(Math.random() * botResponses.kibbutz.length)];
-    }
-    if (lowerMessage.includes('law') || lowerMessage.includes('supreme court') || lowerMessage.includes('legal aid')) {
-        return botResponses.law[Math.floor(Math.random() * botResponses.law.length)];
-    }
-    if (lowerMessage.includes('literature') || lowerMessage.includes('amos oz') || lowerMessage.includes('hebrew book week')) {
-        return botResponses.literature[Math.floor(Math.random() * botResponses.literature.length)];
-    }
-    if (lowerMessage.includes('marathon') || lowerMessage.includes('half marathon') || lowerMessage.includes('charity run')) {
-        return botResponses.marathon[Math.floor(Math.random() * botResponses.marathon.length)];
-    }
-    if (lowerMessage.includes('media') || lowerMessage.includes('newspaper') || lowerMessage.includes('broadcaster')) {
-        return botResponses.media[Math.floor(Math.random() * botResponses.media.length)];
-    }
-    if (lowerMessage.includes('migration') || lowerMessage.includes('migrant worker')) {
-        return botResponses.migration[Math.floor(Math.random() * botResponses.migration.length)];
-    }
-    if (lowerMessage.includes('mountain') || lowerMessage.includes('hermon') || lowerMessage.includes('carmel')) {
-        return botResponses.mountains[Math.floor(Math.random() * botResponses.mountains.length)];
-    }
-    if (lowerMessage.includes('museum') || lowerMessage.includes('diaspora museum') || lowerMessage.includes('yad vashem')) {
-        return botResponses.museums[Math.floor(Math.random() * botResponses.museums.length)];
-    }
-    if (lowerMessage.includes('nightlife') || lowerMessage.includes('club') || lowerMessage.includes('dj')) {
-        return botResponses.nightlife[Math.floor(Math.random() * botResponses.nightlife.length)];
-    }
-    if (lowerMessage.includes('olive') || lowerMessage.includes('olive oil') || lowerMessage.includes('olive branch')) {
-        return botResponses.olives[Math.floor(Math.random() * botResponses.olives.length)];
-    }
-    if (lowerMessage.includes('parliament') || lowerMessage.includes('knesset')) {
-        return botResponses.parliament[Math.floor(Math.random() * botResponses.parliament.length)];
-    }
-    if (lowerMessage.includes('park') || lowerMessage.includes('timna') || lowerMessage.includes('ein gedi')) {
-        return botResponses.parks[Math.floor(Math.random() * botResponses.parks.length)];
-    }
-    if (lowerMessage.includes('poetry') || lowerMessage.includes('poet') || lowerMessage.includes('amichai')) {
-        return botResponses.poetry[Math.floor(Math.random() * botResponses.poetry.length)];
-    }
-    if (lowerMessage.includes('population') || lowerMessage.includes('demographic') || lowerMessage.includes('birth rate')) {
-        return botResponses.population[Math.floor(Math.random() * botResponses.population.length)];
-    }
-    if (lowerMessage.includes('port') || lowerMessage.includes('ashdod') || lowerMessage.includes('eilat port')) {
-        return botResponses.ports[Math.floor(Math.random() * botResponses.ports.length)];
-    }
-    if (lowerMessage.includes('recycling') || lowerMessage.includes('composting') || lowerMessage.includes('recycled material')) {
-        return botResponses.recycling[Math.floor(Math.random() * botResponses.recycling.length)];
-    }
-    if (lowerMessage.includes('renewable') || lowerMessage.includes('green energy')) {
-        return botResponses.renewable[Math.floor(Math.random() * botResponses.renewable.length)];
-    }
-    if (lowerMessage.includes('research') || lowerMessage.includes('r&d') || lowerMessage.includes('grant')) {
-        return botResponses.research[Math.floor(Math.random() * botResponses.research.length)];
-    }
-    if (lowerMessage.includes('river') || lowerMessage.includes('jordan river') || lowerMessage.includes('yarkon')) {
-        return botResponses.rivers[Math.floor(Math.random() * botResponses.rivers.length)];
-    }
-    // Removed science2 reference
-    if (lowerMessage.includes('sculpture') || lowerMessage.includes('sculptor') || lowerMessage.includes('stone carving')) {
-        return botResponses.sculpture[Math.floor(Math.random() * botResponses.sculpture.length)];
-    }
-    if (lowerMessage.includes('shipping') || lowerMessage.includes('container ship') || lowerMessage.includes('logistics')) {
-        return botResponses.shipping[Math.floor(Math.random() * botResponses.shipping.length)];
-    }
-    if (lowerMessage.includes('sustainability') || lowerMessage.includes('sustainable') || lowerMessage.includes('community garden')) {
-        return botResponses.sustainability[Math.floor(Math.random() * botResponses.sustainability.length)];
-    }
-    if (lowerMessage.includes('technology') || lowerMessage.includes('tech sector') || lowerMessage.includes('technology park')) {
-        return botResponses.technology[Math.floor(Math.random() * botResponses.technology.length)];
-    }
-    if (lowerMessage.includes('telecommunications') || lowerMessage.includes('fiber optic') || lowerMessage.includes('wi-fi')) {
-        return botResponses.telecommunications[Math.floor(Math.random() * botResponses.telecommunications.length)];
-    }
-    if (lowerMessage.includes('theater') || lowerMessage.includes('playwright') || lowerMessage.includes('cameri')) {
-        return botResponses.theater[Math.floor(Math.random() * botResponses.theater.length)];
-    }
-    if (lowerMessage.includes('trade') || lowerMessage.includes('export') || lowerMessage.includes('import')) {
-        return botResponses.trade[Math.floor(Math.random() * botResponses.trade.length)];
-    }
-    if (lowerMessage.includes('universities') || lowerMessage.includes('technion') || lowerMessage.includes('ben-gurion university')) {
-        return botResponses.universities[Math.floor(Math.random() * botResponses.universities.length)];
-    }
-    if (lowerMessage.includes('quadravigesimal')) {
-        return botResponses.quadravigesimal[Math.floor(Math.random() * botResponses.quadravigesimal.length)];
-    }
-    return botResponses.default[Math.floor(Math.random() * botResponses.default.length)];
+
+    for (const check of categoryChecks) {
+        for (const keyword of check.keywords) {
+            if (lowerMessage.includes(keyword)) {
+                const response = getRandomResponse(check.category);
+                if (response) return response;
+                break;
+            }
+        }
+    }
+
+    return getRandomResponse('default') || "I'm the real Israel GPT, how can I assist you?";
 }
 
 function sendMessage() {
@@ -1517,7 +1323,7 @@ function sendMessage() {
             botResponses.ai.forEach((aiResponse, index) => {
                 setTimeout(() => {
                     addMessage(aiResponse, false);
-                }, 1000 + (index * 1500)); 
+                }, 1000 + (index * 1500));
             });
         } else {
             addMessage(response, false);
