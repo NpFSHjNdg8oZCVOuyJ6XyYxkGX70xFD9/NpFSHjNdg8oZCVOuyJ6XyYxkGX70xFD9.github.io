@@ -47,6 +47,82 @@ const botResponses = {
         "The President of Israel is elected by the Knesset and serves a largely ceremonial role for seven years.",
         "Israel has diplomatic relations with over 160 countries worldwide."
     ],
+    music: [
+        "Israeli music is incredibly diverse, blending Middle Eastern, European, and modern influences!",
+        "Israel has won the Eurovision Song Contest four times!",
+        "Israeli musicians like Idan Raichel and Omer Adam are internationally acclaimed.",
+        "Mizrahi music combines traditional Middle Eastern melodies with modern pop.",
+        "The Israel Philharmonic Orchestra is one of the world's leading orchestras!",
+        "Israeli hip-hop and electronic music scenes are thriving in Tel Aviv.",
+        "Traditional Israeli folk dancing (Hora) is popular at celebrations and festivals.",
+        "Many famous musicians like Ofra Haza helped bring Israeli music to the world stage.",
+        "Yemenite, Ethiopian, and Russian musical traditions enrich Israel's music scene.",
+        "The Red Sea Jazz Festival in Eilat is one of the region's premier music events!"
+    ],
+    culture: [
+        "Israeli culture is a vibrant mix of ancient traditions and modern innovation!",
+        "Israel celebrates both Jewish holidays and modern national commemorations.",
+        "Israeli literature has produced Nobel Prize winners like S.Y. Agnon.",
+        "The arts scene in Israel is incredibly diverse, from street art to classical performances.",
+        "Israeli cinema has gained international recognition with films like 'Waltz with Bashir'.",
+        "Coffee culture is huge in Israel - cafes are social hubs in every city!",
+        "Israeli fashion designers are making waves on international runways.",
+        "The country celebrates Independence Day with BBQs, concerts, and fireworks!",
+        "Israeli theater is vibrant, with performances in Hebrew, Arabic, Russian, and more.",
+        "Street markets like Carmel Market and Mahane Yehuda are cultural experiences!",
+        "Israeli beaches become dance parties during summer weekends!",
+        "The Tel Aviv Pride Parade is one of the largest in the Middle East."
+    ],
+    sports: [
+        "Basketball is hugely popular in Israel - Maccabi Tel Aviv is a legendary European team!",
+        "Football (soccer) is the most popular sport, with passionate fans across the country.",
+        "Israel has competed in the Olympics since 1952.",
+        "Israeli athletes have won medals in judo, sailing, windsurfing, and gymnastics.",
+        "The Maccabiah Games, held in Israel, is the world's third-largest sporting event!",
+        "Omri Casspi was the first Israeli to play in the NBA.",
+        "Beach sports like beach volleyball and surfing are popular along the coast.",
+        "Israeli tennis player Shahar Pe'er reached the top 20 in world rankings.",
+        "Cycling and marathons are growing in popularity, especially in Tel Aviv.",
+        "Israel's national football team has qualified for the FIFA World Cup."
+    ],
+    language: [
+        "Hebrew is the official language of Israel and was revived as a spoken language!",
+        "Arabic is also an official language spoken by many Israeli citizens.",
+        "Many Israelis speak multiple languages including English, Russian, and French.",
+        "Hebrew is written from right to left and uses a unique alphabet.",
+        "Modern Hebrew was largely revived by Eliezer Ben-Yehuda in the late 1800s.",
+        "Israeli slang is colorful and constantly evolving!",
+        "Over 100 languages are spoken in Israel due to its diverse immigrant population.",
+        "Yiddish and Ladino are historical Jewish languages still spoken by some communities.",
+        "English is widely taught in schools and used in business and tourism.",
+        "Israeli Sign Language is used by the deaf community in Israel."
+    ],
+    education: [
+        "Israel has one of the highest rates of university degrees per capita in the world!",
+        "The Hebrew University of Jerusalem was founded in 1925 and is world-renowned.",
+        "The Technion in Haifa is called 'Israel's MIT' and is a leader in tech education.",
+        "Tel Aviv University and Ben-Gurion University are also top research institutions.",
+        "Israel invests heavily in STEM education and innovation.",
+        "Military service often includes specialized technical training.",
+        "Israeli students consistently rank high in international math and science competitions.",
+        "The Weizmann Institute is one of the world's leading research centers.",
+        "Education is compulsory and free for children ages 3-18.",
+        "Israel has specialized schools for arts, music, technology, and sciences."
+    ],
+    nature: [
+        "Israel has over 500 nature reserves protecting diverse ecosystems!",
+        "The Dead Sea is the lowest point on Earth at 430 meters below sea level.",
+        "Ramon Crater (Makhtesh Ramon) is the world's largest erosion crater.",
+        "Israel is a major bird migration route with over 500 species passing through.",
+        "The Negev Desert covers more than half of Israel's land area.",
+        "The Hula Valley is one of the world's most important bird-watching sites.",
+        "Israel has Mediterranean forests, deserts, mountains, and coral reefs!",
+        "Ein Gedi oasis is home to waterfalls, wildlife, and ancient caves.",
+        "The Galilee region features green mountains and the Sea of Galilee.",
+        "Israel has successfully reforested millions of trees over the past century.",
+        "The Red Sea coral reefs near Eilat are among the world's most northern.",
+        "Israel's nature reserves protect endangered species like the Nubian ibex."
+    ],
     default: [
         "I'm the real Israel GPT, how can I assist you?",
         "Shalom! What would you like to know about Israel?",
@@ -153,6 +229,24 @@ function getRelevantResponse(userMessage) {
     }
     if (lowerMessage.includes('politic') || lowerMessage.includes('government') || lowerMessage.includes('knesset') || lowerMessage.includes('democracy') || lowerMessage.includes('prime minister') || lowerMessage.includes('president') || lowerMessage.includes('parliament') || lowerMessage.includes('election') || lowerMessage.includes('vote') || lowerMessage.includes('law') || lowerMessage.includes('legislative')) {
         return botResponses.politics[Math.floor(Math.random() * botResponses.politics.length)];
+    }
+    if (lowerMessage.includes('music') || lowerMessage.includes('song') || lowerMessage.includes('artist') || lowerMessage.includes('singer') || lowerMessage.includes('band') || lowerMessage.includes('concert') || lowerMessage.includes('eurovision') || lowerMessage.includes('festival')) {
+        return botResponses.music[Math.floor(Math.random() * botResponses.music.length)];
+    }
+    if (lowerMessage.includes('culture') || lowerMessage.includes('tradition') || lowerMessage.includes('holiday') || lowerMessage.includes('celebration') || lowerMessage.includes('art') || lowerMessage.includes('cinema') || lowerMessage.includes('film') || lowerMessage.includes('movie') || lowerMessage.includes('literature') || lowerMessage.includes('fashion')) {
+        return botResponses.culture[Math.floor(Math.random() * botResponses.culture.length)];
+    }
+    if (lowerMessage.includes('sport') || lowerMessage.includes('basketball') || lowerMessage.includes('football') || lowerMessage.includes('soccer') || lowerMessage.includes('athlete') || lowerMessage.includes('olympic') || lowerMessage.includes('game')) {
+        return botResponses.sports[Math.floor(Math.random() * botResponses.sports.length)];
+    }
+    if (lowerMessage.includes('language') || lowerMessage.includes('hebrew') || lowerMessage.includes('arabic') || lowerMessage.includes('speak') || lowerMessage.includes('words')) {
+        return botResponses.language[Math.floor(Math.random() * botResponses.language.length)];
+    }
+    if (lowerMessage.includes('education') || lowerMessage.includes('university') || lowerMessage.includes('school') || lowerMessage.includes('student') || lowerMessage.includes('learning') || lowerMessage.includes('research')) {
+        return botResponses.education[Math.floor(Math.random() * botResponses.education.length)];
+    }
+    if (lowerMessage.includes('nature') || lowerMessage.includes('desert') || lowerMessage.includes('wildlife') || lowerMessage.includes('animal') || lowerMessage.includes('park') || lowerMessage.includes('reserve') || lowerMessage.includes('dead sea') || lowerMessage.includes('environment')) {
+        return botResponses.nature[Math.floor(Math.random() * botResponses.nature.length)];
     }
     return botResponses.default[Math.floor(Math.random() * botResponses.default.length)];
 }
