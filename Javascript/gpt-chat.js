@@ -123,6 +123,104 @@ const botResponses = {
         "The Red Sea coral reefs near Eilat are among the world's most northern.",
         "Israel's nature reserves protect endangered species like the Nubian ibex."
     ],
+    religion: [
+        "Israel is home to Judaism, Christianity, and Islam - three of the world's major religions!",
+        "The Western Wall in Jerusalem is one of the holiest sites in Judaism.",
+        "The Church of the Holy Sepulchre marks the site of Jesus's crucifixion and resurrection.",
+        "The Dome of the Rock and Al-Aqsa Mosque are important Islamic sites in Jerusalem.",
+        "Bahá'í Gardens in Haifa are a UNESCO World Heritage site and major pilgrimage destination.",
+        "Israel has religious freedom protected by law for all faiths.",
+        "The Sea of Galilee is significant in Christian history as the site of Jesus's ministry.",
+        "Nazareth is the largest Arab city in Israel and an important Christian pilgrimage site.",
+        "The Cave of the Patriarchs in Hebron is sacred to both Jews and Muslims.",
+        "Religious diversity is a fundamental part of Israeli society and identity."
+    ],
+    military: [
+        "The Israel Defense Forces (IDF) is one of the most technologically advanced militaries in the world.",
+        "Most Israeli citizens serve in the military - men for 32 months and women for 24 months.",
+        "The IDF's technology units have created innovations used worldwide.",
+        "Israel has developed advanced defense systems like Iron Dome and David's Sling.",
+        "Military service often provides technical training that helps Israel's tech industry.",
+        "Israel has elite special forces units including Sayeret Matkal and Shayetet 13.",
+        "The IDF values innovation and encourages soldiers to think creatively.",
+        "Many Israeli startups are founded by veterans who met during military service."
+    ],
+    science: [
+        "Israel has won numerous Nobel Prizes in Chemistry, Economics, and Literature!",
+        "Israeli scientists are leaders in fields like agriculture, medicine, and physics.",
+        "The Weizmann Institute is one of the world's top research institutions.",
+        "Israel developed drip irrigation technology that revolutionized farming worldwide.",
+        "Israeli researchers are pioneering developments in stem cell research and genetics.",
+        "Israel has more scientific papers per capita than almost any other nation.",
+        "Israeli scientists have made breakthroughs in solar energy and renewable technologies.",
+        "The Dead Sea provides unique conditions for medical research and treatments.",
+        "Israel's space program has successfully sent satellites and lunar missions.",
+        "Israeli medical research has led to innovations in cancer treatment and diagnostics."
+    ],
+    tourism: [
+        "Israel welcomes over 4 million tourists annually from around the world!",
+        "Top tourist sites include the Western Wall, Masada, and the Dead Sea.",
+        "Israel offers diverse experiences from historical sites to modern cities and natural wonders.",
+        "The Israel National Trail is a 1,000 km hiking path through the entire country.",
+        "Eilat is a popular resort destination with coral reefs and year-round sunshine.",
+        "Jerusalem attracts pilgrims and tourists interested in religious history.",
+        "Tel Aviv's beaches and nightlife draw visitors looking for Mediterranean vibes.",
+        "Israel has 9 UNESCO World Heritage Sites including Masada and the Old City of Acre.",
+        "The Bahá'í Gardens in Haifa are one of Israel's most visited attractions.",
+        "Float in the Dead Sea - the world's saltiest body of water and a unique experience!"
+    ],
+    economy: [
+        "Israel has a highly developed free-market economy with a strong tech sector.",
+        "Israel's GDP per capita is among the highest in the Middle East.",
+        "The country is known as the 'Start-Up Nation' with thousands of tech companies.",
+        "Israel is a global leader in cybersecurity, with many international companies having R&D centers there.",
+        "The Tel Aviv Stock Exchange is a major financial hub in the region.",
+        "Israel exports diamonds, technology, pharmaceuticals, and agricultural products.",
+        "Major companies like Intel, Google, and Microsoft have significant operations in Israel.",
+        "Israel has free trade agreements with the US, EU, and many other countries.",
+        "The shekel (₪) is Israel's currency and has remained relatively stable.",
+        "Israel invests heavily in research and development - among the highest rates globally."
+    ],
+    agriculture: [
+        "Israel is a pioneer in agricultural technology despite limited water and arable land!",
+        "Israeli farmers developed drip irrigation, now used worldwide to conserve water.",
+        "Israel exports over $2 billion in agricultural products annually.",
+        "Israeli scientists have developed drought-resistant crops and innovative farming techniques.",
+        "The Negev Desert has been transformed through advanced irrigation methods.",
+        "Israel grows tomatoes, peppers, avocados, and citrus fruits for export.",
+        "Kibbutzim (collective communities) have played a major role in Israeli agriculture.",
+        "Israel is a leader in greenhouse technology and precision agriculture.",
+        "Israeli cows are among the most productive dairy cows in the world!",
+        "Fish farming and aquaculture are growing industries in Israel."
+    ],
+    festivals: [
+        "Israel celebrates both religious holidays and modern national holidays!",
+        "Independence Day (Yom Ha'atzmaut) features BBQs, concerts, and air force flyovers.",
+        "Purim is a festive holiday with costumes, parties, and carnival celebrations.",
+        "Hanukkah, the Festival of Lights, is celebrated with candle lighting and traditional foods.",
+        "Passover (Pesach) commemorates the Exodus from Egypt with special meals and traditions.",
+        "Yom Kippur is the holiest day, when the entire country comes to a standstill.",
+        "Sukkot involves building temporary shelters and celebrating the harvest.",
+        "Tel Aviv Pride is one of the largest LGBTQ+ celebrations in the Middle East.",
+        "The Jerusalem Light Festival illuminates the Old City with spectacular displays.",
+        "Israel Film Festival showcases the best of Israeli cinema each year.",
+        "The Red Sea Jazz Festival in Eilat attracts international musicians.",
+        "Holocaust Remembrance Day (Yom HaShoah) is observed with sirens and ceremonies nationwide."
+    ],
+    beaches: [
+        "Israel has over 270 km of stunning Mediterranean coastline!",
+        "Tel Aviv's beaches are famous for volleyball, surfing, and beach parties.",
+        "The Red Sea coast near Eilat offers world-class diving and snorkeling.",
+        "Israeli beaches are free and accessible to everyone.",
+        "Gordon Beach and Frishman Beach in Tel Aviv are among the most popular.",
+        "The Dead Sea beaches offer unique floating experiences due to extreme salinity.",
+        "Dor Beach near Haifa features ancient ruins alongside beautiful waters.",
+        "Many beaches have been awarded Blue Flag status for cleanliness and safety.",
+        "Beach culture is central to Israeli lifestyle, especially in summer.",
+        "Herzliya and Netanya offer beautiful beaches north of Tel Aviv.",
+        "Israeli beaches come alive at sunset with people gathering for the views.",
+        "Water sports like kitesurfing and paddleboarding are popular along the coast."
+    ],
     default: [
         "I'm the real Israel GPT, how can I assist you?",
         "Shalom! What would you like to know about Israel?",
@@ -263,6 +361,30 @@ function getRelevantResponse(userMessage) {
     }
     if (lowerMessage.includes('nature') || lowerMessage.includes('desert') || lowerMessage.includes('wildlife') || lowerMessage.includes('animal') || lowerMessage.includes('park') || lowerMessage.includes('reserve') || lowerMessage.includes('dead sea') || lowerMessage.includes('environment')) {
         return botResponses.nature[Math.floor(Math.random() * botResponses.nature.length)];
+    }
+    if (lowerMessage.includes('religion') || lowerMessage.includes('religious') || lowerMessage.includes('faith') || lowerMessage.includes('church') || lowerMessage.includes('mosque') || lowerMessage.includes('synagogue') || lowerMessage.includes('temple') || lowerMessage.includes('holy') || lowerMessage.includes('sacred') || lowerMessage.includes('prayer') || lowerMessage.includes('worship')) {
+        return botResponses.religion[Math.floor(Math.random() * botResponses.religion.length)];
+    }
+    if (lowerMessage.includes('military') || lowerMessage.includes('army') || lowerMessage.includes('idf') || lowerMessage.includes('defense') || lowerMessage.includes('soldier') || lowerMessage.includes('service') || lowerMessage.includes('iron dome')) {
+        return botResponses.military[Math.floor(Math.random() * botResponses.military.length)];
+    }
+    if (lowerMessage.includes('science') || lowerMessage.includes('scientific') || lowerMessage.includes('research') || lowerMessage.includes('nobel') || lowerMessage.includes('scientist') || lowerMessage.includes('discovery') || lowerMessage.includes('laboratory')) {
+        return botResponses.science[Math.floor(Math.random() * botResponses.science.length)];
+    }
+    if (lowerMessage.includes('tourism') || lowerMessage.includes('tourist') || lowerMessage.includes('visit') || lowerMessage.includes('travel') || lowerMessage.includes('trip') || lowerMessage.includes('vacation') || lowerMessage.includes('site') || lowerMessage.includes('attraction')) {
+        return botResponses.tourism[Math.floor(Math.random() * botResponses.tourism.length)];
+    }
+    if (lowerMessage.includes('economy') || lowerMessage.includes('economic') || lowerMessage.includes('gdp') || lowerMessage.includes('export') || lowerMessage.includes('trade') || lowerMessage.includes('market') || lowerMessage.includes('finance') || lowerMessage.includes('currency') || lowerMessage.includes('shekel')) {
+        return botResponses.economy[Math.floor(Math.random() * botResponses.economy.length)];
+    }
+    if (lowerMessage.includes('agriculture') || lowerMessage.includes('farming') || lowerMessage.includes('farm') || lowerMessage.includes('crop') || lowerMessage.includes('irrigation') || lowerMessage.includes('kibbutz')) {
+        return botResponses.agriculture[Math.floor(Math.random() * botResponses.agriculture.length)];
+    }
+    if (lowerMessage.includes('festival') || lowerMessage.includes('holiday') || lowerMessage.includes('purim') || lowerMessage.includes('hanukkah') || lowerMessage.includes('passover') || lowerMessage.includes('yom kippur') || lowerMessage.includes('sukkot') || lowerMessage.includes('independence day')) {
+        return botResponses.festivals[Math.floor(Math.random() * botResponses.festivals.length)];
+    }
+    if (lowerMessage.includes('beach') || lowerMessage.includes('coast') || lowerMessage.includes('surf') || lowerMessage.includes('swim') || lowerMessage.includes('mediterranean') || lowerMessage.includes('sea') || lowerMessage.includes('diving') || lowerMessage.includes('snorkel')) {
+        return botResponses.beaches[Math.floor(Math.random() * botResponses.beaches.length)];
     }
     return botResponses.default[Math.floor(Math.random() * botResponses.default.length)];
 }
