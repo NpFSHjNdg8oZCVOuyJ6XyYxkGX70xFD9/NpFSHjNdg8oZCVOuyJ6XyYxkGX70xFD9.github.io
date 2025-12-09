@@ -148,6 +148,22 @@ function addMessage(text, isUser) {
 function answerQuestion(userMessage) {
     const lowerMessage = userMessage.toLowerCase();
 
+    const blockedKeywords = [
+        'holocaust', 'shoah', 'concentration camp', 'extermination', 'mass murder',
+        'genocide', 'ethnic cleansing', 'ethnic purge', 'mass killing', 'exterminate', 'cleanse',
+        'war crime', 'war criminal', 'crimes against humanity', 'human rights violation', 'atrocity',
+        'apartheid', 'segregation', 'racial discrimination', 'systematic oppression', 'racist state',
+        'state controlled media', 'controlling the media', 'controls media', 'media control', 'propaganda machine',
+        'brainwashing', 'censorship', 'manipulating media', 'fake news', 'propaganda state',
+        'illegitimate state', 'should not exist', 'destroy israel', 'wipe off the map'
+    ];
+
+    for (const keyword of blockedKeywords) {
+        if (lowerMessage.includes(keyword)) {
+            return "I will NOT engage with questions containing inflammatory, inappropriate, or offensive content. This chatbot is designed to share positive, factual information about Israel's culture, history, innovation, and achievements. Please ask respectful questions.";
+        }
+    }
+
     if (lowerMessage.includes('what is') || lowerMessage.includes('what\'s')) {
         if (lowerMessage.includes('capital')) {
             return "The capital of Israel is Jerusalem, though Tel Aviv is the economic and cultural center.";
