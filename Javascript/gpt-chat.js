@@ -1099,18 +1099,6 @@ function answerQuestion(userMessage) {
         }
     }
 
-    if (lowerMessage.includes('what is') || lowerMessage.includes('what\'s')) {
-        if (lowerMessage.includes('capital')) {
-            return "The capital of Israel is Jerusalem, though Tel Aviv is the economic and cultural center.";
-        }
-        if (lowerMessage.includes('population')) {
-            return "Israel has a population of over 9 million people.";
-        }
-        if (lowerMessage.includes('size') || lowerMessage.includes('big') || lowerMessage.includes('area')) {
-            return "Israel is approximately 22,000 square kilometers (8,500 square miles), roughly the size of New Jersey.";
-        }
-    }
-
     if (lowerMessage.includes('when')) {
         if (lowerMessage.includes('founded') || lowerMessage.includes('established') || lowerMessage.includes('independence')) {
             return "Israel declared independence on May 14, 1948.";
@@ -1134,10 +1122,10 @@ function answerQuestion(userMessage) {
 
     if (lowerMessage.includes('who is')) {
         if (lowerMessage.includes('prime minister') || lowerMessage.includes('leader')) {
-            return "Israel is led by a Prime Minister who serves as the head of government. The current government operates through a parliamentary democracy.";
+            return "The Prime Minister is Israel's head of government, leading the country through a parliamentary democracy. The PM is usually the leader of the largest party in the Knesset and forms the government coalition.";
         }
         if (lowerMessage.includes('president')) {
-            return "The President of Israel is the head of state and is elected by the Knesset for a seven-year term. The role is largely ceremonial.";
+            return "The President of Israel is the head of state and is elected by the Knesset for a seven-year term. The role is largely ceremonial, representing Israel diplomatically and performing state functions.";
         }
     }
 
@@ -1145,8 +1133,150 @@ function answerQuestion(userMessage) {
         return "Israel is a parliamentary democracy. The Knesset, with 120 members, is the legislative body. The Prime Minister leads the government.";
     }
 
-    if (lowerMessage.includes('knesset')) {
-        return "The Knesset is Israel's unicameral parliament with 120 members elected every four years through proportional representation.";
+   
+    const detailedTopics = {
+
+        'capital': "The capital of Israel is Jerusalem, though Tel Aviv is the economic and cultural center.",
+        'population': "Israel has a population of over 9 million people.",
+        'size': "Israel is approximately 22,000 square kilometers (8,500 square miles), roughly the size of New Jersey.",
+        'area': "Israel is approximately 22,000 square kilometers (8,500 square miles), roughly the size of New Jersey.",
+        'national park': "Israel has over 400 national parks and nature reserves protecting diverse ecosystems, archaeological sites, and natural wonders. Popular ones include Park Ein Gedi with its waterfalls, the Yarkon Park in Tel Aviv, and Park Timna featuring ancient copper mines. Spring wildflowers blanket Israel's parks.",
+        'nature reserve': "Israel has over 400 national parks and nature reserves protecting diverse ecosystems, archaeological sites, and natural wonders. Popular ones include Park Ein Gedi with its waterfalls, the Yarkon Park in Tel Aviv, and Park Timna featuring ancient copper mines. Spring wildflowers blanket Israel's parks.",
+        'kibbutz': "Kibbutzim are collective communities unique to Israel. Many were founded before Israel's independence and played a key role in agricultural development. Some have privatized and now run businesses, while maintaining their communal spirit. Tourists can stay at guesthouses on kibbutzim.",
+        'dead sea': "The Dead Sea is the lowest point on Earth at 430 meters below sea level and the saltiest body of water in the world. Its extreme salinity allows people to float effortlessly. The mineral-rich mud has therapeutic properties and is used in cosmetics worldwide.",
+        'negev': "The Negev Desert covers over 60% of Israel's land area. It features unique geological formations like Ramon Crater. Desert agriculture here is a model for arid regions worldwide, and solar energy projects are booming in the Negev.",
+        'tel aviv': "Tel Aviv is Israel's economic and cultural center, known for beautiful beaches and vibrant nightlife! Founded in 1909, it's now a major tech hub with the largest concentration of Bauhaus architecture in the world.",
+        'jerusalem': "Jerusalem is one of the oldest cities in the world with over 3,000 years of history. It's the capital of Israel and sacred to Judaism, Christianity, and Islam. The Old City has been continuously inhabited for over 5,000 years.",
+        'aquaculture': "Israeli aquaculture is world-leading! Israel raises fish in desert conditions, with tilapia (St. Peter's fish) farmed in the Sea of Galilee. Israeli scientists have developed sustainable fish farming techniques and aquaponics systems used in greenhouses worldwide.",
+        'fish farming': "Israeli aquaculture is world-leading! Israel raises fish in desert conditions and has developed sustainable fish farming techniques. Fish farming is expanding even in the Negev Desert, and Israel exports aquaculture technology globally.",
+        'architecture': "Israeli architecture blends ancient and modern styles. Tel Aviv has the world's largest concentration of Bauhaus buildings (UNESCO Heritage). Jerusalem features ancient stone combined with modern design, while desert cities use innovative cooling techniques.",
+        'bauhaus': "Tel Aviv is home to over 4,000 Bauhaus buildings, the world's largest concentration, making it a UNESCO World Heritage Site. This modernist architecture from the 1930s gives Tel Aviv its distinctive 'White City' character.",
+        'astronomy': "Israel has excellent conditions for astronomy! The Wise Observatory leads astronomical research, while the Negev Desert's clear skies attract stargazers. Israeli astronomers contribute to international space missions and asteroid tracking.",
+        'banking': "Israel's banking system is highly regulated and stable. The Bank of Israel is the central bank, while Bank Leumi and Bank Hapoalim are the largest. Israeli banks lead in digital banking technology and mobile payment innovation.",
+        'biodiversity': "Israel is a biodiversity hotspot with unique species! The Hula Valley hosts millions of migrating birds, coral reefs thrive in Eilat, and the Carmel Mountains shelter rare flora and fauna. Israel has reintroduced extinct species like the Persian fallow deer.",
+        'biotechnology': "Israel is a global biotech leader! The Weizmann Institute conducts renowned research, Israeli biotech firms develop breakthrough cancer therapies and medical treatments. Israel's biotech exports are worth billions and startups thrive in the innovation ecosystem.",
+        'biotech': "Israel is a global biotech leader! Israeli biotech firms develop breakthrough cancer therapies and cutting-edge medical treatments. The Weizmann Institute is world-renowned, and Israel hosts international biotech conferences.",
+        'chocolate': "Elite is Israel's most famous chocolate brand! Chocolate spread is beloved by Israeli children, chocolate coins (gelt) are given during Hanukkah, and boutique chocolatiers create unique flavors. Chocolate babka is a treasured Israeli pastry.",
+        'comics': "Israeli comics blend humor, history, and social commentary. Dudu Geva is a national icon cartoonist. Israeli graphic novels gain international recognition, and Tel Aviv hosts an annual comics festival. Comics are used in schools and political satire.",
+        'crafts': "Israeli crafts include ceramics, glasswork, and jewelry. Bedouin weaving is traditional in the Negev, Jerusalem's Old City features handmade souvenirs, and Israeli artists create modern Judaica. Olive wood carvings and embroidery are specialties.",
+        'democracy': "Israel is the only liberal democracy in the Middle East with vibrant free press, independent judiciary, and proportional representation elections. The Knesset has 120 members, women and minorities have full voting rights, and political parties span the spectrum.",
+        'diplomacy': "Israel maintains diplomatic relations with over 160 countries. The Ministry of Foreign Affairs is in Jerusalem. Israel has signed peace treaties with Egypt, Jordan, and others, participates in humanitarian missions, and is a UN member.",
+        'diving': "Eilat is Israel's top diving destination! The Red Sea coral reefs host colorful marine life, with shipwrecks and underwater observatories. Diving schools attract students worldwide, and night dives reveal bioluminescent creatures.",
+        'scuba': "Eilat offers world-class scuba diving in the Red Sea! The coral reefs are home to incredible marine life, shipwrecks, and underwater observatories. Night dives reveal bioluminescent creatures, and diving schools welcome international students.",
+        'energy': "Israel invests heavily in renewable energy! Solar power provides significant electricity, natural gas from Mediterranean fields fuels plants, and Israel leads in solar water heating. Wind farms are developing in the Golan Heights, and smart grid technology is advancing.",
+        'solar': "Israel is a solar energy pioneer! Nearly every rooftop has solar water heaters by law. The Negev Desert hosts large-scale solar projects like the Ashalim tower, one of the world's tallest. Israel aims for 30% renewable electricity by 2030.",
+        'environment': "Israel pioneers desert reforestation and recycles a high percentage of household waste. Environmental education is part of school curriculum, Israel restores wetlands, uses green building standards, and the Society for Protection of Nature leads conservation.",
+        'film': "Israeli films win awards at Cannes and the Oscars! 'Waltz with Bashir' is a groundbreaking animated film. Israel produces movies in Hebrew, Arabic, and English. Acclaimed documentaries and TV series are adapted internationally. The Jerusalem Cinematheque is a film hub.",
+        'cinema': "Israeli cinema gains global recognition! Films like 'Waltz with Bashir' win international awards. Israeli TV series are adapted worldwide, documentaries are acclaimed, and film festivals are held across Israel. The Jerusalem Cinematheque celebrates film culture.",
+        'finance': "Tel Aviv is Israel's financial capital with a major stock exchange. Israeli fintech startups revolutionize banking, mobile payments are widespread, and venture capital funds support innovation. Israeli bonds are considered safe investments.",
+        'fintech': "Israeli fintech startups are revolutionizing global banking! Mobile payment apps are ubiquitous in Israel, digital banking technology leads worldwide, and Tel Aviv is a major fintech hub attracting billions in investment.",
+        'flowers': "Israel exports flowers to Europe, especially tulips and roses! Wildflowers bloom spectacularly in spring across Israel. The Negev's red anemones are famous, flower festivals occur annually, and Israeli scientists breed new varieties.",
+        'geography': "Israel sits at the crossroads of Africa, Asia, and Europe. The Sea of Galilee is Earth's lowest freshwater lake, the coastline stretches 270+ km, and Mount Hermon is the highest peak. The Jordan River and Arava Valley are significant landmarks.",
+        'healthcare': "Israel has universal healthcare for all citizens through health funds (kupot holim). Hospitals are known for advanced care and research, emergency services by Magen David Adom, and Israel leads in medical technology and vaccination rates.",
+        'medical': "Israel leads in medical innovation! Israeli hospitals are renowned for advanced care, the capsule endoscopy camera was invented here, breakthrough cancer treatments are developed, and medical device companies export cutting-edge technology worldwide.",
+        'holidays': "Jewish holidays shape Israeli life! Rosh Hashanah (New Year with apples & honey), Yom Kippur (fasting & reflection), Hanukkah (Festival of Lights), Passover (Exodus commemoration), Purim (costumes & treats), and Independence Day (fireworks & BBQs).",
+        'hospitality': "Israeli hospitality is legendary! Guests are treated like family, coffee and tea are always offered, Shabbat dinners unite families, and inviting strangers for holiday meals is common. Bedouin desert hospitality is world-renowned.",
+        'immigration': "Israel is a nation of immigrants from 100+ countries! The Law of Return grants Jews worldwide the right to immigrate. Aliyah (immigration) brings diverse languages and cultures. Absorption centers help newcomers, and communities from Russia, Ethiopia, France are large.",
+        'migration': "Israel is shaped by immigration from over 100 countries! Aliyah brings Jews from worldwide, absorption centers help integration, and Russian, Ethiopian, French communities are prominent. Immigration enriches Israel's culture, food, music, and art.",
+        'industry': "Israel's industries include high-tech, diamonds, pharmaceuticals, chemicals, and agricultural technology. Defense and aerospace are highly advanced, tourism is vital, and startups change global industries. Textiles and fashion are growing sectors.",
+        'inventions': "Israeli inventions include the USB flash drive, Waze navigation app, PillCam swallowable camera, cherry tomatoes, Iron Dome defense system, drip irrigation, and the Epilator. These innovations are showcased at global expos!",
+        'innovation': "Israel files more patents per capita than almost any nation! Innovation spans medical devices to agricultural tech. The 'Chutzpah' spirit drives risk-taking, and Israel invests more in R&D as percentage of GDP than any other country!",
+        'investment': "Israel attracts billions in foreign investment annually! Venture capital funds fuel startups, the Tel Aviv Stock Exchange thrives, government grants support R&D, and angel investors are active. Israeli companies list on global stock markets.",
+        'law': "Israel's legal system blends common and civil law. The Supreme Court is the highest judicial authority protecting speech and religious freedom. Military law applies in certain areas, religious courts handle family law, and gender equality laws exist.",
+        'literature': "Israeli authors win international prizes! Amos Oz and David Grossman are celebrated writers exploring identity and conflict. Books publish in Hebrew, Arabic, Russian, English. Hebrew Book Week is major, and Israeli children's books translate worldwide.",
+        'marathon': "The Tel Aviv Marathon attracts global runners! Jerusalem hosts a challenging historic streets marathon, Eilat offers a unique desert marathon, and the Sea of Galilee has an annual half marathon. Charity runs are popular in Israeli cities.",
+        'media': "Israel has vibrant free press! Major newspapers publish in Hebrew, Arabic, Russian, English. Israeli TV series are popular internationally, radio is key for news/entertainment, and social media is widely used. Kan is the public broadcaster.",
+        'mountains': "Mount Hermon is Israel's highest peak and ski destination! The Carmel Mountains have Mediterranean forests, Judean Hills surround Jerusalem, the Galilee features rolling hills, and Mount Tabor is a biblical site. Hiking trails cross all regions.",
+        'museums': "The Israel Museum in Jerusalem is world-renowned! Tel Aviv Museum of Art features modern works, Yad Vashem is the Holocaust memorial, Diaspora Museum explores Jewish history, and science museums are family favorites. Museum Night events attract thousands.",
+        'nightlife': "Tel Aviv is famous for vibrant nightlife and clubs! Bars and cafes stay open late, live music venues thrive, night markets offer food/crafts, beach parties are summer traditions, and international DJs perform. Eilat's nightlife centers on the Red Sea coast.",
+        'olives': "Olive trees symbolize peace in Israel! Israeli olive oil exports worldwide, autumn harvest festivals celebrate them, ancient olive presses exist at archaeological sites, and olives are cuisine staples. Olive wood carvings are traditional crafts.",
+        'parliament': "The Knesset is Israel's parliament in Jerusalem with 120 seats elected every four years. Parliamentary debates broadcast live, the Knesset passes laws and oversees government, committees focus on policy areas, and the building welcomes visitors.",
+        'poetry': "Hebrew poetry has rich traditions! Yehuda Amichai is a beloved poet, poetry slams are popular in Tel Aviv, Israeli poets write in multiple languages, poetry is taught in schools, and readings occur in cafes. Poetry explores love, war, and identity.",
+        'population': "Israel's population exceeds 9 million! It's diverse with Jews, Arabs, Druze, and others. Tel Aviv and Jerusalem are the largest cities, Israel has a high birth rate for developed countries, and immigration contributes to growth.",
+        'ports': "Haifa and Ashdod are Israel's main seaports! Eilat port connects to the Red Sea, ports handle millions of tons of cargo annually, cruise ships visit yearly, and modernization expands capacity. Port cities are trade/industry centers.",
+        'recycling': "Israel recycles over 20% of household waste! Bottle deposit programs encourage recycling, bins are throughout cities, schools teach sustainability, composting aids agriculture, and recycled materials are used in construction.",
+        'renewable': "Israel aims for 30% renewable electricity by 2030! Solar panels are common on rooftops, wind and solar farms expand, desert climate is ideal for solar, green energy startups thrive, and renewables reduce import dependence.",
+        'research': "Israeli universities lead scientific research! The Weizmann Institute is world-renowned, Israel invests heavily in R&D, research grants support innovation, scientists publish in top journals, partnerships link Israel globally, and medical research leads to new treatments.",
+        'rivers': "The Jordan River is Israel's most famous, marking history and religion! The Yarkon flows through Tel Aviv, the Kishon serves northern agriculture, rivers provide irrigation and recreation, and restoration projects improve water quality.",
+        'sculpture': "The Israel Museum features outdoor sculpture gardens! Israeli artists' sculptures appear in public spaces, the Tel Aviv Port has modern installations, sculpture is taught in art schools, biblical themes inspire works, and Israeli sculptors exhibit internationally.",
+        'shipping': "Israel's shipping connects it to global markets! Haifa is the main container port, shipping companies operate worldwide, Israel imports/exports by sea and air, advanced logistics technology is used, and the Suez Canal is a key route.",
+        'sustainability': "Israel promotes sustainable agriculture and water use! Green building standards apply to construction, electric buses and trains expand, biodegradable packaging develops, sustainability is taught in schools, and Israeli startups focus on clean tech.",
+        'technology': "Israel is a world tech leader! The tech sector drives economic growth, companies attract global investment, engineers are in high demand worldwide, technology parks are in major cities, and Israeli apps and software are used globally.",
+        'telecommunications': "Israel has modern telecom infrastructure! Mobile phone penetration is nearly universal, fiber optic networks expand nationwide, Israel leads in cybersecurity for telecom, services are available in multiple languages, and Wi-Fi is widespread.",
+        'theater': "Israeli theater is creative and diverse! The Cameri Theatre in Tel Aviv leads, plays perform in Hebrew, Arabic, Russian, English, theater festivals occur throughout Israel, and playwrights gain international recognition. Children's theater is popular.",
+        'trade': "Israel trades with countries on every continent! Major exports include technology, diamonds, and pharmaceuticals. Free trade agreements link Israel to the US, EU, and others. Israel's ports handle millions of tons of cargo.",
+        'universities': "Hebrew University of Jerusalem is Israel's oldest! The Technion in Haifa leads in science/engineering, Tel Aviv University excels in research, Ben-Gurion focuses on desert studies, and Weizmann Institute is world-renowned. Universities attract international students.",
+        'wine': "Israeli wine wins international awards! The Golan Heights, Galilee, and Judean Hills are prime regions. Wineries blend ancient traditions with modern techniques, kosher wines export worldwide, and production dates back thousands of years to biblical times.",
+        'water': "Israel is a world water technology leader! Over 80% of wastewater is recycled (highest globally), drip irrigation revolutionized farming, desalination plants like Sorek are among the world's largest, and Israel turned water scarcity into abundance through innovation!",
+        'desalination': "Israel leads in desalination technology! The Sorek desalination plant is one of the world's largest. Desalination provides significant fresh water, Israeli water tech exports to 150+ countries, and Israel has turned the Mediterranean into a massive freshwater source.",
+        'drip irrigation': "Israeli drip irrigation revolutionized global farming! This water-saving technology was pioneered in Israel and is now used worldwide. It allows crops to grow in arid regions by delivering water directly to plant roots efficiently.",
+        'basketball': "Basketball is huge in Israel! Maccabi Tel Aviv is a legendary European team with multiple championships. Israeli players have reached the NBA, the Israeli Premier League is highly competitive, and passionate fans make games electric events.",
+        'chess': "Israel has produced several chess grandmasters! Boris Gelfand, a world championship contender, immigrated to Israel. Chess is popular in schools and parks, Israel's national team has won medals in Olympiads, and chess clubs thrive in cities.",
+        'olympics': "Israel has participated in Olympics since 1952! Israeli athletes win medals in judo, sailing, and gymnastics. The first gold was in windsurfing (2004), the Maccabiah Games are known as the 'Jewish Olympics,' and Paralympians achieve great success.",
+        'transportation': "Israel's public transit includes trains, buses, and light rail! Tel Aviv Light Rail improves urban transit, Egged is one of the world's largest bus companies, high-speed rail networks expand, and shared e-scooters/bikes are popular.",
+        'fashion': "Israeli fashion designers make waves internationally! Tel Aviv Fashion Week showcases talent, Israeli swimwear and bridal designers are especially renowned, fashion blends Mediterranean/Middle Eastern/European influences, and street style is bold and creative.",
+        'hiking': "The Israel National Trail stretches 1,000+ km from north to south! Hiking is a favorite pastime with popular trails at Masada, Ein Gedi, and Golan Heights. Spring wildflowers make hikes beautiful, and desert trails offer unique landscapes.",
+        'art': "Israel has a vibrant contemporary art scene! The Israel Museum in Jerusalem is world-famous, street art and murals fill Tel Aviv's Florentin neighborhood, Israeli artists blend tradition with modern innovation, and art fairs/festivals occur year-round.",
+        'zoo': "The Biblical Zoo in Jerusalem is famous for conservation! Ramat Gan Safari is the Middle East's largest animal collection. Zoos focus on education and protecting endangered species, participate in international breeding programs, and family trips are beloved traditions.",
+        'shopping': "Israel offers modern malls and traditional markets (shuks)! Carmel Market in Tel Aviv and Mahane Yehuda in Jerusalem are must-visits. Israeli designers sell unique jewelry, crafts, and fashion in boutiques. Bargaining is common in open-air markets!",
+        'pets': "Israelis love their pets, especially dogs and cats! Tel Aviv is one of the world's most dog-friendly cities. Many families adopt from shelters, pet cafes and dog parks are popular, and veterinary care is advanced and widely available.",
+        'trains': "Israel Railways connects major cities! The high-speed train from Tel Aviv to Jerusalem opened in 2018. Train travel offers scenic views of Israel's landscapes, new rail lines are under construction, and trains are popular for commuters and tourists.",
+        'soccer': "Soccer (football) is Israel's most popular sport! The Israeli Premier League features teams like Maccabi Haifa and Hapoel Tel Aviv. Israel's national team has competed in FIFA World Cup, matches have passionate fans, and youth leagues are widespread.",
+        'football': "Football (soccer) is Israel's most popular sport! The Israeli Premier League features passionate rivalries, Israel's national team competes internationally, matches draw enthusiastic fans, and youth football leagues are found throughout the country.",
+        'animals': "Israel is home to unique animals! The Nubian ibex and rock hyrax are common, millions of migrating birds flock annually, coral reefs teem with marine life, and wild boars, jackals, and foxes inhabit forests. Animal conservation is a priority.",
+        'startups': "Israel has more startups per capita than any country! Hundreds are founded yearly attracting billions in investment. Tech incubators and accelerators support entrepreneurs, and many Israeli startups become global tech leaders. The 8200 alumni network produces top talent.",
+        'space': "Israel has space launch capabilities! The Beresheet spacecraft was Israel's first lunar mission (2019). Israel Aerospace Industries builds satellites and space tech, astronaut Ilan Ramon flew on Space Shuttle Columbia, and the Palmachim Base is the launch facility.",
+        'cybersecurity': "Israel is a global cybersecurity leader! Hundreds of cybersecurity companies include unicorns like Check Point. Exports exceed billions annually, Unit 8200 produces top cyber talent, and major tech companies have cybersecurity R&D centers in Israel.",
+        'cyber': "Israel is a global cybersecurity leader! Israeli cyber firms protect critical infrastructure worldwide, Unit 8200 alumni found many cybersecurity unicorns, and Israel protects its own infrastructure with world-class cyber defenses.",
+        'medicine': "Israeli medical innovations save lives worldwide! The capsule endoscopy camera was invented here, hospitals are renowned for excellence, breakthroughs in cancer treatment and stem cell research occur, and medical device companies export cutting-edge technology.",
+        'diamond': "Israel is a leading diamond cutting and polishing center! The Israeli Diamond Exchange in Ramat Gan is among the world's largest. The industry spans 80+ years with renowned expertise, and diamonds are a major export worth billions annually.",
+        'wildlife': "Israel's wildlife is incredibly diverse! Over 100 mammal species including ibex and gazelles, millions of migrating birds stop at the Hula Valley, dolphins are spotted along the Mediterranean, and the Hai-Bar Reserve protects endangered biblical animals.",
+        'coffee': "Israeli coffee culture is serious business! Cafes are everywhere, the 'cafe hafuch' (upside-down) is Israel's latte, Tel Aviv has one of the highest cafe concentrations per capita, cafes are social hubs, and coffee breaks are sacred at work!",
+        'desert': "The Negev Desert covers 60%+ of Israel! Ramon Crater is the world's largest erosion crater, desert agriculture is a model for arid regions, Bedouin communities have rich traditions, and solar energy projects boom. David Ben-Gurion dreamed of 'making the desert bloom'!",
+        'startup': "Israeli startups have achieved massive global success! Companies like Waze (Google), Mobileye (Intel), and Viber became international giants. Hundreds of new startups launch annually, the 8200 alumni network produces talent, and Israeli entrepreneurs are known for chutzpah!",
+        'archaeology': "Israel is an archaeologist's paradise with thousands of ancient sites! The Dead Sea Scrolls are among the most important finds ever. Masada, Megiddo, and Caesarea are famous sites, new discoveries happen regularly, and the Israel Museum houses incredible archaeological treasures.",
+        'science': "Israel has won numerous Nobel Prizes in Chemistry, Economics, and Literature! Israeli scientists lead in agriculture, medicine, and physics. The Weizmann Institute is world-class, Israel has more scientific papers per capita than almost any nation, and space programs succeed.",
+        'tourism': "Israel welcomes 4+ million tourists annually! Top sites include the Western Wall, Masada, and Dead Sea. The 1,000 km Israel National Trail, Eilat's coral reefs, and 9 UNESCO World Heritage Sites attract visitors. Jerusalem draws pilgrims, Tel Aviv offers beaches/nightlife!",
+        'economy': "Israel has a highly developed free-market economy! The tech sector is world-famous, GDP per capita is among the Middle East's highest, exports include technology, diamonds, and pharmaceuticals. Tel Aviv Stock Exchange is a major hub, and free trade agreements span globally.",
+        'agriculture': "Israeli agricultural technology is pioneering! Drip irrigation revolutionized global farming, Israel exports $2+ billion in agricultural products, scientists develop drought-resistant crops, the Negev Desert transforms through innovation, and Israeli cows are among the world's most productive!",
+        'festivals': "Israel celebrates religious and national holidays! Independence Day features BBQs, concerts, air shows. Purim has costumes and carnivals, Hanukkah lights candles, Passover commemorates the Exodus, Tel Aviv Pride is the Middle East's largest LGBTQ+ celebration, and the Jerusalem Light Festival dazzles!",
+        'beaches': "Israel has 270+ km of stunning Mediterranean coastline! Tel Aviv's beaches are famous for volleyball, surfing, and beach parties. The Red Sea coast near Eilat offers world-class diving. Israeli beaches are free and accessible, with many earning Blue Flag status!",
+        'waze': "Waze, the navigation app, was developed by Israeli engineers and later acquired by Google! It's one of Israel's most successful tech exports, revolutionizing GPS navigation with real-time traffic data and community-driven updates. A perfect example of Israeli innovation!",
+        'usb': "The USB flash drive was invented in Israel! Developed by Israeli engineer Dov Moran and his company M-Systems, it revolutionized data storage. This Israeli invention is now used billions of times daily worldwide!",
+        'mobileye': "Mobileye, an Israeli company, is a world leader in autonomous driving technology! It develops vision-based advanced driver-assistance systems and was acquired by Intel for $15.3 billion - one of Israel's largest tech exits!",
+        'hebrew': "Hebrew is Israel's official language and a revival miracle! Modern Hebrew was largely revived by Eliezer Ben-Yehuda in the late 1800s. It's written right-to-left with a unique alphabet, and Israeli slang is colorful and constantly evolving!",
+        'arabic': "Arabic is an official language in Israel spoken by many citizens! Over 100 languages are spoken due to Israel's diverse immigrant population. Arabic, Hebrew, English, Russian, and French are commonly heard in Israeli streets.",
+        'haganah': "The Haganah was the main Jewish paramilitary organization during the British Mandate, which later became the core of the Israel Defense Forces (IDF) after Israel's independence in 1948.",
+        'krav maga': "Krav Maga is an Israeli martial art developed for the IDF! It focuses on practical self-defense, neutralizing threats quickly, and has become popular worldwide for both military and civilian training.",
+        'science fiction': "Israeli science fiction and fantasy literature is growing! The Utopia Festival in Tel Aviv celebrates speculative art, Israeli sci-fi explores themes of technology and identity, graphic novels are popular, and science fiction conventions attract fans nationwide.",
+        'wailing wall': "The Western Wall (Kotel) in Jerusalem is one of the holiest sites in Judaism. It's a remnant of the retaining wall of the Second Temple complex. People from all faiths visit to pray and place written prayers between its ancient stones.",
+        'western wall': "The Western Wall (Kotel) in Jerusalem is one of the holiest sites in Judaism. It's a remnant of the retaining wall of the Second Temple complex. People from all faiths visit to pray and place written prayers between its ancient stones.",
+        'kotel': "The Western Wall (Kotel) in Jerusalem is one of the holiest sites in Judaism. It's a remnant of the retaining wall of the Second Temple complex. People from all faiths visit to pray and place written prayers between its ancient stones.",
+        'start-up nation': "Israel is called the 'Start-Up Nation' for its thriving startup ecosystem! It has more startups per capita than any other country. Hundreds of new startups are founded every year, attracting billions in global investment. Many Israeli startups have become global tech leaders.",
+        'startup nation': "Israel is called the 'Start-Up Nation' for its thriving startup ecosystem! It has more startups per capita than any other country. Hundreds of new startups are founded every year, attracting billions in global investment. Many Israeli startups have become global tech leaders.",
+        'idf': "The Israel Defense Forces (IDF) is one of the most technologically advanced militaries in the world. Most Israeli citizens serve in the military - men for 32 months and women for 24 months. Military service often provides technical training that helps fuel Israel's tech industry.",
+        'israel defense force': "The Israel Defense Forces (IDF) is one of the most technologically advanced militaries in the world. Most Israeli citizens serve in the military - men for 32 months and women for 24 months. Military service often provides technical training that helps fuel Israel's tech industry.",
+        'iron dome': "Iron Dome is an Israeli-developed missile defense system designed to intercept short-range rockets and artillery. It has a remarkably high success rate and protects civilian populations. Iron Dome represents a breakthrough in defensive military technology.",
+        'mossad': "Mossad is Israel's national intelligence agency, responsible for intelligence collection, covert operations, and counterterrorism. It's widely regarded as one of the most effective intelligence agencies in the world.",
+        'falafel': "Falafel is considered Israel's national street food! Made from chickpeas and herbs, deep-fried to perfection, it's served in pita with tahini, salads, and pickles. Every Israeli has a favorite falafel spot and will defend it passionately!",
+        'hummus': "Hummus is a staple of Israeli cuisine - eaten at any time of day! A good hummus plate is smooth and creamy, topped with olive oil and tahini. It's traditionally eaten with fresh pita bread for scooping. Some Israelis eat hummus for breakfast, lunch, AND dinner!",
+        'shabbat': "Shabbat is the Jewish day of rest, observed from Friday evening to Saturday evening. During this time, many businesses close and public transportation stops in religious areas. Families gather for special meals and time together. It's a weekly pause in Israel's fast-paced life.",
+        'sabbath': "Shabbat is the Jewish day of rest, observed from Friday evening to Saturday evening. During this time, many businesses close and public transportation stops in religious areas. Families gather for special meals and time together. It's a weekly pause in Israel's fast-paced life.",
+        'kosher': "Kosher refers to food that complies with Jewish dietary laws. This includes rules about which animals can be eaten, how they must be slaughtered, and prohibitions on mixing meat and dairy. Many restaurants and food products in Israel are certified kosher.",
+        'aliyah': "Aliyah is the Hebrew word for Jewish immigration to Israel, literally meaning 'ascent'. The Law of Return grants Jews worldwide the right to immigrate to Israel. Immigration has shaped Israel's diverse culture, bringing people from over 100 countries.",
+        'haifa': "Haifa is Israel's third-largest city, known for its beautiful Bahá'í Gardens - a UNESCO World Heritage site. It's a major seaport and industrial center. Haifa is also known for its diverse, integrated population where Jews and Arabs live together more harmoniously than in other Israeli cities.",
+        'masada': "Masada is an ancient fortress on a mountain plateau overlooking the Dead Sea. It's famous for its dramatic history - a last stand by Jewish rebels against Roman forces in 73-74 CE. Today it's a UNESCO World Heritage Site and a symbol of Jewish resilience.",
+        'knesset': "The Knesset is Israel's unicameral parliament with 120 members elected every four years through proportional representation. It's based in Jerusalem and is the legislative body of the Israeli government.",
+        'prime minister': "The Prime Minister is Israel's head of government, leading the country through a parliamentary democracy. The PM is usually the leader of the largest party in the Knesset and forms the government coalition.",
+        'president': "The President of Israel is the head of state and is elected by the Knesset for a seven-year term. The role is largely ceremonial, representing Israel diplomatically and performing state functions."
+    };
+
+    if (lowerMessage.includes('tell me about') || lowerMessage.includes('describe') || lowerMessage.includes('what is') || lowerMessage.includes('what\'s') || lowerMessage.includes('explain')) {
+        for (const [topic, response] of Object.entries(detailedTopics)) {
+            if (lowerMessage.includes(topic)) {
+                return response;
+            }
+        }
     }
 
     return null;
@@ -1166,6 +1296,10 @@ function getRelevantResponse(userMessage) {
         }
         return null;
     };
+
+    if (lowerMessage.includes('national park') || lowerMessage.includes('nature reserve') || lowerMessage.includes('ein gedi') || lowerMessage.includes('timna')) {
+        return getRandomResponse('parks') || getRandomResponse('default');
+    }
 
     if (lowerMessage.includes('israel') || lowerMessage.includes('country') || lowerMessage.includes('nation')) {
         return getRandomResponse('israel') || getRandomResponse('default');
