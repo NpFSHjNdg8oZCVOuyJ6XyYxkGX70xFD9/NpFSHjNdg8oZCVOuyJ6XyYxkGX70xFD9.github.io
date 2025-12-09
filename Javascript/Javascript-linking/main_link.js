@@ -23,5 +23,5 @@ document.getElementById("israel-gpt").onclick = function () {
 }
 
 document.getElementById("about-me").onclick = function () {
-    window.location.href = "./about_me.html";
+    window.location.href = "./about-me.html";
 }

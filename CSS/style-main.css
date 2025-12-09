@@ -115,21 +115,22 @@ input[type="text"] {
 }
 
 #images {
-    position: absolute;
+    position: fixed;
     left: 2rem;
     top: 30px;
-    height: calc(100vh - 30px);
-    width: 500px;
+    height: calc(100vh - 60px);
+    width: 280px;
     text-align: left;
     border: none;
     background: transparent;
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 
 #images img {
     width: 280px;
-    height: 1200px;
+    height: 100%;
     border: none;
     border-radius: 8px;
     display: block;
@@ -137,21 +138,22 @@ input[type="text"] {
 }
 
 #images2 {
-    position: absolute;
+    position: fixed;
     right: 2rem;
     top: 30px;
-    height: calc(100vh - 30px);
-    width: 500px;
+    height: calc(100vh - 60px);
+    width: 280px;
     text-align: right;
     border: none;
     background: transparent;
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 
 #images2 img {
     width: 280px;
-    height: 1200px;
+    height: 100%;
     border: none;
     border-radius: 8px;
     display: block;
