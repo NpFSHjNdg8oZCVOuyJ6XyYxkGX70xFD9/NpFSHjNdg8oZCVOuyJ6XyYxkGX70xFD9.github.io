@@ -4,6 +4,8 @@
     --primary: #d5d4e1;
     --secondary: #fffefe;
     --accent: #ff0000;
+    --card-bg: rgba(213, 212, 225, 0.05);
+    --card-hover: rgba(213, 212, 225, 0.08);
 }
 
 body {
@@ -20,7 +22,7 @@ body {
     text-align: center;
     font-size: 3.5rem;
     font-weight: 800;
-    margin: 2rem auto 3rem;
+    margin: 2rem auto 1rem;
     color: var(--text);
     background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
     -webkit-background-clip: text;
@@ -35,33 +37,38 @@ body {
     margin: 0 auto 3rem;
     font-size: 1.2rem;
     color: var(--primary);
+    opacity: 0.9;
 }
 
 .about-me-content {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
+    display: grid;
+    gap: 2rem;
 }
 
 .overview,
 .computer-interests,
-.sports-interests {
-    margin: 0 auto 2rem;
-    padding: 2rem;
-    background: rgba(213, 212, 225, 0.05);
-    border: 2px solid var(--primary);
-    border-radius: 12px;
-    font-size: 1.1rem;
-    line-height: 1.9;
+.sports-interests,
+.favorite-games {
+    padding: 2.5rem;
+    background: var(--card-bg);
+    border: 1px solid rgba(213, 212, 225, 0.2);
+    border-radius: 16px;
+    font-size: 1.05rem;
+    line-height: 1.8;
     color: var(--text);
-    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(10px);
 }
 
 .overview::before,
 .computer-interests::before,
-.sports-interests::before {
+.sports-interests::before,
+.favorite-games::before {
     content: '';
     position: absolute;
     top: 0;
@@ -69,21 +76,170 @@ body {
     width: 4px;
     height: 100%;
     background: linear-gradient(180deg, var(--accent) 0%, var(--primary) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .overview:hover,
 .computer-interests:hover,
-.sports-interests:hover {
+.sports-interests:hover,
+.favorite-games:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.2);
-    border-color: var(--accent);
-    background: rgba(213, 212, 225, 0.08);
+    box-shadow: 0 8px 30px rgba(255, 0, 0, 0.15);
+    border-color: rgba(255, 0, 0, 0.3);
+    background: var(--card-hover);
+}
+
+.overview:hover::before,
+.computer-interests:hover::before,
+.sports-interests:hover::before,
+.favorite-games:hover::before {
+    opacity: 1;
+}
+
+.overview h2,
+.computer-interests h2,
+.sports-interests h2,
+.favorite-games h2 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 0.5px;
 }
 
 .overview p,
 .computer-interests p,
-.sports-interests p {
+.sports-interests p,
+.favorite-games p {
+    margin: 0 0 1rem 0;
+}
+
+.overview p:last-child,
+.computer-interests p:last-child,
+.sports-interests p:last-child,
+.favorite-games p:last-child {
+    margin-bottom: 0;
+}
+
+/* Hobbies List Styling */
+.hobbies-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.hobbies-list li {
+    padding: 0.8rem 1.5rem;
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid var(--accent);
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.hobbies-list li:hover {
+    background: rgba(255, 0, 0, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+}
+
+/* Games List Styling */
+.games-list {
+    list-style: none;
+    counter-reset: game-counter;
+    padding: 0;
+    margin: 1.5rem 0 0 0;
+}
+
+.games-list li {
+    counter-increment: game-counter;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 0;
+}
+
+.games-list li::before {
+    content: counter(game-counter);
+    position: absolute;
+    left: -2.5rem;
+    top: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--background);
+}
+
+.games-list details {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(213, 212, 225, 0.15);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.games-list details:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent);
+}
+
+.games-list details[open] {
+    background: rgba(255, 0, 0, 0.05);
+    border-color: var(--accent);
+}
+
+.games-list summary {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary);
+    user-select: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    list-style: none;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.games-list summary::-webkit-details-marker {
+    display: none;
+}
+
+.games-list summary::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    transition: transform 0.3s ease;
+}
+
+.games-list details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.games-list details[open] summary {
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.games-list details p {
     margin: 0;
+    padding-left: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 #main {
@@ -100,14 +256,64 @@ body {
         font-size: 2.5rem;
     }
 
+    .intro-text {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
     .overview,
     .computer-interests,
-    .sports-interests {
+    .sports-interests,
+    .favorite-games {
         padding: 1.5rem;
+        font-size: 1rem;
+    }
+
+    .overview h2,
+    .computer-interests h2,
+    .sports-interests h2,
+    .favorite-games h2 {
+        font-size: 1.5rem;
+    }
+
+    .hobbies-list {
+        justify-content: center;
+    }
+
+    .hobbies-list li {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .games-list li::before {
+        left: -2rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        font-size: 0.8rem;
+    }
+
+    .games-list summary {
         font-size: 1rem;
     }
 
     body {
         padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .games-list li::before {
+        position: static;
+        display: inline-block;
+        margin-right: 0.5rem;
+        vertical-align: middle;
+    }
+
+    .games-list details {
+        padding: 0.8rem 1rem;
     }
 }
