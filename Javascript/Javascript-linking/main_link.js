@@ -17,3 +17,7 @@ document.getElementById("timer-game").onclick = function () {
 document.getElementById("about-me").onclick = function () {
     window.location.href = "./about-me.html";
 }
+
+document.getElementById("post-project-btn").onclick = function () {
+    window.location.href = "./post-project.html";
+}
