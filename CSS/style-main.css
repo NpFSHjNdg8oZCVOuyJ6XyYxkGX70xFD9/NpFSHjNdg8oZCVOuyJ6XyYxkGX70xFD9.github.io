@@ -39,6 +39,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: titleFadeIn 0.4s ease-out both;
 }
 
 p {
@@ -50,6 +51,7 @@ p {
     color: var(--primary);
     font-weight: 300;
     line-height: 1.8;
+    animation: typingFadeIn 1.8s ease-out both;
 }
 
 nav {
@@ -95,6 +97,19 @@ section {
     max-width: 900px;
     position: relative;
     transition: all 0.3s ease;
+    animation: slideInFromTop 0.8s ease-out both;
+}
+
+#links {
+    animation-delay: 0.1s;
+}
+
+#widgets {
+    animation-delay: 0.2s;
+}
+
+#audio {
+    animation-delay: 0.3s;
 }
 
 section:hover {
@@ -148,6 +163,19 @@ section nav a:hover {
     margin: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    animation: slideInFromLeft 0.6s ease-out both;
+}
+
+#widgets button:nth-of-type(1) {
+    animation-delay: 0.6s;
+}
+
+#widgets button:nth-of-type(2) {
+    animation-delay: 0.9s;
+}
+
+#widgets button:nth-of-type(3) {
+    animation-delay: 1.2s;
 }
 
 #widgets button:hover {
@@ -264,5 +292,51 @@ a:focus {
         padding: 0.9rem 1.8rem;
         font-size: 0.95rem;
         margin: 0.6rem;
+    }
+}
+
+@keyframes titleFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes typingFadeIn {
+    from {
+        opacity: 0;
+        clip-path: inset(0 100% 0 0);
+    }
+
+    to {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
