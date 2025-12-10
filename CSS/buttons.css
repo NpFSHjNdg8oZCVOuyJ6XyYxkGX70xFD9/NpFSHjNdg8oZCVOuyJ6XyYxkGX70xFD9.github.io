@@ -29,10 +29,10 @@ button:hover {
 }
 
 
-/* Bulk Buy Input Styling */
 #bulkBuyAuto,
 #bulkBuyDouble,
-#bulkBuyDaniel {
+#bulkBuyDaniel,
+#bulkBuyThor {
     width: 60px;
     padding: 8px 10px;
     font-size: 14px;
@@ -50,7 +50,8 @@ button:hover {
 
 #bulkBuyAuto:hover,
 #bulkBuyDouble:hover,
-#bulkBuyDaniel:hover {
+#bulkBuyDaniel:hover,
+#bulkBuyThor:hover {
     border-color: #ff3333;
     box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
     background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
@@ -58,7 +59,8 @@ button:hover {
 
 #bulkBuyAuto:focus,
 #bulkBuyDouble:focus,
-#bulkBuyDaniel:focus {
+#bulkBuyDaniel:focus,
+#bulkBuyThor:focus {
     outline: none;
     border-color: #ff6666;
     box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2),
@@ -71,21 +73,25 @@ button:hover {
 #bulkBuyDouble::-webkit-inner-spin-button,
 #bulkBuyDouble::-webkit-outer-spin-button,
 #bulkBuyDaniel::-webkit-inner-spin-button,
-#bulkBuyDaniel::-webkit-outer-spin-button {
+#bulkBuyDaniel::-webkit-outer-spin-button,
+#bulkBuyThor::-webkit-inner-spin-button,
+#bulkBuyThor::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
 #bulkBuyAuto[type=number],
 #bulkBuyDouble[type=number],
-#bulkBuyDaniel[type=number] {
+#bulkBuyDaniel[type=number],
+#bulkBuyThor[type=number] {
     -moz-appearance: textfield;
     appearance: textfield;
 }
 
 #bulkBuyAutoBtn,
 #bulkBuyDoubleBtn,
-#bulkBuyDanielBtn {
+#bulkBuyDanielBtn,
+#bulkBuyThorBtn {
     padding: 8px 18px;
     font-size: 14px;
     font-weight: 700;
@@ -100,7 +106,8 @@ button:hover {
 
 #bulkBuyAutoBtn:hover,
 #bulkBuyDoubleBtn:hover,
-#bulkBuyDanielBtn:hover {
+#bulkBuyDanielBtn:hover,
+#bulkBuyThorBtn:hover {
     background: linear-gradient(135deg, #ff1a1a 0%, #e60000 100%);
     box-shadow: 0 5px 15px rgba(255, 0, 0, 0.5);
     transform: translateY(-2px);
@@ -109,7 +116,8 @@ button:hover {
 
 #bulkBuyAutoBtn:active,
 #bulkBuyDoubleBtn:active,
-#bulkBuyDanielBtn:active {
+#bulkBuyDanielBtn:active,
+#bulkBuyThorBtn:active {
     transform: translateY(0);
     box-shadow: 0 2px 8px rgba(255, 0, 0, 0.4);
 }
