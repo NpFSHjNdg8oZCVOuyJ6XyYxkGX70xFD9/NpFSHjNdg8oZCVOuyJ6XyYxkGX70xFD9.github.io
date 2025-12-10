@@ -18,10 +18,6 @@ document.getElementById("timer-game").onclick = function () {
     window.location.href = "./timer-game.html";
 }
 
-document.getElementById("israel-gpt").onclick = function () {
-    window.location.href = "./gpt.html";
-}
-
 document.getElementById("about-me").onclick = function () {
     window.location.href = "./about-me.html";
 }
