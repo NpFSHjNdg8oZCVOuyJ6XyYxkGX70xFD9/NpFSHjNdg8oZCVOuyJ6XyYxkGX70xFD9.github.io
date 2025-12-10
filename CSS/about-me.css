@@ -122,7 +122,6 @@ body {
     margin-bottom: 0;
 }
 
-/* Hobbies List Styling */
 .hobbies-list {
     list-style: none;
     padding: 0;
@@ -316,4 +315,8 @@ body {
     .games-list details {
         padding: 0.8rem 1rem;
     }
+}
+
+#fencing, #archery, #badminton {
+    cursor: pointer;
 }
