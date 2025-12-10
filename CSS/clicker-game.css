@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(135deg, #000000 0%, #1a0000 100%);
+    background: #000000;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
@@ -9,21 +9,21 @@ body {
 }
 
 h1 {
-    color: #ff0000;
+    color: #ffffff;
     font-size: 56px;
     margin-bottom: 30px;
-    text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
     font-weight: 700;
 }
 
 .upgrade-container h2 {
     margin: 0 0 20px 0;
     font-size: 28px;
-    color: #ff0000;
+    color: #ffffff;
     font-weight: 600;
     text-align: left;
     width: 100%;
-    text-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
 p {
@@ -32,27 +32,27 @@ p {
 }
 
 #score {
-    color: #ff0000;
+    color: #ffffff;
     font-size: 32px;
     font-weight: bold;
-    text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
 }
 
 #clickButton {
     position: relative;
-    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+    background: rgba(255, 255, 255, 0.15);
     color: white;
     font-size: 28px;
     font-weight: bold;
     padding: 30px 60px;
-    border: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 200px;
     cursor: pointer;
     margin: 30px;
-    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4),
-        0 0 40px rgba(255, 0, 0, 0.2);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
     overflow: hidden;
+    backdrop-filter: blur(10px);
 }
 
 #clickButton::before {
@@ -64,7 +64,7 @@ p {
     height: 200%;
     background: linear-gradient(45deg,
             transparent,
-            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.15),
             transparent);
     transform: rotate(45deg);
     animation: shine 3s infinite;
@@ -76,7 +76,7 @@ p {
     inset: 0;
     border-radius: 200px;
     padding: 2px;
-    background: linear-gradient(45deg, #ff0000, #ff6666, #ff0000);
+    background: linear-gradient(45deg, #ffffff, #cccccc, #ffffff);
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
@@ -101,9 +101,9 @@ p {
 
 #clickButton:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 12px 35px rgba(255, 0, 0, 0.6),
-        0 0 60px rgba(255, 0, 0, 0.4);
-    background: linear-gradient(135deg, #ff1a1a 0%, #e60000 100%);
+    box-shadow: 0 12px 35px rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 #clickButton:hover::after {
@@ -125,7 +125,7 @@ p {
 
 #clickButton:active {
     transform: translateY(1px) scale(0.98);
-    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
     animation: clickPulse 0.3s ease;
 }
 
@@ -152,11 +152,12 @@ p {
     align-items: flex-start;
     gap: 20px;
     width: 480px;
-    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
-    border: 3px solid #ff0000;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
     padding: 30px;
-    box-shadow: 0 8px 30px rgba(255, 0, 0, 0.3);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
 }
 
 .upgrade-item {
@@ -168,31 +169,32 @@ p {
 }
 
 .upgrade-item label {
-    color: #ff6666;
+    color: #cccccc;
     font-size: 13px;
     font-weight: 600;
     margin-left: 8px;
-    text-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
 }
 
 .upgrade-item input[type="number"] {
-    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
-    color: #ff6666;
-    border: 2px solid #ff0000;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 6px;
     padding: 8px 12px;
     font-size: 14px;
     font-weight: 600;
     width: 60px;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
 .upgrade-item input[type="number"]:focus {
     outline: none;
-    border-color: #ff3333;
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
 .upgrade-item input[type="number"]::-webkit-inner-spin-button,
@@ -205,27 +207,28 @@ p {
 #bulkBuyDoubleBtn,
 #bulkBuyDanielBtn,
 #bulkBuyThorBtn {
-    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+    background: rgba(255, 255, 255, 0.1);
     color: white;
     font-size: 14px;
     font-weight: 600;
     padding: 8px 16px;
-    border: 2px solid #ff0000;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 6px;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
     white-space: nowrap;
+    backdrop-filter: blur(10px);
 }
 
 #bulkBuyAutoBtn:hover,
 #bulkBuyDoubleBtn:hover,
 #bulkBuyDanielBtn:hover,
 #bulkBuyThorBtn:hover {
-    background: linear-gradient(135deg, #ff1a1a 0%, #e60000 100%);
-    border-color: #ff3333;
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
 
 #bulkBuyAutoBtn:active,
@@ -240,28 +243,29 @@ p {
 #upgrade2,
 #upgrade3,
 #upgrade4 {
-    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    background: rgba(255, 255, 255, 0.08);
     color: white;
     font-size: 15px;
     font-weight: 600;
     padding: 12px 20px;
-    border: 2px solid #ff0000;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     cursor: pointer;
     flex: 1;
     min-width: 220px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
 #upgrade1:hover,
 #upgrade2:hover,
 #upgrade3:hover,
 #upgrade4:hover {
-    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-    border-color: #ff3333;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.4);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.3);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
 
 #upgrade1:active,
@@ -269,15 +273,15 @@ p {
 #upgrade3:active,
 #upgrade4:active {
     transform: translateY(0);
-    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
-    box-shadow: 0 2px 10px rgba(255, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
 }
 
 #autoClickers,
 #doubleClicks,
 #employeeDaniel,
 #employeeThor {
-    color: #ff0000;
+    color: #ffffff;
     font-weight: bold;
 }
 
@@ -285,21 +289,22 @@ p {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
-    border: 3px solid #ff0000;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
     padding: 25px;
     width: 280px;
-    box-shadow: 0 8px 30px rgba(255, 0, 0, 0.3);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
 }
 
 #upgradeBox h3 {
-    color: #ff0000;
+    color: #ffffff;
     font-size: 24px;
     margin-top: 0;
     margin-bottom: 20px;
     font-weight: 600;
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 #upgradeBox p {
@@ -314,16 +319,16 @@ p {
     top: 320px;
     right: 20px;
     transform: translateX(150%);
-    background: linear-gradient(135deg, #1a0000 0%, #000000 100%);
-    border: 3px solid #ff0000;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 20px;
     padding: 40px;
     width: 280px;
-    box-shadow: 0 0 50px rgba(255, 0, 0, 0.5),
-        0 0 100px rgba(255, 0, 0, 0.3);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
     z-index: 1000;
     opacity: 0;
     transition: all 0.5s ease;
+    backdrop-filter: blur(15px);
 }
 
 #secretMenu.show {
@@ -336,21 +341,21 @@ p {
 
     0%,
     100% {
-        box-shadow: 0 0 50px rgba(255, 0, 0, 0.5), 0 0 100px rgba(255, 0, 0, 0.3);
+        box-shadow: 0 0 50px rgba(255, 255, 255, 0.2), 0 0 100px rgba(255, 255, 255, 0.1);
     }
 
     50% {
-        box-shadow: 0 0 70px rgba(255, 0, 0, 0.7), 0 0 120px rgba(255, 0, 0, 0.5);
+        box-shadow: 0 0 70px rgba(255, 255, 255, 0.3), 0 0 120px rgba(255, 255, 255, 0.2);
     }
 }
 
 #secretMenu h3 {
-    color: #ff0000;
+    color: #ffffff;
     font-size: 28px;
     margin-top: 0;
     margin-bottom: 20px;
     text-align: center;
-    text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
 #secretMenu p {
@@ -364,24 +369,26 @@ p {
 }
 
 #closeMenu {
-    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+    background: rgba(255, 255, 255, 0.1);
     color: white;
     font-size: 16px;
     font-weight: bold;
     padding: 12px 30px;
-    border: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     cursor: pointer;
     margin-top: 20px;
     width: 100%;
-    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
 #closeMenu:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.6);
-    background: linear-gradient(135deg, #ff1a1a 0%, #e60000 100%);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 #closeMenu:active {
@@ -392,17 +399,18 @@ p {
     position: fixed;
     top: 320px;
     right: 20px;
-    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+    background: rgba(255, 255, 255, 0.1);
     color: white;
     font-size: 14px;
     font-weight: bold;
     padding: 10px 20px;
-    border: 2px solid #ff0000;
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
     display: none;
+    backdrop-filter: blur(10px);
 }
 
 #openMenuButton.show {
@@ -411,8 +419,9 @@ p {
 
 #openMenuButton:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.6);
-    background: linear-gradient(135deg, #ff1a1a 0%, #e60000 100%);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 #openMenuButton:active {
@@ -421,26 +430,28 @@ p {
 
 #gambleButton,
 #criticalButton {
-    background: linear-gradient(135deg, #ff6600 0%, #cc5200 100%);
+    background: rgba(255, 255, 255, 0.12);
     color: white;
     font-size: 16px;
     font-weight: bold;
     padding: 12px 30px;
-    border: none;
+    border: 2px solid rgba(255, 255, 255, 0.25);
     border-radius: 10px;
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 10px;
     width: 100%;
-    box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
 #gambleButton:hover,
 #criticalButton:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 102, 0, 0.6);
-    background: linear-gradient(135deg, #ff7a1a 0%, #e65c00 100%);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.35);
 }
 
 #gambleButton:active,
@@ -453,60 +464,59 @@ p {
     top: 20px;
     left: 20px;
     z-index: 1000;
-    background: rgba(26, 0, 0, 0.9);
+    background: rgba(255, 255, 255, 0.05);
     padding: 15px 20px;
     border-radius: 10px;
-    border: 2px solid #ff0000;
-    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
     gap: 10px;
+    backdrop-filter: blur(12px);
 }
 
 .switch input[type="checkbox"] {
     width: 20px;
     height: 20px;
     cursor: pointer;
-    accent-color: #ff0000;
+    accent-color: #ffffff;
 }
 
 .switch label {
-    color: #ff6666;
+    color: #cccccc;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     margin: 0;
-    text-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
 }
 
 #resetButton {
     position: fixed;
     top: 20px;
     left: 20px;
-    background: linear-gradient(135deg, rgba(26, 0, 0, 0.95) 0%, rgba(13, 0, 0, 0.95) 100%);
-    color: #ff6666;
+    background: rgba(255, 255, 255, 0.05);
+    color: #cccccc;
     font-size: 13px;
     font-weight: 600;
     padding: 12px 24px;
-    border: 2px solid rgba(255, 0, 0, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
     cursor: pointer;
     z-index: 1000;
-    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 102, 102, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
 
 #resetButton:hover {
-    background: linear-gradient(135deg, rgba(26, 0, 0, 1) 0%, rgba(13, 0, 0, 1) 100%);
-    border-color: #ff0000;
-    color: #ff3333;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 102, 102, 0.2);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
 
 #resetButton:active {
@@ -528,23 +538,24 @@ p {
     font-size: 14px;
     font-family: "Zalando Sans Expanded", sans-serif;
     font-weight: 600;
-    color: #ff0000;
-    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
-    border: 2px solid #ff0000;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     text-align: center;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(255, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     margin: 0 8px;
+    backdrop-filter: blur(10px);
 }
 
 #bulkBuyAuto:hover,
 #bulkBuyDouble:hover,
 #bulkBuyDaniel:hover,
 #bulkBuyThor:hover {
-    border-color: #ff3333;
-    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
-    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 #bulkBuyAuto:focus,
@@ -552,10 +563,10 @@ p {
 #bulkBuyDaniel:focus,
 #bulkBuyThor:focus {
     outline: none;
-    border-color: #ff6666;
-    box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2),
-        0 4px 12px rgba(255, 0, 0, 0.5);
-    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1),
+        0 4px 12px rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 #bulkBuyAuto::-webkit-inner-spin-button,
@@ -586,22 +597,23 @@ p {
     font-size: 14px;
     font-weight: 700;
     color: white;
-    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
-    border: 2px solid #ff0000;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     transition: all 0.3s ease;
-    box-shadow: 0 3px 10px rgba(255, 0, 0, 0.3);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.1);
     margin-left: 5px;
+    backdrop-filter: blur(10px);
 }
 
 #bulkBuyAutoBtn:hover,
 #bulkBuyDoubleBtn:hover,
 #bulkBuyDanielBtn:hover,
 #bulkBuyThorBtn:hover {
-    background: linear-gradient(135deg, #ff1a1a 0%, #e60000 100%);
-    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
-    border-color: #ff3333;
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 #bulkBuyAutoBtn:active,
@@ -609,5 +621,5 @@ p {
 #bulkBuyDanielBtn:active,
 #bulkBuyThorBtn:active {
     transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(255, 0, 0, 0.4);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
 }
