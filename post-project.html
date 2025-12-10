@@ -23,36 +23,64 @@
 <body>
     <h1 class="title">Post Project Overview</h1>
     <p>In this post-project overview, I will discuss the design choices I made while creating this website and the
-        learning experience I
-        gained throughout the process.</p>
+        learning experience I gained throughout the process.</p>
 
     <div class="overview-content">
         <details class="dropdown">
             <summary>Design Choices</summary>
             <div class="dropdown-content">
-                <p>Throughout this project, I focused on creating a modern, minimalist black and white design with
-                    frosted glass effects. The color scheme was chosen to maximize readability while maintaining a sleek
-                    aesthetic. I implemented smooth animations and transitions to enhance user experience without being
-                    overly flashy.</p>
+                <p>Throughout this project, I shuffled through multiple design choices. I experimented with different color schemes, layouts, and typography to find the best combination that balanced aesthetics and usability.
+                    Originally, my website had a black and red theme, but that seemed too harsh in my eyes. As a result, I switched to a softer black and white design. This was much easier on the eyes and provided a cleaner, professional look.
+                    As time went on, I strived to incorporate more unique design choices, which I did by adding a live video wallpaper background. But this had a major flaw - it made text borderline unreadable.
+                    To solve this, I implemented frosted glass effects using the CSS backdrop property, which blurred the background behind text sections, significantly improving readability while maintaining the dynamic and sleek
+                    feel of the video wallpaper. Despite this, I felt my website was too plain, choppy, and rough. To address this, I used CSS to make simple animations and transitions, adding smooth fades and movements to elements as users navigated the site.
+                    These animations created a more engaging and polished user experience, which in turn, gave me a sense of completion and satisfaction with my work.
+                </p>
             </div>
         </details>
 
         <details class="dropdown">
             <summary>Technical Implementation</summary>
             <div class="dropdown-content">
-                <p>The website uses HTML5, CSS3, and JavaScript to create an interactive experience. I implemented
-                    frosted glass effects using backdrop-filter, added a live video wallpaper background, and ensured
-                    responsive design across different screen sizes. The animations were carefully timed to create a
-                    cohesive flow.</p>
+                <p>This website uses HTML, CSS, and Javascript. Originally, I barely even had a website - it was a singular, horribly styled webpage with elements all over the place.
+                    As time went on, I learned how to use Javascript to link multiple pages together, creating a multi-page website structure. This allowed me to organize content better and provide a more seamless navigation experience for users.
+                    I also delved deeper into CSS, styling every microdetail to achieve perfection. While my website looked engaging, I wanted to make it it <em>feel</em> engaging aswell.To do this, I implemented a series of small games and widgets onto my website. 
+                    My most notable widget is the clicker game. This game not only provided an interactive element for users but also allowed me to develope, practice, refine, and showcase my Javascript skills. There are also other widgets, such as a counter and timer game.
+                    The counter widget allows user to calculate the exact time until class ends by inputting the desired period and day. The timer game challenges users to click a moving button that increasingly speeds up and shrinks as difficulty increases. 
+                </p>
             </div>
         </details>
 
         <details class="dropdown">
             <summary>Learning Experience</summary>
             <div class="dropdown-content">
-                <p>This project taught me valuable lessons about modern web design, CSS animations, and user experience.
-                    I learned how to balance aesthetics with functionality, implement advanced CSS features like
-                    backdrop-filter, and create a cohesive design system that works across multiple pages.</p>
+                <p>This project has taught me valuable lessons about modern web design, CSS animations, and user experience.
+                    I learned how to balance aesthetics with functionality, implement Javascript to create a whole tree of webpages
+                    and create a cohesive design system that works across multiple pages. As I developed my website, I felt an increasingly strong 
+                    strive to further advance. But yet we only covered the basics in class - this severely limited the functionality of my website, and prevented
+                    me from fufilling my goal. I decided to take control and research advanced Javascript and CSS elements. While this would bring my website to its maxiumum
+                    potential, it also served as a massive bottleneck. Trying to understand advanced syntax was extremely time draining aswell as mentally challenging, but I 
+                    managed to push past and bring my site to its utmost potential. While the option of using AI to boost functionality, I figured that it would not 
+                    truely help with my skills. While I did use Github CoPilot, I limited it to creating code that I could understand, and if that wasn't an option, I had it 
+                    explain everything, which allowed me to develop my skills while also ensuring my ideas could be brought to life.</p>
+            </div>
+        </details>
+
+        <details class="dropdown">
+            <summary>Failures and Challenges</summary>
+            <div class="dropdown-content">
+                <p>Many errors, failures, and challenges arose throughout the development process. While some were minor, such as
+                forgetting to link a JavaScript file to an HTML file, the majority stemmed from deeper misunderstandings of JavaScript
+                and CSS concepts. GitHub Copilot played a significant role in debugging these errors, often highlighting mistakes I had
+                overlooked. However, there were instances where Copilot's suggestions were incorrect, leading to further confusion and errors.
+                In these cases, I had to rely on my own understanding and research to identify and fix the issues.
+                One of the most significant challenges I faced was implementing the live video wallpaper background.
+                It initially disrupted the layout and sometimes loaded after other content, causing glitches. Through research, I discovered the preload attribute, which ensured the video loaded
+                smoothly and consistently, maintaining both functionality and a polished, dynamic appearance.
+                Working with the live video background provided valuable learning opportunities. It required careful use of CSS,
+                z-index, and positioning, reinforcing problem-solving, debugging, research skills, and the ability to balance aesthetics
+                with usability.
+                </p>
             </div>
         </details>
     </div>
