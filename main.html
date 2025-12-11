@@ -14,8 +14,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="CSS/style-main.css">
-  <link rel="stylesheet" href="CSS/buttons.css">
+  <link rel="stylesheet" href="CSS/style-main.css" id="style-main-animated">
+  <link rel="stylesheet" href="CSS/buttons.css" id="buttons-animated">
+  <link rel="stylesheet" href="CSS/static/style-main-static.css" id="style-main-static" disabled>
+  <link rel="stylesheet" href="CSS/static/buttons-static.css" id="buttons-static" disabled>
   <link rel="stylesheet" href="secret/css/secret2.css">
 </head>
 
@@ -28,9 +30,9 @@
     <div class="settings-dropdown" id="settingsDropdown">
       <div class="settings-item">
         <span>Theme</span>
-        <select>
-          <option>Animated</option>
-          <option>Static</option>
+        <select id="themeSelector">
+          <option value="animated">Animated</option>
+          <option value="static">Static</option>
         </select>
       </div>
 
@@ -97,6 +99,36 @@
   <script>
     const settingsBtn = document.getElementById('settingsBtn');
     const settingsDropdown = document.getElementById('settingsDropdown');
+    const themeSelector = document.getElementById('themeSelector');
+
+    const savedTheme = localStorage.getItem('theme') || 'animated';
+    themeSelector.value = savedTheme;
+    applyTheme(savedTheme);
+
+    function applyTheme(theme) {
+      const animatedStyleMain = document.getElementById('style-main-animated');
+      const animatedButtons = document.getElementById('buttons-animated');
+      const staticStyleMain = document.getElementById('style-main-static');
+      const staticButtons = document.getElementById('buttons-static');
+
+      if (theme === 'animated') {
+        animatedStyleMain.disabled = false;
+        animatedButtons.disabled = false;
+        staticStyleMain.disabled = true;
+        staticButtons.disabled = true;
+      } else {
+        animatedStyleMain.disabled = true;
+        animatedButtons.disabled = true;
+        staticStyleMain.disabled = false;
+        staticButtons.disabled = false;
+      }
+    }
+
+    themeSelector.addEventListener('change', (e) => {
+      const selectedTheme = e.target.value;
+      applyTheme(selectedTheme);
+      localStorage.setItem('theme', selectedTheme);
+    });
 
     settingsBtn.addEventListener('click', (e) => {
       e.stopPropagation();

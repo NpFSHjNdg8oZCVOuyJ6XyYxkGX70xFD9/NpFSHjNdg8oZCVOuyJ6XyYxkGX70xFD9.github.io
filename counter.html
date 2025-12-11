@@ -10,8 +10,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="CSS/style-main.css">
-    <link rel="stylesheet" href="CSS/buttons.css">
+    <!-- Animated Theme CSS -->
+    <link rel="stylesheet" href="CSS/style-main.css" id="style-main-animated">
+    <link rel="stylesheet" href="CSS/buttons.css" id="buttons-animated">
+    <!-- Static Theme CSS -->
+    <link rel="stylesheet" href="CSS/static/style-main-static.css" id="style-main-static" disabled>
+    <link rel="stylesheet" href="CSS/static/buttons-static.css" id="buttons-static" disabled>
     <link rel="stylesheet" href="CSS/puzzle-theme.css">
 </head>
 
@@ -30,7 +34,7 @@
         <label for="countdown">Time Remaining:</label>
         <input type="text" id="countdown" readonly>
         <br>
-        <button id="main">Return To Homepage</button> 
+        <button id="main">Return To Homepage</button>
     </section>
 
     <div id="live-wallpaper">
@@ -39,7 +43,17 @@
         </video>
     </div>
 
-<script src="Javascript/counter-main.js"></script>
-<script src="Javascript/Javascript-linking/counter_link.js"></script>
+    <script src="Javascript/counter-main.js"></script>
+    <script src="Javascript/Javascript-linking/counter_link.js"></script>
+    <script>
+        // Apply saved theme
+        const savedTheme = localStorage.getItem('theme') || 'animated';
+        if (savedTheme === 'static') {
+            document.getElementById('style-main-animated').disabled = true;
+            document.getElementById('buttons-animated').disabled = true;
+            document.getElementById('style-main-static').disabled = false;
+            document.getElementById('buttons-static').disabled = false;
+        }
+    </script>
 
 </body>

@@ -10,8 +10,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="CSS/buttons.css">
+    <!-- Animated Theme CSS -->
+    <link rel="stylesheet" href="CSS/style.css" id="style-animated">
+    <link rel="stylesheet" href="CSS/buttons.css" id="buttons-animated">
+    <!-- Static Theme CSS -->
+    <link rel="stylesheet" href="CSS/static/style-static.css" id="style-static" disabled>
+    <link rel="stylesheet" href="CSS/static/buttons-static.css" id="buttons-static" disabled>
 </head>
 
 <body>
@@ -48,8 +52,16 @@
         </video>
     </div>
 
-
-
+    <script>
+        // Apply saved theme
+        const savedTheme = localStorage.getItem('theme') || 'animated';
+        if (savedTheme === 'static') {
+            document.getElementById('style-animated').disabled = true;
+            document.getElementById('buttons-animated').disabled = true;
+            document.getElementById('style-static').disabled = false;
+            document.getElementById('buttons-static').disabled = false;
+        }
+    </script>
 
 </body>
 

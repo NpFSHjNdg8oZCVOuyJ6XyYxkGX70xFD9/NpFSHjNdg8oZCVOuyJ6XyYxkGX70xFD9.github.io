@@ -10,8 +10,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="CSS/about-me.css">
-    <link rel="stylesheet" href="CSS/buttons.css">
+    <!-- Animated Theme CSS -->
+    <link rel="stylesheet" href="CSS/about-me.css" id="about-me-animated">
+    <link rel="stylesheet" href="CSS/buttons.css" id="buttons-animated">
+    <!-- Static Theme CSS -->
+    <link rel="stylesheet" href="CSS/static/about-me-static.css" id="about-me-static" disabled>
+    <link rel="stylesheet" href="CSS/static/buttons-static.css" id="buttons-static" disabled>
     <link rel="stylesheet" href="secret/css/secret2.css">
 </head>
 
@@ -101,6 +105,21 @@
     <script src="Javascript/about-me.js"></script>
     <script src="Javascript/Javascript-linking/about-me_link.js"></script>
     <script src="secret/javascript/secret.js"></script>
+    <script>
+        // Apply saved theme
+        const savedTheme = localStorage.getItem('theme') || 'animated';
+        const animatedCSS = document.getElementById('about-me-animated');
+        const animatedButtons = document.getElementById('buttons-animated');
+        const staticCSS = document.getElementById('about-me-static');
+        const staticButtons = document.getElementById('buttons-static');
+
+        if (savedTheme === 'static') {
+            animatedCSS.disabled = true;
+            animatedButtons.disabled = true;
+            staticCSS.disabled = false;
+            staticButtons.disabled = false;
+        }
+    </script>
 
 </body>
 
