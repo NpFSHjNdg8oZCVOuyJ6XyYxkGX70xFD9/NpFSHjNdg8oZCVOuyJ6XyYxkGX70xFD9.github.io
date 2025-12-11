@@ -39,7 +39,7 @@
       <div class="settings-item">
         <span>Sound Effects</span>
         <label class="toggle-switch">
-          <input type="checkbox">
+          <input type="checkbox" id="soundToggle" checked>
           <span class="slider"></span>
         </label>
       </div>
@@ -88,63 +88,19 @@
   </div>
 
   <section id="audio">
-    <audio controls src="audio/beepbox.wav"></audio>
+    <h2>Audio Player</h2>
+    <audio controls id="audioPlayer" src="audio/beepbox.wav"></audio>
   </section>
+
+  <audio id="backgroundMusic" loop preload="auto">
+    <source src="audio/beepbox.wav" type="audio/wav">
+  </audio>
 
   <script src="Javascript/Javascript-linking/main_link.js"></script>
   <script src="Javascript/Javascript-linking/index_link.js"></script>
   <script src="secret/javascript/secret.js"></script>
   <script src="secret/javascript/secret2.js"></script>
-
-  <script>
-    const settingsBtn = document.getElementById('settingsBtn');
-    const settingsDropdown = document.getElementById('settingsDropdown');
-    const themeSelector = document.getElementById('themeSelector');
-
-    const savedTheme = localStorage.getItem('theme') || 'animated';
-    themeSelector.value = savedTheme;
-    applyTheme(savedTheme);
-
-    function applyTheme(theme) {
-      const animatedStyleMain = document.getElementById('style-main-animated');
-      const animatedButtons = document.getElementById('buttons-animated');
-      const staticStyleMain = document.getElementById('style-main-static');
-      const staticButtons = document.getElementById('buttons-static');
-
-      if (theme === 'animated') {
-        animatedStyleMain.disabled = false;
-        animatedButtons.disabled = false;
-        staticStyleMain.disabled = true;
-        staticButtons.disabled = true;
-      } else {
-        animatedStyleMain.disabled = true;
-        animatedButtons.disabled = true;
-        staticStyleMain.disabled = false;
-        staticButtons.disabled = false;
-      }
-    }
-
-    themeSelector.addEventListener('change', (e) => {
-      const selectedTheme = e.target.value;
-      applyTheme(selectedTheme);
-      localStorage.setItem('theme', selectedTheme);
-    });
-
-    settingsBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      settingsDropdown.classList.toggle('active');
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!settingsBtn.contains(e.target) && !settingsDropdown.contains(e.target)) {
-        settingsDropdown.classList.remove('active');
-      }
-    });
-
-    settingsDropdown.addEventListener('click', (e) => {
-      e.stopPropagation();
-    });
-  </script>
+  <script src="Javascript/main.js"></script>
 
 </body>
 
