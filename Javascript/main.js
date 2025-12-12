@@ -12,17 +12,30 @@ function applyTheme(theme) {
     const animatedButtons = document.getElementById('buttons-animated');
     const staticStyleMain = document.getElementById('style-main-static');
     const staticButtons = document.getElementById('buttons-static');
+    const flowStyleMain = document.getElementById('style-main-flow');
+    const flowButtons = document.getElementById('buttons-flow');
 
     if (theme === 'animated') {
         animatedStyleMain.disabled = false;
         animatedButtons.disabled = false;
         staticStyleMain.disabled = true;
         staticButtons.disabled = true;
-    } else {
+        flowStyleMain.disabled = true;
+        flowButtons.disabled = true;
+    } else if (theme === 'static') {
         animatedStyleMain.disabled = true;
         animatedButtons.disabled = true;
         staticStyleMain.disabled = false;
         staticButtons.disabled = false;
+        flowStyleMain.disabled = true;
+        flowButtons.disabled = true;
+    } else if (theme === 'flow') {
+        animatedStyleMain.disabled = true;
+        animatedButtons.disabled = true;
+        staticStyleMain.disabled = true;
+        staticButtons.disabled = true;
+        flowStyleMain.disabled = false;
+        flowButtons.disabled = false;
     }
 }
 
