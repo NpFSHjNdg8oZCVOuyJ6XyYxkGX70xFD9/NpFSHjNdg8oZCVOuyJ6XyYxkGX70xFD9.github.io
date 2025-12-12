@@ -131,29 +131,13 @@
         </video>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <button id="main">Return To Homepage</button>
-
+    <div style="text-align: center; margin: 3rem 0;">
+        <button id="main">Return To Homepage</button>
+    </div>
 
 
     <script src="Javascript/Javascript-linking/post-project_link.js"></script>
     <script>
-        // Apply saved theme
         const savedTheme = localStorage.getItem('theme') || 'animated';
         if (savedTheme === 'static') {
             document.getElementById('style-main-animated').disabled = true;
