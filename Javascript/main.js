@@ -84,7 +84,7 @@ if (canvas) {
         lines.push({
             angle: Math.random() * Math.PI * 2,
             radius: biasedRadius,
-            speed: 0.001 + Math.random() * 0.004,
+            speed: 0.001 + Math.random() * 0.003,
             o: 0.2 + Math.random() * 0.3
         });
     }
@@ -104,10 +104,10 @@ if (canvas) {
             const tangent = line.angle + 1.57;
 
             ctx.strokeStyle = `rgba(255,255,255,${line.o})`;
-            ctx.lineWidth = 0.5;
+            ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(x, y);
-            ctx.lineTo(x + Math.cos(tangent) * 15, y + Math.sin(tangent) * 15);
+            ctx.lineTo(x + Math.cos(tangent) * 21, y + Math.sin(tangent) * 21);
             ctx.stroke();
         }
 
