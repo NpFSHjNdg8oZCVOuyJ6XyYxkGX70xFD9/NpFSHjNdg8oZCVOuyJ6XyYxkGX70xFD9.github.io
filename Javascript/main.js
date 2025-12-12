@@ -64,7 +64,6 @@ settingsDropdown.addEventListener('click', (e) => {
     e.stopPropagation();
 });
 
-// flow theme background effect
 
 const canvas = document.getElementById('flow-bg');
 if (canvas) {
@@ -78,7 +77,7 @@ if (canvas) {
         height = canvas.height = window.innerHeight;
     });
 
-    const linesCount = 2000;
+    const linesCount = 4000;
     const lines = [];
 
     for (let i = 0; i < linesCount; i++) {
@@ -86,31 +85,53 @@ if (canvas) {
             x: Math.random() * width,
             y: Math.random() * height,
             angle: Math.random() * 2 * Math.PI,
-            speed: 0.3 + Math.random() * 0.5,
-            length: 20 + Math.random() * 30
+            speed: 0.15 + Math.random() * 0.3,
+            length: 10 + Math.random() * 20,
+            opacity: 0.2 + Math.random() * 0.4
         });
     }
 
-    function noise(x, y) {
-        return (Math.sin(x * 0.01) + Math.cos(y * 0.01));
+    function getSpiralAngle(x, y, time) {
+        const centerX = width / 2;
+        const centerY = height / 2;
+
+        const dx = x - centerX;
+        const dy = y - centerY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        const angleToCenter = Math.atan2(dy, dx);
+
+        const spiralAngle = angleToCenter + Math.PI / 2; 
+        const waveInfluence = Math.sin(distance * 0.01 + time * 0.001) * 0.3;
+
+        return spiralAngle + waveInfluence;
     }
+
+    let time = 0;
 
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, width, height);
 
     function animate() {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        time++;
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.015)';
         ctx.fillRect(0, 0, width, height);
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
-        ctx.lineWidth = 0.1;
 
         lines.forEach(line => {
-            const nx = noise(line.x, line.y);
-            const ny = noise(line.y, line.x);
-            line.angle += (nx + ny) * 0.002;
+            const targetAngle = getSpiralAngle(line.x, line.y, time);
+
+            let angleDiff = targetAngle - line.angle;
+            while (angleDiff > Math.PI) angleDiff -= 2 * Math.PI;
+            while (angleDiff < -Math.PI) angleDiff += 2 * Math.PI;
+
+            line.angle += angleDiff * 0.08;
 
             const x2 = line.x + Math.cos(line.angle) * line.length;
             const y2 = line.y + Math.sin(line.angle) * line.length;
+
+            ctx.strokeStyle = `rgba(255, 255, 255, ${line.opacity * 0.5})`;
+            ctx.lineWidth = 0.6;
+            ctx.lineCap = 'round';
 
             ctx.beginPath();
             ctx.moveTo(line.x, line.y);
