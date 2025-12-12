@@ -340,4 +340,6 @@ body {
 }
 
 #live-wallpaper,
-#bg-video,
+#bg-video {
+    display: none !important;
+}

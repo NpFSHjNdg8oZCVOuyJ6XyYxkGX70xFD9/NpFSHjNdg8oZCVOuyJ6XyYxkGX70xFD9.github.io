@@ -82,7 +82,7 @@ if (canvas) {
 
     function initializeCanvas() {
         canvasWidth = window.innerWidth;
-        canvasHeight = window.innerHeight;
+        canvasHeight = Math.max(document.documentElement.scrollHeight, window.innerHeight);
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
 

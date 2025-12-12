@@ -9,7 +9,10 @@ body {
 }
 
 #live-wallpaper,
-#bg-video,
+#bg-video {
+    display: none !important;
+}
+
 h1 {
     color: #ffffff;
     font-size: 56px;

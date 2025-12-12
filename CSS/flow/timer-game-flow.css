@@ -26,7 +26,10 @@ body {
 }
 
 #live-wallpaper,
-#bg-video,
+#bg-video {
+    display: none !important;
+}
+
 .game-container {
     width: 100%;
     height: 100%;
