@@ -68,51 +68,70 @@ settingsDropdown.addEventListener('click', (e) => {
 const canvas = document.getElementById('flow-bg');
 if (canvas) {
     const ctx = canvas.getContext('2d');
-    let w = canvas.width = window.innerWidth;
-    let h = canvas.height = window.innerHeight;
+
+    let canvasWidth = window.innerWidth;
+    let canvasHeight = window.innerHeight;
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
 
     window.addEventListener('resize', () => {
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight;
+        canvasWidth = window.innerWidth;
+        canvasHeight = window.innerHeight;
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
     });
 
-    const lines = [];
-    const maxRadius = Math.sqrt(w * w + h * h) / 2;
+    const flowingLines = [];
+    const screenDiagonal = Math.sqrt(canvasWidth * canvasWidth + canvasHeight * canvasHeight);
+    const maxDistanceFromCenter = screenDiagonal / 2;
+
     for (let i = 0; i < 5000; i++) {
-        const r = Math.random();
-        const biasedRadius = Math.pow(r, 0.4) * maxRadius;
-        lines.push({
-            angle: Math.random() * Math.PI * 2,
-            radius: biasedRadius,
-            speed: 0.001 + Math.random() * 0.003,
-            o: 0.2 + Math.random() * 0.3
+        const randomValue = Math.random();
+        const pushTowardsEdge = Math.pow(randomValue, 0.4);
+        const distanceFromCenter = pushTowardsEdge * maxDistanceFromCenter;
+        const startingAngle = Math.random() * 6.28;
+        const rotationSpeed = 0.001 + Math.random() * 0.003;
+        const opacity = 0.2 + Math.random() * 0.3;
+
+        flowingLines.push({
+            angle: startingAngle,
+            radius: distanceFromCenter,
+            speed: rotationSpeed,
+            opacity: opacity
         });
     }
 
-    ctx.fillRect(0, 0, w, h);
+    ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
-    function draw() {
+    function animateLines() {
         ctx.fillStyle = 'rgba(0,0,0,0.08)';
-        ctx.fillRect(0, 0, w, h);
+        ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
-        for (let line of lines) {
-            line.angle += line.speed;
+        const centerX = canvasWidth / 2;
+        const centerY = canvasHeight / 2;
 
-            const x = w / 2 + Math.cos(line.angle) * line.radius;
-            const y = h / 2 + Math.sin(line.angle) * line.radius;
+        for (let i = 0; i < flowingLines.length; i++) {
+            const line = flowingLines[i];
+            line.angle = line.angle + line.speed;
 
-            const tangent = line.angle + 1.57;
+            const lineX = centerX + Math.cos(line.angle) * line.radius;
+            const lineY = centerY + Math.sin(line.angle) * line.radius;
 
-            ctx.strokeStyle = `rgba(255,255,255,${line.o})`;
+            const lineDirection = line.angle + 1.57;
+            const lineLength = 21;
+            const endX = lineX + Math.cos(lineDirection) * lineLength;
+            const endY = lineY + Math.sin(lineDirection) * lineLength;
+
+            ctx.strokeStyle = 'rgba(255,255,255,' + line.opacity + ')';
             ctx.lineWidth = 0.8;
             ctx.beginPath();
-            ctx.moveTo(x, y);
-            ctx.lineTo(x + Math.cos(tangent) * 21, y + Math.sin(tangent) * 21);
+            ctx.moveTo(lineX, lineY);
+            ctx.lineTo(endX, endY);
             ctx.stroke();
         }
 
-        requestAnimationFrame(draw);
+        requestAnimationFrame(animateLines);
     }
 
-    draw();
+    animateLines();
 }
