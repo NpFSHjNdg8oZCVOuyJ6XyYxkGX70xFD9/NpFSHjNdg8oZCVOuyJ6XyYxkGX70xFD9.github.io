@@ -68,87 +68,52 @@ settingsDropdown.addEventListener('click', (e) => {
 const canvas = document.getElementById('flow-bg');
 if (canvas) {
     const ctx = canvas.getContext('2d');
-
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
+    let w = canvas.width = window.innerWidth;
+    let h = canvas.height = window.innerHeight;
 
     window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
     });
 
-    const linesCount = 4000;
     const lines = [];
-
-    for (let i = 0; i < linesCount; i++) {
+    for (let i = 0; i < 3000; i++) {
+        const x = Math.random() * w;
+        const y = Math.random() * h;
+        const dx = x - w / 2;
+        const dy = y - h / 2;
         lines.push({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            angle: Math.random() * 2 * Math.PI,
-            speed: 0.15 + Math.random() * 0.3,
-            length: 10 + Math.random() * 20,
-            opacity: 0.2 + Math.random() * 0.4
+            angle: Math.atan2(dy, dx),
+            radius: Math.sqrt(dx * dx + dy * dy),
+            speed: 0.001 + Math.random() * 0.002,
+            o: 0.2 + Math.random() * 0.3
         });
     }
 
-    function getSpiralAngle(x, y, time) {
-        const centerX = width / 2;
-        const centerY = height / 2;
+    ctx.fillRect(0, 0, w, h);
 
-        const dx = x - centerX;
-        const dy = y - centerY;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+    function draw() {
+        ctx.fillStyle = 'rgba(0,0,0,0.08)';
+        ctx.fillRect(0, 0, w, h);
 
-        const angleToCenter = Math.atan2(dy, dx);
+        for (let line of lines) {
+            line.angle += line.speed;
 
-        const spiralAngle = angleToCenter + Math.PI / 2;
-        const waveInfluence = Math.sin(distance * 0.01 + time * 0.001) * 0.3;
+            const x = w / 2 + Math.cos(line.angle) * line.radius;
+            const y = h / 2 + Math.sin(line.angle) * line.radius;
 
-        return spiralAngle + waveInfluence;
-    }
+            const tangent = line.angle + 1.57;
 
-    let time = 0;
-
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, width, height);
-
-    function animate() {
-        time++;
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
-        ctx.fillRect(0, 0, width, height);
-
-        lines.forEach(line => {
-            const targetAngle = getSpiralAngle(line.x, line.y, time);
-
-            let angleDiff = targetAngle - line.angle;
-            while (angleDiff > Math.PI) angleDiff -= 2 * Math.PI;
-            while (angleDiff < -Math.PI) angleDiff += 2 * Math.PI;
-
-            line.angle += angleDiff * 0.08;
-
-            const x2 = line.x + Math.cos(line.angle) * line.length;
-            const y2 = line.y + Math.sin(line.angle) * line.length;
-
-            ctx.strokeStyle = `rgba(255, 255, 255, ${line.opacity * 0.5})`;
-            ctx.lineWidth = 0.6;
-            ctx.lineCap = 'round';
-
+            ctx.strokeStyle = `rgba(255,255,255,${line.o})`;
+            ctx.lineWidth = 0.5;
             ctx.beginPath();
-            ctx.moveTo(line.x, line.y);
-            ctx.lineTo(x2, y2);
+            ctx.moveTo(x, y);
+            ctx.lineTo(x + Math.cos(tangent) * 15, y + Math.sin(tangent) * 15);
             ctx.stroke();
+        }
 
-            line.x += Math.cos(line.angle) * line.speed;
-            line.y += Math.sin(line.angle) * line.speed;
-
-            if (line.x < 0) line.x = width;
-            if (line.x > width) line.x = 0;
-            if (line.y < 0) line.y = height;
-            if (line.y > height) line.y = 0;
-        });
-
-        requestAnimationFrame(animate);
+        requestAnimationFrame(draw);
     }
 
-    animate();
+    draw();
 }
