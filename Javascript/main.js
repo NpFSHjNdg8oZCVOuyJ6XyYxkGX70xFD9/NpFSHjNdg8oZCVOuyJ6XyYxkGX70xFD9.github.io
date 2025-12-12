@@ -15,6 +15,7 @@ function applyTheme(theme) {
     const flowStyleMain = document.getElementById('style-main-flow');
     const flowButtons = document.getElementById('buttons-flow');
     const flowBgCss = document.getElementById('flow-bg-css');
+    const flowCanvas = document.getElementById('flow-bg');
 
     if (theme === 'animated') {
         animatedStyleMain.disabled = false;
@@ -24,6 +25,7 @@ function applyTheme(theme) {
         flowStyleMain.disabled = true;
         flowButtons.disabled = true;
         if (flowBgCss) flowBgCss.disabled = true;
+        if (flowCanvas) flowCanvas.style.display = 'none';
     } else if (theme === 'static') {
         animatedStyleMain.disabled = true;
         animatedButtons.disabled = true;
@@ -32,6 +34,7 @@ function applyTheme(theme) {
         flowStyleMain.disabled = true;
         flowButtons.disabled = true;
         if (flowBgCss) flowBgCss.disabled = true;
+        if (flowCanvas) flowCanvas.style.display = 'none';
     } else if (theme === 'flow') {
         animatedStyleMain.disabled = true;
         animatedButtons.disabled = true;
@@ -40,6 +43,7 @@ function applyTheme(theme) {
         flowStyleMain.disabled = false;
         flowButtons.disabled = false;
         if (flowBgCss) flowBgCss.disabled = false;
+        if (flowCanvas) flowCanvas.style.display = 'block';
     }
 }
 
