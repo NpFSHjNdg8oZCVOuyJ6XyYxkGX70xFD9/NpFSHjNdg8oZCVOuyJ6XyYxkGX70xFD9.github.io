@@ -43,7 +43,10 @@ function applyTheme(theme) {
         flowStyleMain.disabled = false;
         flowButtons.disabled = false;
         if (flowBgCss) flowBgCss.disabled = false;
-        if (flowCanvas) flowCanvas.style.display = 'block';
+        if (flowCanvas) {
+            flowCanvas.style.display = 'block';
+            if (window.resizeFlowCanvas) window.resizeFlowCanvas();
+        }
     }
 }
 
@@ -73,41 +76,55 @@ const canvas = document.getElementById('flow-bg');
 if (canvas) {
     const ctx = canvas.getContext('2d');
 
-    let canvasWidth = window.innerWidth;
-    let canvasHeight = window.innerHeight;
-    canvas.width = canvasWidth;
-    canvas.height = canvasHeight;
+    let canvasWidth, canvasHeight;
+    let flowingLines = [];
+    let isInitialized = false;
 
-    window.addEventListener('resize', () => {
+    function initializeCanvas() {
         canvasWidth = window.innerWidth;
         canvasHeight = window.innerHeight;
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
-    });
 
-    const flowingLines = [];
-    const screenDiagonal = Math.sqrt(canvasWidth * canvasWidth + canvasHeight * canvasHeight);
-    const maxDistanceFromCenter = screenDiagonal / 2;
+        flowingLines = [];
+        const screenDiagonal = Math.sqrt(canvasWidth * canvasWidth + canvasHeight * canvasHeight);
+        const maxDistanceFromCenter = screenDiagonal / 2;
 
-    for (let i = 0; i < 5000; i++) {
-        const randomValue = Math.random();
-        const pushTowardsEdge = Math.pow(randomValue, 0.4);
-        const distanceFromCenter = pushTowardsEdge * maxDistanceFromCenter;
-        const startingAngle = Math.random() * 6.28;
-        const rotationSpeed = 0.001 + Math.random() * 0.003;
-        const opacity = 0.2 + Math.random() * 0.3;
+        for (let i = 0; i < 5000; i++) {
+            const randomValue = Math.random();
+            const pushTowardsEdge = Math.pow(randomValue, 0.4);
+            const distanceFromCenter = pushTowardsEdge * maxDistanceFromCenter;
+            const startingAngle = Math.random() * 6.28;
+            const rotationSpeed = 0.001 + Math.random() * 0.003;
+            const opacity = 0.2 + Math.random() * 0.3;
 
-        flowingLines.push({
-            angle: startingAngle,
-            radius: distanceFromCenter,
-            speed: rotationSpeed,
-            opacity: opacity
-        });
+            flowingLines.push({
+                angle: startingAngle,
+                radius: distanceFromCenter,
+                speed: rotationSpeed,
+                opacity: opacity
+            });
+        }
+
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+        isInitialized = true;
     }
 
-    ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+    window.resizeFlowCanvas = function () {
+        if (canvas.style.display !== 'none') {
+            initializeCanvas();
+        }
+    };
+
+    window.addEventListener('resize', window.resizeFlowCanvas);
 
     function animateLines() {
+        if (!isInitialized || canvas.style.display === 'none') {
+            requestAnimationFrame(animateLines);
+            return;
+        }
+
         ctx.fillStyle = 'rgba(0,0,0,0.08)';
         ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
@@ -135,6 +152,10 @@ if (canvas) {
         }
 
         requestAnimationFrame(animateLines);
+    }
+
+    if (savedTheme === 'flow') {
+        initializeCanvas();
     }
 
     animateLines();

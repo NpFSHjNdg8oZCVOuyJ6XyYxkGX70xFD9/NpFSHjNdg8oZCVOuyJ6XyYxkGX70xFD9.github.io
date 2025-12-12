@@ -10,10 +10,6 @@ body {
 
 #live-wallpaper,
 #bg-video,
-#flow-bg {
-    display: none !important;
-}
-
 h1 {
     color: #ffffff;
     font-size: 56px;

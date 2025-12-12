@@ -27,10 +27,6 @@ body {
 
 #live-wallpaper,
 #bg-video,
-#flow-bg {
-    display: none !important;
-}
-
 .game-container {
     width: 100%;
     height: 100%;
