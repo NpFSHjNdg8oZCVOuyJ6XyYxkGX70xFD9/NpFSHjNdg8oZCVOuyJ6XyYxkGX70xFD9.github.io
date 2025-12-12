@@ -113,12 +113,11 @@ if (canvas) {
 
     window.resizeFlowCanvas = function () {
         if (canvas.style.display !== 'none') {
-            initializeCanvas();
+           initializeCanvas();
         }
     };
 
     window.addEventListener('resize', window.resizeFlowCanvas);
-
     function animateLines() {
         if (!isInitialized || canvas.style.display === 'none') {
             requestAnimationFrame(animateLines);
