@@ -101,7 +101,7 @@ if (canvas) {
 
         const angleToCenter = Math.atan2(dy, dx);
 
-        const spiralAngle = angleToCenter + Math.PI / 2; 
+        const spiralAngle = angleToCenter + Math.PI / 2;
         const waveInfluence = Math.sin(distance * 0.01 + time * 0.001) * 0.3;
 
         return spiralAngle + waveInfluence;
@@ -114,7 +114,7 @@ if (canvas) {
 
     function animate() {
         time++;
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.015)';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
         ctx.fillRect(0, 0, width, height);
 
         lines.forEach(line => {
