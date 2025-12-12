@@ -511,6 +511,12 @@ a:focus {
     }
 }
 
+#live-wallpaper,
+#bg-video,
+#flow-bg {
+    display: none !important;
+}
+
 a {
     position: relative;
     color: #e0e0e0;

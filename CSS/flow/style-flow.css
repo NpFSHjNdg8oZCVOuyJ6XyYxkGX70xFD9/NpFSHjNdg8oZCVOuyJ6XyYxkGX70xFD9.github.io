@@ -28,3 +28,9 @@ audio {
     backdrop-filter: blur(10px);
     border-radius: 50px;
 }
+
+#live-wallpaper,
+#bg-video,
+#flow-bg {
+    display: none !important;
+}

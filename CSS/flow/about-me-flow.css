@@ -338,3 +338,9 @@ body {
         transform: translateY(0);
     }
 }
+
+#live-wallpaper,
+#bg-video,
+#flow-bg {
+    display: none !important;
+}
