@@ -52,7 +52,8 @@ body {
 .overview,
 .computer-interests,
 .sports-interests,
-.favorite-games {
+.favorite-games,
+.values {
     padding: 2.5rem;
     background: var(--card-bg);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -71,7 +72,8 @@ body {
 .overview::before,
 .computer-interests::before,
 .sports-interests::before,
-.favorite-games::before {
+.favorite-games::before,
+.values::before {
     content: '';
     position: absolute;
     top: 0;
@@ -86,7 +88,8 @@ body {
 .overview:hover,
 .computer-interests:hover,
 .sports-interests:hover,
-.favorite-games:hover {
+.favorite-games:hover,
+.values:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.3);
@@ -96,14 +99,16 @@ body {
 .overview:hover::before,
 .computer-interests:hover::before,
 .sports-interests:hover::before,
-.favorite-games:hover::before {
+.favorite-games:hover::before,
+.values:hover::before {
     opacity: 1;
 }
 
 .overview h2,
 .computer-interests h2,
 .sports-interests h2,
-.favorite-games h2 {
+.favorite-games h2,
+.values h2 {
     margin: 0 0 1.5rem 0;
     font-size: 1.8rem;
     font-weight: 700;
@@ -114,14 +119,16 @@ body {
 .overview p,
 .computer-interests p,
 .sports-interests p,
-.favorite-games p {
+.favorite-games p,
+.values p {
     margin: 0 0 1rem 0;
 }
 
 .overview p:last-child,
 .computer-interests p:last-child,
 .sports-interests p:last-child,
-.favorite-games p:last-child {
+.favorite-games p:last-child,
+.values p:last-child {
     margin-bottom: 0;
 }
 
@@ -267,7 +274,8 @@ body {
     .overview,
     .computer-interests,
     .sports-interests,
-    .favorite-games {
+    .favorite-games,
+    .values {
         padding: 1.5rem;
         font-size: 1rem;
     }
@@ -275,7 +283,8 @@ body {
     .overview h2,
     .computer-interests h2,
     .sports-interests h2,
-    .favorite-games h2 {
+    .favorite-games h2,
+    .values h2 {
         font-size: 1.5rem;
     }
 
