@@ -512,8 +512,7 @@ a:focus {
 }
 
 #live-wallpaper,
-#bg-video,
-#flow-bg {
+#bg-video {
     display: none !important;
 }
 
