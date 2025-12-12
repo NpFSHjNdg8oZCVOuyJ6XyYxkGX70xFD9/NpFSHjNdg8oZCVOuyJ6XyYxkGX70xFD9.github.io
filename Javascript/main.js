@@ -77,15 +77,14 @@ if (canvas) {
     });
 
     const lines = [];
-    for (let i = 0; i < 3000; i++) {
-        const x = Math.random() * w;
-        const y = Math.random() * h;
-        const dx = x - w / 2;
-        const dy = y - h / 2;
+    const maxRadius = Math.sqrt(w * w + h * h) / 2;
+    for (let i = 0; i < 5000; i++) {
+        const r = Math.random();
+        const biasedRadius = Math.pow(r, 0.4) * maxRadius;
         lines.push({
-            angle: Math.atan2(dy, dx),
-            radius: Math.sqrt(dx * dx + dy * dy),
-            speed: 0.001 + Math.random() * 0.002,
+            angle: Math.random() * Math.PI * 2,
+            radius: biasedRadius,
+            speed: 0.001 + Math.random() * 0.004,
             o: 0.2 + Math.random() * 0.3
         });
     }
