@@ -31,7 +31,7 @@
     </button>
     <div class="settings-dropdown" id="settingsDropdown">
       <div class="settings-item">
-        <span>Theme</span>
+        <label for="themeSelector">Theme</label>
         <select id="themeSelector">
           <option value="animated">Animated</option>
           <option value="static">Static</option>
@@ -40,7 +40,7 @@
       </div>
 
       <div class="settings-item">
-        <span>Sound Effects</span>
+        <label for="soundToggle">Sound Effects</label>
         <label class="toggle-switch">
           <input type="checkbox" id="soundToggle" checked>
           <span class="slider"></span>
@@ -49,38 +49,40 @@
     </div>
   </div>
 
-  <h1 class="title">Reyaan's Website</h1>
-  <p> Welcome to my personal website! Here, you can find information about me, my hobbies, and some fun interactive
-    widgets to explore. Feel free to navigate through the sections using the buttons below.</p>
+  <main>
+    <h1 class="title">Reyaan's Website</h1>
+    <p> Welcome to my personal website! Here, you can find information about me, my hobbies, and some fun interactive
+      widgets to explore. Feel free to navigate through the sections using the buttons below.</p>
 
-  <nav>
-    <button id="about-me">About Me</button>
-    <button id="classlinks">Class Links</button>
-  </nav>
-
-  <section id="links">
-    <h2>Useful Links</h2>
-    <p>Here are some useful links you might find interesting:</p>
     <nav>
-      <a href="https://www.wikipedia.org" style="color:#FFFFFF;"> Wikipedia</a>
-      <br>
-      <a href="https://www.google.com" style="color:#FFFFFF;"> Google</a>
+      <button id="about-me">About Me</button>
+      <button id="classlinks">Class Links</button>
     </nav>
-  </section>
 
-  <section id="widgets">
-    <h2>Widgets</h2>
-    <p>Explore some interactive games and widgets:</p>
-    <button id="main">Counter</button>
-    <button id="clicker-game">Clicker Game</button>
-    <button id="timer-game">Timer Game</button>
-  </section>
+    <section id="links">
+      <h2>Useful Links</h2>
+      <p>Here are some useful links you might find interesting:</p>
+      <nav>
+        <a href="https://www.wikipedia.org" style="color:#FFFFFF;"> Wikipedia</a>
+        <br>
+        <a href="https://www.google.com" style="color:#FFFFFF;"> Google</a>
+      </nav>
+    </section>
 
-  <section id="post-project">
-    <h2>Post Project</h2>
-    <p>A post-project overview that explains why I made some design choices and the learning experience:</p>
-    <button id="post-project-btn">Post Project</button>
-  </section>
+    <section id="widgets">
+      <h2>Widgets</h2>
+      <p>Explore some interactive games and widgets:</p>
+      <button id="main">Counter</button>
+      <button id="clicker-game">Clicker Game</button>
+      <button id="timer-game">Timer Game</button>
+    </section>
+
+    <section id="post-project">
+      <h2>Post Project</h2>
+      <p>A post-project overview that explains why I made some design choices and the learning experience:</p>
+      <button id="post-project-btn">Post Project</button>
+    </section>
+  </main>
 
   <div id="live-wallpaper">
     <video autoplay muted loop preload="auto" id="bg-video">
