@@ -38,31 +38,18 @@
         <details class="dropdown">
             <summary>Design Choices</summary>
             <div class="dropdown-content">
-                <p>Throughout this project, I shuffled through multiple design choices. I experimented with different
-                    color schemes, layouts, and typography to find the best combination that balanced aesthetics and
-                    usability.
-                    Originally, my website had a black and red theme, but that seemed too harsh in my eyes. As a result,
-                    I switched to a softer black and white design. This was much easier on the eyes and provided a
-                    cleaner, professional look.
-                    As time went on, I strived to incorporate more unique design choices, which I did by adding a live
-                    video wallpaper background. But this had a major flaw - it made text borderline unreadable.
-                    To solve this, I implemented frosted glass effects using the CSS backdrop property, which blurred
-                    the background behind text sections, significantly improving readability while maintaining the
-                    dynamic and sleek feel of the video wallpaper. Despite this, I felt my website was too plain, choppy, and rough. To
-                    address this, I used CSS to create simple animations and transitions, adding smooth fades and
-                    movements to elements as users navigated the site.
-                    These animations created a more engaging and polished user experience. However, I realized that not everyone
-                    appreciates heavy animations, some users prefer simpler, cleaner interfaces, while others might experience
-                    performance issues on lower-end devices. This led me to develop a comprehensive three-theme system that gives
-                    users full control over their experience. The <strong>Animated theme</strong> features the live video wallpaper
-                    with frosted glass effects and CSS animations. The <strong>Static theme</strong> removes all animations and the
-                    video background, offering a lightweight, distraction-free experience perfect for accessibility and performance.
-                    The <strong>Flow theme</strong> showcases a custom-built canvas animation with 5,000 rotating lines that create
-                    a mesmerizing spiral effect, demonstrating advanced JavaScript and HTML5 canvas techniques.
-                    To make theme switching seamless, I implemented a settings dropdown menu accessible from any page, which uses
-                    localStorage to persist user preferences across sessions. I also added a sound effects toggle and background music
-                    feature, giving users even more customization options. This evolution from a single static design to a fully
-                    customizable, multi-theme experience represents the culmination of my vision for user-centric design.
+                <p>Throughout this project, I experimented with different color schemes, layouts, and typography to balance aesthetics and usability.
+                    Originally, my website had a black and red theme, but that seemed too harsh. I switched to a softer black and white design
+                    that was easier on the eyes and more professional.
+                    I then added a live video wallpaper background, but it made text borderline unreadable.
+                    To solve this, I implemented frosted glass effects using CSS backdrop property, which blurred
+                    the background behind text sections while maintaining the dynamic feel. I also added CSS animations and transitions for smooth fades and movements.
+                    Realizing not everyone appreciates heavy animations, I developed a comprehensive three-theme system.
+                    The <strong>Animated theme</strong> features the live video wallpaper with frosted glass effects and CSS animations.
+                    The <strong>Static theme</strong> removes all animations, offering a lightweight, distraction-free experience.
+                    The <strong>Flow theme</strong> showcases a custom canvas animation with 5,000 rotating lines creating a mesmerizing spiral effect.
+                    I implemented a settings dropdown menu using localStorage to persist user preferences across sessions, plus sound effects toggle and background music.
+                    This evolution from a single static design to a fully customizable, multi-theme experience represents my vision for user-centric design.
                 </p>
             </div>
         </details>
@@ -70,31 +57,19 @@
         <details class="dropdown">
             <summary>Technical Implementation</summary>
             <div class="dropdown-content">
-                <p class="content">This website uses HTML, CSS, and JavaScript with advanced features that demonstrate modern web development
-                    techniques. Originally, I barely even had a website, it was a singular, horribly styled webpage with elements all over the place.
-                    As time went on, I learned how to use JavaScript to link multiple pages together, creating a
-                    multi-page website structure. This allowed me to organize content better and provide a more seamless
-                    navigation experience for users.
-                    I also delved deeper into CSS, styling every microdetail to achieve perfection. While my website
-                    looked engaging, I wanted to make it <em>feel</em> engaging as well. To do this, I implemented a
-                    series of small games and widgets onto my website.
-                    My most notable widget is the clicker game, which features an upgrade system, automatic clicking mechanics,
-                    critical click multipliers, and game state persistence. This game not only provided an interactive element for
-                    users but also allowed me to develop, practice, refine, and showcase my JavaScript skills. There
-                    are also other widgets, such as a counter and timer game.
-                    The counter widget allows users to calculate the exact time until class ends by inputting the desired
-                    period and day. The timer game challenges users to click a moving button that increasingly speeds up
-                    and shrinks as difficulty increases.
-                    Beyond the games, I implemented a sophisticated theme system that dynamically swaps CSS stylesheets based on user
-                    selection. The three themes (Animated, Static, and Flow) each load different CSS files, controlled by enabling and
-                    disabling stylesheet links via JavaScript. User preferences are stored in localStorage, ensuring their chosen theme
-                    persists across page navigation and browser sessions. The Flow theme features a custom HTML5 canvas animation that
-                    renders 5,000 individual lines rotating around a central point with varying speeds and opacities, creating a dynamic
-                    spiral effect. This required understanding canvas rendering, animation loops using requestAnimationFrame, mathematical
-                    transformations with trigonometry, and performance optimization to handle thousands of elements smoothly.
-                    I also integrated audio functionality with background music and sound effects that users can toggle through the settings
-                    menu. The settings dropdown itself uses event propagation handling to close when clicking outside, and all settings sync
-                    across pages through localStorage.
+                <p class="content">This website uses HTML, CSS, and JavaScript with advanced features demonstrating modern web development.
+                    Originally just a horribly styled single webpage, I learned to use JavaScript to link multiple pages together,
+                    creating a multi-page structure with seamless navigation.
+                    I delved deeper into CSS, styling every microdetail. To make the site feel engaging, I implemented
+                    games and widgets. My clicker game features an upgrade system, automatic clicking mechanics,
+                    critical click multipliers, and game state persistence. The counter widget calculates exact time until class ends.
+                    The timer game challenges users to click a moving button that speeds up and shrinks.
+                    I implemented a sophisticated theme system that dynamically swaps CSS stylesheets based on user
+                    selection. User preferences are stored in localStorage, persisting across page navigation and sessions.
+                    The Flow theme features a custom HTML5 canvas animation rendering 5,000 individual lines rotating with varying speeds and opacities.
+                    This required understanding canvas rendering, requestAnimationFrame, trigonometry, and performance optimization.
+                    I integrated audio functionality with background music and sound effects togglable through the settings
+                    menu. The settings dropdown uses event propagation handling, and all settings sync across pages through localStorage.
                 </p>
             </div>
         </details>
@@ -102,61 +77,42 @@
         <details class="dropdown">
             <summary>Learning Experience</summary>
             <div class="dropdown-content">
-                <p class="content">This project has taught me invaluable lessons about modern web design, CSS animations, user experience,
-                    and most importantly, self-directed learning and problem-solving.
-                    I learned how to balance aesthetics with functionality, implement JavaScript to create a whole tree
-                    of webpages, and create a cohesive design system that works across multiple pages. As I developed my website, I
-                    felt an increasingly strong drive to further advance. But we only covered the basics in class, this severely limited the
-                    functionality of my website and prevented me from fulfilling my vision. I decided to take control and research advanced JavaScript and CSS
-                    concepts independently. While this would bring my website to its maximum potential, it also served as a massive bottleneck.
-                    Trying to understand advanced syntax and concepts like HTML5 canvas rendering, localStorage APIs, event delegation,
-                    CSS backdrop filters, and mathematical transformations for animations was extremely time-draining as well as mentally challenging.
-                    However, I managed to push past these obstacles and bring my site to its utmost potential.
-                    Learning to implement the Flow canvas animation was particularly enlightening. I had to grasp concepts like
-                    requestAnimationFrame for smooth 60fps animations, polar coordinates for circular motion, trigonometric functions
-                    (sine and cosine) for calculating positions, and optimization techniques to render thousands of elements without lag.
-                    I also learned about the browser's localStorage API for data persistence, dynamic stylesheet management, and event propagation
-                    to create the settings dropdown functionality. Understanding how to structure code for maintainability became crucial as
-                    my project grew, I organized separate CSS files for each theme and JavaScript files for each page's functionality.
-                    While I had the option of using AI to boost functionality, I figured that it would not truly help with my skills.
-                    I did use GitHub Copilot, but I limited it to creating code that I could understand, and if that wasn't an option, I had it
-                    explain everything in detail. This approach allowed me to develop my skills while also ensuring my ideas could be
-                    brought to life. Every feature I implemented, I made sure I understood the underlying mechanics and could explain how it works.
-                    This project transformed me from someone who could create basic static webpages into a developer capable of building
-                    complex, interactive, multi-themed web applications with persistent user preferences and advanced visual effects.</p>
+                <p class="content">This project taught me invaluable lessons about modern web design, CSS animations, user experience,
+                    and self-directed learning.
+                    I learned to balance aesthetics with functionality and create a cohesive design system across multiple pages.
+                    Class only covered the basics, severely limiting my website's functionality. I decided to research advanced JavaScript and CSS
+                    concepts independently. Understanding HTML5 canvas rendering, localStorage APIs, event delegation,
+                    CSS backdrop filters, and mathematical transformations was time-draining and mentally challenging, but I pushed through.
+                    Learning the Flow canvas animation was particularly enlightening. I grasped
+                    requestAnimationFrame for smooth animations, polar coordinates, trigonometric functions,
+                    and optimization techniques to render thousands of elements without lag.
+                    I learned localStorage for data persistence, dynamic stylesheet management, and event propagation.
+                    Code structure for maintainability became crucial as my project grew.
+                    While I used GitHub Copilot, I limited it to code I could understand, having it
+                    explain everything in detail. This approach developed my skills while bringing my ideas to life.
+                    This project transformed me from creating basic webpages to building
+                    complex, interactive, multi-themed applications with persistent preferences and advanced visual effects.</p>
             </div>
         </details>
 
         <details class="dropdown">
             <summary>Failures and Challenges</summary>
             <div class="dropdown-content">
-                <p class="content">Many errors, failures, and challenges arose throughout the development process. While some were
-                    minor, such as forgetting to link a JavaScript file to an HTML file, the majority stemmed from deeper
-                    misunderstandings of JavaScript and CSS concepts. GitHub Copilot played a significant role in debugging these errors, often
-                    highlighting mistakes I had overlooked. However, there were instances where Copilot's suggestions were incorrect, leading to
-                    further confusion and errors. In these cases, I had to rely on my own understanding and research to identify and fix the issues.
-                    One of the most significant challenges I faced was implementing the live video wallpaper background.
-                    It initially disrupted the layout and sometimes loaded after other content, causing glitches.
-                    Through research, I discovered the preload attribute, which ensured the video loaded
-                    smoothly and consistently, maintaining both functionality and a polished, dynamic appearance.
-                    Working with the live video background provided valuable learning opportunities. It required careful
-                    use of CSS z-index and positioning, reinforcing problem-solving, debugging, research skills, and the ability
-                    to balance aesthetics with usability.
-                    Implementing the three-theme system presented unique challenges. Initially, theme switching caused flickering and style conflicts
-                    because stylesheets weren't being properly disabled. I had to learn about the disabled property on link elements and ensure
-                    the theme application logic correctly toggled all relevant stylesheets. Getting the Flow canvas animation to work across all
-                    pages was particularly tricky, I had to handle canvas initialization, window resizing, and ensure the animation didn't run when
-                    the canvas was hidden to avoid wasting resources. Performance optimization became critical when rendering 5,000 animated lines;
-                    I had to use requestAnimationFrame instead of setInterval, optimize my rendering loop, and carefully manage canvas clearing
-                    with semi-transparent fills to create the trailing effect without performance degradation.
-                    localStorage also introduced unexpected challenges. I initially struggled with synchronizing theme changes across pages and
-                    ensuring settings persisted correctly. I learned that localStorage only stores strings, so any complex data structures would
-                    need JSON serialization. The settings dropdown required careful event handling to prevent it from closing when clicking inside
-                    it while still closing when clicking outside. This taught me about event propagation and stopPropagation().
-                    Audio implementation had its own hurdles. Browsers have autoplay policies that prevent audio from playing without user interaction,
-                    so I had to design the music system to respect these constraints. Managing audio state across pages required careful localStorage
-                    coordination. Throughout all these challenges, I learned that debugging complex systems requires patience, systematic testing,
-                    and often stepping away from the problem to approach it with fresh perspective. Each obstacle overcome made me a stronger developer.</p>
+                <p class="content">Many errors and challenges arose during development. While some were
+                    minor, like forgetting to link JavaScript files, the majority stemmed from deeper
+                    misunderstandings of JavaScript and CSS concepts. GitHub Copilot helped debug errors, but sometimes gave incorrect suggestions.
+                    In those cases, I relied on my own understanding and research.
+                    A significant challenge was implementing the live video wallpaper background.
+                    It initially disrupted the layout and loaded after other content, causing glitches.
+                    Through research, I discovered the preload attribute, ensuring smooth loading.
+                    Implementing the three-theme system presented unique challenges. Theme switching caused flickering and style conflicts
+                    because stylesheets weren't properly disabled. I learned about the disabled property on link elements.
+                    Getting the Flow canvas animation to work across pages was tricky—I had to handle canvas initialization, window resizing,
+                    and ensure the animation didn't run when hidden to avoid wasting resources. Performance optimization became critical when rendering 5,000 lines;
+                    I used requestAnimationFrame, optimized my rendering loop, and managed canvas clearing with semi-transparent fills.
+                    localStorage introduced unexpected challenges. I struggled with synchronizing theme changes across pages. The settings dropdown required careful event handling
+                    using stopPropagation(). Audio implementation had its own hurdles with browser autoplay policies.
+                    Throughout these challenges, I learned that debugging requires patience, systematic testing, and fresh perspective.</p>
             </div>
         </details>
     </div>
