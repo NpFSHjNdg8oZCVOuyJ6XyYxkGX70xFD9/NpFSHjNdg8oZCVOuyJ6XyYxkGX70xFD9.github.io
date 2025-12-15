@@ -396,6 +396,71 @@ a:focus {
     outline-offset: 4px;
 }
 
+label {
+    display: block;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 1.5rem 0 0.5rem;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-family: 'Zalando Sans Expanded', sans-serif;
+}
+
+input[type="text"] {
+    width: 100%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: var(--text);
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    backdrop-filter: blur(10px);
+}
+
+input[type="text"]:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+}
+
+input[type="text"]:read-only {
+    background: rgba(255, 255, 255, 0.05);
+    cursor: default;
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+input[type="text"]:read-only:focus {
+    transform: none;
+    box-shadow: none;
+}
+
+section#day-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section#day-form button {
+    margin: 1.5rem 0.5rem;
+}
+
 @media (max-width: 768px) {
     .title {
         font-size: 3rem;

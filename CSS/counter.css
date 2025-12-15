@@ -1,0 +1,48 @@
+label {
+    display: block;
+    text-align: center;
+    margin: 1.5rem 0 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+input {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    color: white;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+input[readonly] {
+    background: rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+#day-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#day-form button {
+    margin: 1.5rem 0.5rem;
+}
