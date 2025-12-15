@@ -22,11 +22,6 @@
     <link rel="stylesheet" href="CSS/static/style-main-static.css" id="style-main-static" disabled>
     <link rel="stylesheet" href="CSS/static/style-post-project-static.css" id="style-post-project-static" disabled>
     <link rel="stylesheet" href="CSS/static/buttons-static.css" id="buttons-static" disabled>
-    <!-- Flow Theme CSS -->
-    <link rel="stylesheet" href="CSS/flow/style-main-flow.css" id="style-main-flow" disabled>
-    <link rel="stylesheet" href="CSS/flow/style-post-project-flow.css" id="style-post-project-flow" disabled>
-    <link rel="stylesheet" href="CSS/flow/buttons-flow.css" id="buttons-flow" disabled>
-    <link rel="stylesheet" href="CSS/flow/flow-bg.css" id="flow-bg-css" disabled>
 </head>
 
 <body>
@@ -44,12 +39,11 @@
                     I then added a live video wallpaper background, but it made text borderline unreadable.
                     To solve this, I implemented frosted glass effects using CSS backdrop property, which blurred
                     the background behind text sections while maintaining the dynamic feel. I also added CSS animations and transitions for smooth fades and movements.
-                    Realizing not everyone appreciates heavy animations, I developed a comprehensive three-theme system.
+                    Realizing not everyone appreciates heavy animations, I developed a two-theme system.
                     The <strong>Animated theme</strong> features the live video wallpaper with frosted glass effects and CSS animations.
                     The <strong>Static theme</strong> removes all animations, offering a lightweight, distraction-free experience.
-                    The <strong>Flow theme</strong> showcases a custom canvas animation with 5,000 rotating lines creating a mesmerizing spiral effect.
                     I implemented a settings dropdown menu using localStorage to persist user preferences across sessions, plus sound effects toggle and background music.
-                    This evolution from a single static design to a fully customizable, multi-theme experience represents my vision for user-centric design.
+                    This evolution from a single static design to a fully customizable experience represents my vision for user-centric design.
                 </p>
             </div>
         </details>
@@ -66,8 +60,6 @@
                     The timer game challenges users to click a moving button that speeds up and shrinks.
                     I implemented a sophisticated theme system that dynamically swaps CSS stylesheets based on user
                     selection. User preferences are stored in localStorage, persisting across page navigation and sessions.
-                    The Flow theme features a custom HTML5 canvas animation rendering 5,000 individual lines rotating with varying speeds and opacities.
-                    This required understanding canvas rendering, requestAnimationFrame, trigonometry, and performance optimization.
                     I integrated audio functionality with background music and sound effects togglable through the settings
                     menu. The settings dropdown uses event propagation handling, and all settings sync across pages through localStorage.
                 </p>
@@ -83,9 +75,6 @@
                     Class only covered the basics, severely limiting my website's functionality. I decided to research advanced JavaScript and CSS
                     concepts independently. Understanding HTML5 canvas rendering, localStorage APIs, event delegation,
                     CSS backdrop filters, and mathematical transformations was time-draining and mentally challenging, but I pushed through.
-                    Learning the Flow canvas animation was particularly enlightening. I grasped
-                    requestAnimationFrame for smooth animations, polar coordinates, trigonometric functions,
-                    and optimization techniques to render thousands of elements without lag.
                     I learned localStorage for data persistence, dynamic stylesheet management, and event propagation.
                     Code structure for maintainability became crucial as my project grew.
                     While I used GitHub Copilot, I limited it to code I could understand, having it
@@ -105,11 +94,8 @@
                     A significant challenge was implementing the live video wallpaper background.
                     It initially disrupted the layout and loaded after other content, causing glitches.
                     Through research, I discovered the preload attribute, ensuring smooth loading.
-                    Implementing the three-theme system presented unique challenges. Theme switching caused flickering and style conflicts
+                    Implementing the two-theme system presented unique challenges. Theme switching caused flickering and style conflicts
                     because stylesheets weren't properly disabled. I learned about the disabled property on link elements.
-                    Getting the Flow canvas animation to work across pages was tricky—I had to handle canvas initialization, window resizing,
-                    and ensure the animation didn't run when hidden to avoid wasting resources. Performance optimization became critical when rendering 5,000 lines;
-                    I used requestAnimationFrame, optimized my rendering loop, and managed canvas clearing with semi-transparent fills.
                     localStorage introduced unexpected challenges. I struggled with synchronizing theme changes across pages. The settings dropdown required careful event handling
                     using stopPropagation(). Audio implementation had its own hurdles with browser autoplay policies.
                     Throughout these challenges, I learned that debugging requires patience, systematic testing, and fresh perspective.</p>
@@ -123,8 +109,6 @@
         </video>
     </div>
 
-    <canvas id="flow-bg" style="display: none;"></canvas>
-
     <div style="text-align: center; margin: 3rem 0;">
         <button id="main">Return To Homepage</button>
     </div>
@@ -133,8 +117,6 @@
     <script src="Javascript/Javascript-linking/post-project_link.js"></script>
     <script>
         const savedTheme = localStorage.getItem('theme') || 'animated';
-        const flowBgCss = document.getElementById('flow-bg-css');
-        const flowCanvas = document.getElementById('flow-bg');
 
         if (savedTheme === 'static') {
             document.getElementById('style-main-animated').disabled = true;
@@ -143,92 +125,6 @@
             document.getElementById('style-main-static').disabled = false;
             document.getElementById('style-post-project-static').disabled = false;
             document.getElementById('buttons-static').disabled = false;
-            document.getElementById('style-main-flow').disabled = true;
-            document.getElementById('style-post-project-flow').disabled = true;
-            document.getElementById('buttons-flow').disabled = true;
-            if (flowBgCss) flowBgCss.disabled = true;
-            if (flowCanvas) flowCanvas.style.display = 'none';
-        } else if (savedTheme === 'flow') {
-            document.getElementById('style-main-animated').disabled = true;
-            document.getElementById('style-post-project-animated').disabled = true;
-            document.getElementById('buttons-animated').disabled = true;
-            document.getElementById('style-main-static').disabled = true;
-            document.getElementById('style-post-project-static').disabled = true;
-            document.getElementById('buttons-static').disabled = true;
-            document.getElementById('style-main-flow').disabled = false;
-            document.getElementById('style-post-project-flow').disabled = false;
-            document.getElementById('buttons-flow').disabled = false;
-            if (flowBgCss) flowBgCss.disabled = false;
-            if (flowCanvas) flowCanvas.style.display = 'block';
-        } else {
-            if (flowBgCss) flowBgCss.disabled = true;
-            if (flowCanvas) flowCanvas.style.display = 'none';
-        }
-
-        // Flow animation code
-        const canvas = document.getElementById('flow-bg');
-        if (canvas) {
-            const ctx = canvas.getContext('2d');
-            let canvasWidth, canvasHeight;
-            let flowingLines = [];
-            let isInitialized = false;
-
-            function initializeCanvas() {
-                canvasWidth = window.innerWidth;
-                canvasHeight = Math.max(document.documentElement.scrollHeight, window.innerHeight);
-                canvas.width = canvasWidth;
-                canvas.height = canvasHeight;
-                flowingLines = [];
-                const screenDiagonal = Math.sqrt(canvasWidth * canvasWidth + canvasHeight * canvasHeight);
-                const maxDistanceFromCenter = screenDiagonal / 2;
-                for (let i = 0; i < 5000; i++) {
-                    const randomValue = Math.random();
-                    const pushTowardsEdge = Math.pow(randomValue, 0.4);
-                    const distanceFromCenter = pushTowardsEdge * maxDistanceFromCenter;
-                    const startingAngle = Math.random() * 6.28;
-                    const rotationSpeed = 0.001 + Math.random() * 0.003;
-                    const opacity = 0.2 + Math.random() * 0.3;
-                    flowingLines.push({ angle: startingAngle, radius: distanceFromCenter, speed: rotationSpeed, opacity: opacity });
-                }
-                ctx.fillStyle = 'black';
-                ctx.fillRect(0, 0, canvasWidth, canvasHeight);
-                isInitialized = true;
-            }
-
-            window.addEventListener('resize', function () {
-                if (canvas.style.display !== 'none') initializeCanvas();
-            });
-
-            function animateLines() {
-                if (!isInitialized || canvas.style.display === 'none') {
-                    requestAnimationFrame(animateLines);
-                    return;
-                }
-                ctx.fillStyle = 'rgba(0,0,0,0.08)';
-                ctx.fillRect(0, 0, canvasWidth, canvasHeight);
-                const centerX = canvasWidth / 2;
-                const centerY = canvasHeight / 2;
-                for (let i = 0; i < flowingLines.length; i++) {
-                    const line = flowingLines[i];
-                    line.angle = line.angle + line.speed;
-                    const lineX = centerX + Math.cos(line.angle) * line.radius;
-                    const lineY = centerY + Math.sin(line.angle) * line.radius;
-                    const lineDirection = line.angle + 1.57;
-                    const lineLength = 21;
-                    const endX = lineX + Math.cos(lineDirection) * lineLength;
-                    const endY = lineY + Math.sin(lineDirection) * lineLength;
-                    ctx.strokeStyle = 'rgba(255,255,255,' + line.opacity + ')';
-                    ctx.lineWidth = 0.8;
-                    ctx.beginPath();
-                    ctx.moveTo(lineX, lineY);
-                    ctx.lineTo(endX, endY);
-                    ctx.stroke();
-                }
-                requestAnimationFrame(animateLines);
-            }
-
-            if (savedTheme === 'flow') initializeCanvas();
-            animateLines();
         }
     </script>
 
