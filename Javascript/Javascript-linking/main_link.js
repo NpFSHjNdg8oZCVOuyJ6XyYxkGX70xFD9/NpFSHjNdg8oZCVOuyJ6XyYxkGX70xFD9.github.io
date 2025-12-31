@@ -10,10 +10,6 @@ document.getElementById("clicker-game").onclick = function () {
     window.location.href = "./clicker-game.html";
 }
 
-document.getElementById("timer-game").onclick = function () {
-    window.location.href = "./timer-game.html";
-}
-
 document.getElementById("about-me").onclick = function () {
     window.location.href = "./about-me.html";
 }
