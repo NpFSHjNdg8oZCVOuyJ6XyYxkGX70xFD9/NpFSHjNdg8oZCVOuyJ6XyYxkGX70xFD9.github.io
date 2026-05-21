@@ -12,9 +12,20 @@ body {
     align-items: center;
 }
 
-.buttons {
+.button-container {
     display: flex;
+    justify-content: center;
     gap: 200px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .button {
