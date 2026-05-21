@@ -7,4 +7,25 @@ body {
 	background-repeat: no-repeat;
 	font-family: sans-serif;
 	color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    gap: 200px;
+}
+
+.button {
+    background-color: #ff6a00;
+    border: 1px solid #ff9a2e;
+    color: white;
+    padding: 10px 20px;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
 }
