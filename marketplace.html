@@ -7,10 +7,58 @@
     <link rel="stylesheet" href="CSS/marketplace.css">
 </head>
 <body>
-    
+    <main>
+        <div class="tabs">
+            <button class="tab" data-category="cases">Cases</button>
+            <button class="tab" data-category="skins">Skins</button>
+        </div>
 
+        <div id="cases" class="items category">
+            <div class="item">
+                <img src="Assets/Cases/kilowatt-case.png" alt="Kilowatt Case">
+                <div class="info">
+                    <h3>Kilowatt Case</h3>
+                    <p class="price">$3.00</p>
+                    <button>Buy</button>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Assets/Cases/gallery-case.png" alt="Gallery Case">
+                <div class="info">
+                    <h3>Gallery Case</h3>
+                    <p class="price">$3.00</p>
+                    <button>Buy</button>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Assets/Cases/fever-case.png" alt="Fever Case">
+                <div class="info">
+                    <h3>Fever Case</h3>
+                    <p class="price">$3.00</p>
+                    <button>Buy</button>
+                </div>
+            </div>
+        </div>
 
-
-
+        <div id="skins" class="items category" style="display: none;">
+             <div class="item">
+                <img src="Assets/Items/ak47.png" alt="AK-47 | Redline">
+                <div class="info">
+                    <h3>AK-47 | Redline</h3>
+                    <p class="price">$15.50</p>
+                    <button>Buy</button>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Assets/Items/awp.png" alt="AWP | Dragon Lore">
+                <div class="info">
+                    <h3>AWP | Dragon Lore</h3>
+                    <p class="price">$4,500.00</p>
+                    <button>Buy</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="JS/main.js"></script>
 </body>
 </html>
