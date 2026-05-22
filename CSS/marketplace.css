@@ -64,6 +64,8 @@ h1 {
     padding: 15px;
     text-align: center;
     width: 150px;
+    display: flex;
+    flex-direction: column;
 }
 
 .item img {
@@ -72,9 +74,16 @@ h1 {
     margin-bottom: 10px;
 }
 
+.info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
 .info h3 {
     margin: 0 0 10px 0;
     font-size: 1em;
+    flex-grow: 1;
 }
 
 .info .price {
@@ -91,6 +100,7 @@ h1 {
     padding: 10px 15px;
     cursor: pointer;
     width: 100%;
+    margin-top: auto;
 }
 
 .item button:hover {
