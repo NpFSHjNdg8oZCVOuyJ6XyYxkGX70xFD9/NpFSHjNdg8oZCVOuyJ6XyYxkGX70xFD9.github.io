@@ -29,14 +29,25 @@ body {
 }
 
 .button {
-    background-color: #ff6a00;
-    border: 1px solid #ff9a2e;
-    color: white;
-    padding: 10px 20px;
+    background-color: rgba(10, 10, 10, 0.75);
+    border: 1px solid #f79f24;
+    color: #f79f24;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 8px;
-    display: flex;
+    border-radius: 2px;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.button:hover {
+    background-color: #f79f24;
+    color: #0a0a0a;
+    box-shadow: 0 0 10px #f79f24;
 }
