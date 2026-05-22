@@ -93,6 +93,12 @@ h1 {
     margin-bottom: 15px;
 }
 
+.wear-rating {
+    font-size: 0.9em;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
 .item button {
     background-color: #4caf50;
     color: white;
