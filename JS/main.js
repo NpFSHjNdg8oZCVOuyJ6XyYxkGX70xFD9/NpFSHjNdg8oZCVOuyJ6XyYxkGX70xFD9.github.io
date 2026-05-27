@@ -34,14 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const cleanedText = priceText.replace('$', '').replace(',', '');
       const price = Number(cleanedText);
 
-      if (money >= price) {
-        money = money - price;
-        moneyDisplay.innerText = 'Money: $' + money;
-        alert('Item purchased!');
-      } else {
-        alert('Not enough money!');
-      }
-
     });
   });
 
