@@ -13,12 +13,34 @@
     </div>
 
     <div class="inventory-grid" id="inventory-items">
-        
+
     </div>
 
     <script> 
         document.getElementById("return-button").addEventListener("click", function() {
             window.location.href = "index.html";
+        }); 
+    </script>
+
+    <script>         
+        const inventoryItems = document.getElementById('inventory-items');
+        const inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
+
+        if (inventory.length === 0) {
+            inventoryItems.innerHTML = '<p>no skins lol loser</p>';
+        }
+
+        inventory.forEach(function (skin) {
+            const div = document.createElement('div');
+            div.classList.add('item');
+            div.innerHTML =
+                '<img src="' + skin.image + '" alt="' + skin.name + '">' +
+                '<div class="info">' +
+                '<h3>' + skin.name + '</h3>' +
+                '<p class="wear-rating">' + skin.wear + '</p>' +
+                '<p class="price">$' + skin.price + '</p>' +
+                '</div>';
+            inventoryItems.appendChild(div);
         }); 
     </script>
 </body>
