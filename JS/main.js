@@ -47,13 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
         inventory.push({ name: skinName, image: skinImage, wear: skinWear, price: price });
         localStorage.setItem('inventory', JSON.stringify(inventory));
+        }
 
-        alert(skinName + ' purchased!');
-      } else {
-        alert('Not enough money!');
-      }
-
-    });
+      });
   });
 
 });
