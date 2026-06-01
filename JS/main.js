@@ -1,18 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-  const tabs = document.querySelectorAll('.tab');
-  const categories = document.querySelectorAll('.category');
+  let tabs = document.querySelectorAll('.tab');
+  let categories = document.querySelectorAll('.category');
 
   tabs.forEach(function(tab) {
     tab.addEventListener('click', function() {
+      
       categories.forEach(function(category) {
         category.style.display = 'none';
       });
+
       tabs.forEach(function(t) {
         t.classList.remove('active');
       });
 
-      document.getElementById(tab.dataset.category).style.display = 'flex';
+      let categoryId = tab.dataset.category;
+      document.getElementById(categoryId).style.display = 'flex';
       tab.classList.add('active');
     });
   });
@@ -21,35 +24,56 @@ document.addEventListener('DOMContentLoaded', function() {
     tabs[0].click();
   }
 
-  let money = Number(localStorage.getItem('money') || 10000);
-  const moneyDisplay = document.getElementById('money-display');
+  let moneyString = localStorage.getItem('money');
+  let money = 10000;
+  
+  if (moneyString !== null) {
+      money = Number(moneyString);
+  }
+
+  let moneyDisplay = document.getElementById('money-display');
   moneyDisplay.innerText = 'Money: $' + money;
 
-  const buyButtons = document.querySelectorAll('.item button');
+  let buyButtons = document.querySelectorAll('.item button');
 
   buyButtons.forEach(function(button) {
     button.addEventListener('click', function() {
-
-      const priceElement = button.parentElement.querySelector('.price');
-      const priceText = priceElement.innerText;
-      const cleanedText = priceText.replace('$', '').replace(',', '');
-      const price = Number(cleanedText);
-
-      const skinName = button.parentElement.querySelector('h3').innerText;
-      const skinImage = button.closest('.item').querySelector('img').src;
-      const skinWear = button.parentElement.querySelector('.wear-rating').innerText;
+      
+      let itemBox = button.closest('.item');
+      
+      let priceText = itemBox.querySelector('.price').innerText;
+      priceText = priceText.replace('$', '');
+      priceText = priceText.replace(',', '');
+      let price = Number(priceText);
 
       if (money >= price) {
+        
         money = money - price;
-        moneyDisplay.innerText = 'Money: $' + money;
         localStorage.setItem('money', money);
+        moneyDisplay.innerText = 'Money: $' + money;
 
-        let inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
-        inventory.push({ name: skinName, image: skinImage, wear: skinWear, price: price });
-        localStorage.setItem('inventory', JSON.stringify(inventory));
+        let skinName = itemBox.querySelector('h3').innerText;
+        let skinImage = itemBox.querySelector('img').src;
+        let skinWear = itemBox.querySelector('.wear-rating').innerText;
+
+        let inventoryString = localStorage.getItem('inventory');
+        let inventory = [];
+        
+        if (inventoryString !== null) {
+            inventory = JSON.parse(inventoryString);
         }
 
-      });
+        let newItem = {
+            name: skinName,
+            image: skinImage,
+            wear: skinWear,
+            price: price
+        };
+        
+        inventory.push(newItem);
+        localStorage.setItem('inventory', JSON.stringify(inventory));
+      }
+    });
   });
 
 });
