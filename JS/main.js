@@ -1,34 +1,32 @@
-document.addEventListener('DOMContentLoaded', function() {
+window.onload = function() {
 
   let tabs = document.querySelectorAll('.tab');
   let categories = document.querySelectorAll('.category');
 
-  tabs.forEach(function(tab) {
-    tab.addEventListener('click', function() {
+  for (let i = 0; i < tabs.length; i++) {
+    tabs[i].onclick = function() {
       
-      categories.forEach(function(category) {
-        category.style.display = 'none';
-      });
+      for (let j = 0; j < categories.length; j++) {
+        categories[j].style.display = 'none';
+      }
 
-      tabs.forEach(function(t) {
-        t.classList.remove('active');
-      });
+      for (let j = 0; j < tabs.length; j++) {
+        tabs[j].className = 'tab';
+      }
 
-      let categoryId = tab.dataset.category;
+      let categoryId = tabs[i].getAttribute('data-category');
       document.getElementById(categoryId).style.display = 'flex';
-      tab.classList.add('active');
-    });
-  });
-
-  if (tabs.length > 0) {
-    tabs[0].click();
+      tabs[i].className = 'tab active';
+    };
   }
 
-  let moneyString = localStorage.getItem('money');
+  if (tabs.length > 0) {
+    tabs[0].onclick();
+  }
+
   let money = 10000;
-  
-  if (moneyString !== null) {
-      money = Number(moneyString);
+  if (localStorage.getItem('money')) {
+      money = parseInt(localStorage.getItem('money'));
   }
 
   let moneyDisplay = document.getElementById('money-display');
@@ -36,15 +34,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
   let buyButtons = document.querySelectorAll('.item button');
 
-  buyButtons.forEach(function(button) {
-    button.addEventListener('click', function() {
+  for (let i = 0; i < buyButtons.length; i++) {
+    buyButtons[i].onclick = function() {
       
-      let itemBox = button.closest('.item');
+      let itemBox = buyButtons[i].closest('.item');
       
       let priceText = itemBox.querySelector('.price').innerText;
       priceText = priceText.replace('$', '');
       priceText = priceText.replace(',', '');
-      let price = Number(priceText);
+      let price = parseInt(priceText);
 
       if (money >= price) {
         
@@ -56,24 +54,21 @@ document.addEventListener('DOMContentLoaded', function() {
         let skinImage = itemBox.querySelector('img').src;
         let skinWear = itemBox.querySelector('.wear-rating').innerText;
 
-        let inventoryString = localStorage.getItem('inventory');
         let inventory = [];
-        
-        if (inventoryString !== null) {
-            inventory = JSON.parse(inventoryString);
+        if (localStorage.getItem('inventory')) {
+            inventory = JSON.parse(localStorage.getItem('inventory'));
         }
 
-        let newItem = {
+        inventory.push({
             name: skinName,
             image: skinImage,
             wear: skinWear,
             price: price
-        };
+        });
         
-        inventory.push(newItem);
         localStorage.setItem('inventory', JSON.stringify(inventory));
       }
-    });
-  });
+    };
+  }
 
-});
+};
