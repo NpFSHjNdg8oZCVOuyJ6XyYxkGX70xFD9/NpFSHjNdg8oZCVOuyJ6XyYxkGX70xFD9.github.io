@@ -1,22 +1,33 @@
-document.addEventListener("DOMContentLoaded", function() {
+window.onload = function() {
     const caseInventory = document.getElementById('case-inventory');
-    const inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
+    const inventoryString = localStorage.getItem('inventory');
+    
+    let inventory = [];
+    if (inventoryString) {
+        inventory = JSON.parse(inventoryString);
+    }
 
-    const cases = inventory.filter(item => item.name.toLowerCase().includes('case'));
+    let html = "";
 
-    if (cases.length === 0) {
+    for (let i = 0; i < inventory.length; i++) {
+        let item = inventory[i];
+        
+        if (item.name.includes("Case")) {
+            html += `
+                <div class="item">
+                    <img src="${item.image}">
+                    <div class="info">
+                        <h3>${item.name}</h3>
+                        <button class="open-case-button">Open Case</button>
+                    </div>
+                </div>
+            `;
+        }
+    }
+
+    if (html === "") {
         caseInventory.innerHTML = '<p>You have no cases. Go to the marketplace to buy some!</p>';
     } else {
-        cases.forEach(function (caseItem, index) {
-            const div = document.createElement('div');
-            div.classList.add('item');
-            div.innerHTML =
-                '<img src="' + caseItem.image + '" alt="' + caseItem.name + '">' +
-                '<div class="info">' +
-                '<h3>' + caseItem.name + '</h3>' +
-                '<button class="open-case-button">Open Case</button>' +
-                '</div>';
-            caseInventory.appendChild(div);
-        });
+        caseInventory.innerHTML = html;
     }
-});
+};
