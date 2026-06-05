@@ -31,7 +31,56 @@ function openCase(i) {
     inv.splice(i, 1);
     
     let pool = caseSkins[caseName];
-    let skin = pool[Math.floor(Math.random() * pool.length)];
+    let skin = null;
+    let expensive = [];
+    let cheap = [];
+
+    for (let i = 0; i < pool.length; i++) {
+        if (pool[i].price >= 5000) {
+            expensive.push(pool[i]);
+        } else {
+         cheap.push(pool[i]);
+        }
+    }
+
+    let skinList = cheap;
+        if (cheap.length == 0) {
+        skinList = pool;
+    }
+
+    let gotRare = false;
+    if (expensive.length > 0) {
+        let chance = Math.random();
+        if (chance < 0.004) {
+            gotRare = true;
+        }
+    }
+
+    if (gotRare == true) {
+        let randomIndex = Math.floor(Math.random() * expensive.length);
+        skin = expensive[randomIndex];
+    } else {
+        let totalWeight = 0;
+        for (let i = 0; i < skinList.length; i++) {
+            totalWeight = totalWeight + (1000 / skinList[i].price);
+        }
+
+        let roll = Math.random() * totalWeight;
+        let current = 0;
+        let found = false;
+
+        for (let i = 0; i < skinList.length; i++) {
+            current = current + (1000 / skinList[i].price);
+            if (roll <= current && found == false) {
+                skin = skinList[i];
+                found = true;
+            }
+        }
+
+        if (skin == null) {
+            skin = skinList[0];
+        }
+    }
     
     inv.push(skin);
     
