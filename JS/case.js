@@ -5,7 +5,8 @@ let caseSkins = {
         { name: "USPS | Printstream", image: "Assets/Skins/usps-printstream.png", wear: "Minimal Wear", price: 113 },
         { name: "Glock 18 | Fully Tuned", image: "Assets/Skins/glock18-fully-tuned.png", wear: "Factory New", price: 205 },
         { name: "Desert Eagle | Hand Cannon", image: "Assets/Skins/desert-eagle-hand-cannon.png", wear: "Minimal Wear", price: 250 },
-        { name: "MP7 | Bloodsport", image: "Assets/Skins/mp7-bloodsport.png", wear: "Factory New", price: 15 }
+        { name: "MP7 | Bloodsport", image: "Assets/Skins/mp7-bloodsport.png", wear: "Factory New", price: 15 },
+        { name: "Skeleton Knife | Marble Fade", image: "Assets/Skins/Sknife-marblefade.png", wear: "Factory New", price: 9000 }
     ],
     "Gallery Case": [
         { name: "AK-47 | Crane Flight", image: "Assets/Skins/ak47-craneflight.png", wear: "Factory New", price: 120 },
@@ -13,7 +14,8 @@ let caseSkins = {
         { name: "USPS | Dark Water", image: "Assets/Skins/usps-dark-water.png", wear: "Minimal Wear", price: 65 },
         { name: "Glock-18 | Neo-Noir", image: "Assets/Skins/glock-18-neo-noir.png", wear: "Factory New", price: 199 },
         { name: "Desert Eagle | Kumicho Dragon", image: "Assets/Skins/desert-eagle-kumicho-dragon.png", wear: "Field-Tested", price: 25 },
-        { name: "MP7 | Abyssal Apparition", image: "Assets/Skins/mp7-abyssal-apparition.png", wear: "Factory New", price: 10 }
+        { name: "MP7 | Abyssal Apparition", image: "Assets/Skins/mp7-abyssal-apparition.png", wear: "Factory New", price: 10 },
+        { name: "Karambit | Doppler", image: "Assets/Skins/Kknife-doppler.png", wear: "Factory New", price: 8000 },
     ],
     "Fever Case": [
         { name: "AK-47 | The Oligarch", image: "Assets/Skins/ak47-the-oligarch.png", wear: "Field-Tested", price: 50 },
@@ -21,7 +23,8 @@ let caseSkins = {
         { name: "USPS | Purple DDPAT", image: "Assets/Skins/usps-purple-ddpat.png", wear: "Minimal Wear", price: 15 },
         { name: "Glock-18 | Dragon Tattoo", image: "Assets/Skins/glock-18-dragon-tattoo.png", wear: "Minimal Wear", price: 50 },
         { name: "Desert Eagle | Light Rail", image: "Assets/Skins/desert-eagle-light-rail.png", wear: "Factory New", price: 12 },
-        { name: "MP7 | Smoking Kills", image: "Assets/Skins/mp7-smoking-kills.png", wear: "Minimal Wear", price: 8 }
+        { name: "MP7 | Smoking Kills", image: "Assets/Skins/mp7-smoking-kills.png", wear: "Minimal Wear", price: 8 },
+        { name: "Butterfly Knife | Gamma Doppler", image: "Assets/Skins/Bknife-gammadoppler.png", wear: "Factory New", price: 6000 },
     ]
 };
 
