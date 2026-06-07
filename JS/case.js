@@ -6,7 +6,8 @@ let caseSkins = {
         { name: "Glock 18 | Fully Tuned", image: "Assets/Skins/glock18-fully-tuned.png", wear: "Factory New", price: 205 },
         { name: "Desert Eagle | Hand Cannon", image: "Assets/Skins/desert-eagle-hand-cannon.png", wear: "Minimal Wear", price: 250 },
         { name: "MP7 | Bloodsport", image: "Assets/Skins/mp7-bloodsport.png", wear: "Factory New", price: 15 },
-        { name: "Skeleton Knife | Marble Fade", image: "Assets/Skins/Sknife-marblefade.png", wear: "Factory New", price: 9000 }
+        { name: "Skeleton Knife | Marble Fade", image: "Assets/Skins/Sknife-marblefade.png", wear: "Factory New", price: 9000 },
+        { name: "Hydra Gloves | Case Hardened", image: "Assets/Skins/Hgloves-casehardened.png", wear: "Factory New", price: 366 },
     ],
     "Gallery Case": [
         { name: "AK-47 | Crane Flight", image: "Assets/Skins/ak47-craneflight.png", wear: "Factory New", price: 120 },
