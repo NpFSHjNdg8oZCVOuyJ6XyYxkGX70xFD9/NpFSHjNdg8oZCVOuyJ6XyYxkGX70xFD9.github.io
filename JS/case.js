@@ -17,6 +17,7 @@ let caseSkins = {
         { name: "Desert Eagle | Kumicho Dragon", image: "Assets/Skins/desert-eagle-kumicho-dragon.png", wear: "Field-Tested", price: 25 },
         { name: "MP7 | Abyssal Apparition", image: "Assets/Skins/mp7-abyssal-apparition.png", wear: "Factory New", price: 10 },
         { name: "Karambit | Doppler", image: "Assets/Skins/Kknife-doppler.png", wear: "Factory New", price: 8000 },
+        { name: "Specialist Gloves | Pillow Punchers", image: "Assets/Skins/Sgloves-pillowpunchers.png", wear: "Factory New", price: 4401 },
     ],
     "Fever Case": [
         { name: "AK-47 | The Oligarch", image: "Assets/Skins/ak47-the-oligarch.png", wear: "Field-Tested", price: 50 },
