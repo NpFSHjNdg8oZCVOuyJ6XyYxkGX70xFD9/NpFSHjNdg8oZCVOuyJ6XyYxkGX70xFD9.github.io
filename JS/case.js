@@ -27,6 +27,7 @@ let caseSkins = {
         { name: "Desert Eagle | Light Rail", image: "Assets/Skins/desert-eagle-light-rail.png", wear: "Factory New", price: 12 },
         { name: "MP7 | Smoking Kills", image: "Assets/Skins/mp7-smoking-kills.png", wear: "Minimal Wear", price: 8 },
         { name: "Butterfly Knife | Gamma Doppler", image: "Assets/Skins/Bknife-gammadoppler.png", wear: "Factory New", price: 6000 },
+        { name: "Driver Gloves | Wave Chaser", image: "Assets/Skins/Dgloves-wavechaser.png", wear: "Factory New", price: 2219 },
     ]
 };
 
