@@ -112,3 +112,5 @@ window.onload = function() {
 
     document.getElementById('case-inventory').innerHTML = html || "No cases.";
 };
+
+// code here developed with ai assistance 
